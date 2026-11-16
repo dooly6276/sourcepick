@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sourcepick</title>
+  <meta name="description" content="커뮤니티, 블로그, 카페처럼 원하는 출처를 선택해 구글에서 검색합니다.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16181c" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="core.js"></script>
+  <script src="redirect.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <h1>Sourcepick</h1>
+      <p class="lead">원하는 출처를 선택해 구글에서 검색합니다.</p>
+    </header>
+
+    <form id="search-form" class="search" role="search" autocomplete="off">
+      <label class="sr-only" for="q">검색어</label>
+      <input id="q" name="q" type="search" placeholder="검색어 입력" enterkeyhint="search" autofocus>
+      <button type="submit" class="btn-primary">검색</button>
+    </form>
+
+    <section class="block" aria-labelledby="h-source">
+      <div class="block-head">
+        <h2 id="h-source">출처</h2>
+        <button type="button" id="clear-groups" class="btn-text">선택 해제</button>
+      </div>
+      <div id="groups" class="group-grid"></div>
+      <div class="summary">
+        <span id="site-count"></span>
+        <button type="button" id="edit-toggle" class="btn-text" aria-expanded="false" aria-controls="editor">사이트 편집</button>
+      </div>
+
+      <div id="editor" class="editor" hidden>
+        <div id="site-list"></div>
+
+        <form id="add-site-form" class="inline-form" autocomplete="off">
+          <label class="sr-only" for="add-site">추가할 사이트 도메인</label>
+          <input id="add-site" type="text" inputmode="url" placeholder="사이트 추가 (예: theqoo.net)" autocapitalize="off" spellcheck="false">
+          <button type="submit" class="btn-secondary">추가</button>
+        </form>
+        <p id="add-site-error" class="error" role="alert" hidden></p>
+
+        <form id="save-group-form" class="inline-form" autocomplete="off">
+          <label class="sr-only" for="group-name">내 묶음 이름</label>
+          <input id="group-name" type="text" maxlength="20" placeholder="내 묶음 이름">
+          <button type="submit" class="btn-secondary">묶음 저장</button>
+        </form>
+        <p id="save-group-error" class="error" role="alert" hidden></p>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="h-options">
+      <h2 id="h-options">검색 조건</h2>
+      <fieldset class="segmented" id="period">
+        <legend class="sr-only">기간</legend>
+      </fieldset>
+      <label class="check">
+        <input type="checkbox" id="exclude-news">
+        <span>언론사 기사 제외</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="forums">
+        <span>구글 포럼 탭으로 검색</span>
+      </label>
+    </section>
+
+    <section class="block" id="per-site" hidden>
+      <details class="per-site">
+        <summary><h2>사이트별 검색</h2><span id="per-site-count"></span></summary>
+        <ul id="per-site-list" class="link-list"></ul>
+      </details>
+    </section>
+
+    <section class="block" aria-labelledby="h-bar">
+      <h2 id="h-bar">주소창에서 검색</h2>
+      <p class="desc">아래 주소를 브라우저 검색엔진으로 추가하면 주소창에서 현재 선택한 출처로 검색할 수 있습니다.</p>
+      <div class="copy-row">
+        <code id="engine-url"></code>
+        <button type="button" id="copy-engine" class="btn-secondary">복사</button>
+      </div>
+      <p id="copy-done" class="done" role="status" hidden>주소가 복사되었습니다.</p>
+      <details class="howto">
+        <summary>크롬에 추가하는 방법</summary>
+        <ol>
+          <li>크롬 설정에서 검색엔진 &gt; 검색엔진 및 사이트 검색 관리로 이동합니다.</li>
+          <li>사이트 검색에서 추가를 선택합니다.</li>
+          <li>이름에 Sourcepick, 바로가기에 s, URL에 복사한 주소를 입력하고 추가를 선택합니다.</li>
+          <li>주소창에 s를 입력하고 스페이스바를 누른 뒤 검색어를 입력합니다.</li>
+        </ol>
+      </details>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
