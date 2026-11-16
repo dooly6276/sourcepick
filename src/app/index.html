@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sourcepick</title>
+  <meta name="description" content="Search Google, DuckDuckGo or Brave only on the sites you choose: forums, blogs, papers, docs and more.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16181c" media="(prefers-color-scheme: dark)">
+  <!--web-head-->
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="lenses.js"></script>
+  <script src="core.js"></script>
+  <script src="store.js"></script>
+  <script src="i18n.js"></script>
+  <!--web-redirect-->
+</head>
+<body>
+  <main class="wrap">
+    <div id="view-main">
+      <header class="top">
+        <h1 data-t="appName"></h1>
+        <p class="lead" data-t="lead"></p>
+      </header>
+
+      <div id="import-card" class="card" hidden>
+        <p id="import-text"></p>
+        <div class="card-actions">
+          <button type="button" id="import-add" class="btn-primary small" data-t="add"></button>
+          <button type="button" id="import-close" class="btn-secondary" data-t="close"></button>
+        </div>
+      </div>
+
+      <form id="search-form" class="search" role="search" autocomplete="off">
+        <label class="sr-only" for="q" data-t="query"></label>
+        <input id="q" name="q" type="search" enterkeyhint="search" data-t-placeholder="queryPlaceholder">
+        <button type="submit" class="btn-primary" data-t="search"></button>
+      </form>
+
+      <section class="block" aria-labelledby="h-source">
+        <div class="block-head">
+          <h2 id="h-source" data-t="sources"></h2>
+          <div class="head-actions">
+            <button type="button" id="clear" class="btn-text" data-t="clear"></button>
+            <a href="#manage" id="open-manage" class="btn-text" data-t="manage"></a>
+          </div>
+        </div>
+        <div id="lens-grid" class="lens-grid"></div>
+        <div class="summary">
+          <span id="site-count"></span>
+          <button type="button" id="edit-toggle" class="btn-text" aria-expanded="false" aria-controls="editor" data-t="editSites"></button>
+        </div>
+
+        <div id="editor" class="editor" hidden>
+          <div id="site-list"></div>
+          <form id="add-site-form" class="inline-form" autocomplete="off">
+            <label class="sr-only" for="add-site" data-t="addSiteLabel"></label>
+            <input id="add-site" type="text" inputmode="url" autocapitalize="off" spellcheck="false" data-t-placeholder="addSitePlaceholder">
+            <button type="submit" class="btn-secondary" data-t="add"></button>
+          </form>
+          <p id="add-site-error" class="error" role="alert" hidden></p>
+          <form id="save-lens-form" class="inline-form" autocomplete="off">
+            <label class="sr-only" for="save-lens-name" data-t="myLensName"></label>
+            <input id="save-lens-name" type="text" maxlength="30" data-t-placeholder="myLensName">
+            <button type="submit" class="btn-secondary" data-t="saveLens"></button>
+          </form>
+          <p id="save-lens-error" class="error" role="alert" hidden></p>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="h-options">
+        <h2 id="h-options" data-t="options"></h2>
+        <fieldset class="segmented cols-3" id="engine">
+          <legend class="sr-only" data-t="engine"></legend>
+        </fieldset>
+        <fieldset class="segmented cols-5" id="period">
+          <legend class="sr-only" data-t="period"></legend>
+        </fieldset>
+        <div id="exclude-list"></div>
+        <label class="check" id="forums-row">
+          <input type="checkbox" id="forums">
+          <span data-t="googleForums"></span>
+        </label>
+      </section>
+
+      <section class="block" id="per-site" hidden>
+        <details class="fold">
+          <summary><h2 data-t="perSite"></h2><span id="per-site-count" class="muted"></span></summary>
+          <ul id="per-site-list" class="link-list"></ul>
+        </details>
+      </section>
+
+      <section class="block more" aria-labelledby="h-more">
+        <h2 id="h-more" data-t="moreWays"></h2>
+
+        <details class="fold" id="way-phone">
+          <summary><h3 data-t="wayPhone"></h3></summary>
+          <div class="fold-body">
+            <p class="desc" data-t="wayPhoneDesc"></p>
+            <h4 data-t="samsungInternet"></h4>
+            <ol>
+              <li data-t="samsungStep1"></li>
+              <li data-t="samsungStep2"></li>
+              <li data-t="playProtect"></li>
+            </ol>
+            <h4 data-t="chromeAndroid"></h4>
+            <ol>
+              <li data-t="chromeAndroidStep1"></li>
+              <li data-t="chromeAndroidStep2"></li>
+            </ol>
+            <h4 data-t="safariIos"></h4>
+            <ol>
+              <li data-t="safariStep1"></li>
+              <li data-t="safariStep2"></li>
+            </ol>
+            <p class="desc" data-t="shareDesc"></p>
+          </div>
+        </details>
+
+        <details class="fold" id="way-bar">
+          <summary><h3 data-t="wayBar"></h3></summary>
+          <div class="fold-body">
+            <div id="bar-web">
+              <p class="desc" data-t="wayBarDesc"></p>
+              <div class="copy-row">
+                <code id="engine-url"></code>
+                <button type="button" id="copy-engine" class="btn-secondary" data-t="copy"></button>
+              </div>
+              <p id="copy-done" class="done" role="status" hidden data-t="copied"></p>
+              <ol>
+                <li data-t="barStep1"></li>
+                <li data-t="barStep2"></li>
+                <li data-t="barStep3"></li>
+                <li data-t="barStep4"></li>
+              </ol>
+            </div>
+            <p class="desc" id="bar-ext" hidden data-t="wayBarExt"></p>
+          </div>
+        </details>
+
+        <details class="fold" id="way-ext">
+          <summary><h3 data-t="wayExt"></h3></summary>
+          <div class="fold-body">
+            <p class="desc" data-t="wayExtDesc"></p>
+          </div>
+        </details>
+      </section>
+    </div>
+
+    <div id="view-manage" hidden>
+      <header class="top with-back">
+        <a href="#" class="btn-text back" data-t="back"></a>
+        <h1 data-t="manageTitle"></h1>
+      </header>
+
+      <section class="block" aria-labelledby="h-new">
+        <h2 id="h-new" data-t="newLens"></h2>
+        <form id="new-lens-form" class="stack" autocomplete="off">
+          <input type="hidden" id="edit-id">
+          <label class="field">
+            <span data-t="lensName"></span>
+            <input id="new-name" type="text" maxlength="30">
+          </label>
+          <fieldset class="segmented cols-2" id="new-mode">
+            <legend class="sr-only" data-t="lensMode"></legend>
+            <label class="seg"><input type="radio" name="new-mode" value="include" checked><span data-t="modeInclude"></span></label>
+            <label class="seg"><input type="radio" name="new-mode" value="exclude"><span data-t="modeExclude"></span></label>
+          </fieldset>
+          <label class="field">
+            <span data-t="lensSites"></span>
+            <textarea id="new-sites" rows="5" autocapitalize="off" spellcheck="false" data-t-placeholder="lensSitesPlaceholder"></textarea>
+          </label>
+          <p id="new-error" class="error" role="alert" hidden></p>
+          <div class="row-actions">
+            <button type="submit" class="btn-primary small" id="new-submit" data-t="saveLens"></button>
+            <button type="button" class="btn-secondary" id="new-cancel" hidden data-t="cancel"></button>
+          </div>
+        </form>
+
+        <form id="import-form" class="inline-form" autocomplete="off">
+          <label class="sr-only" for="import-link" data-t="importLabel"></label>
+          <input id="import-link" type="text" inputmode="url" autocapitalize="off" spellcheck="false" data-t-placeholder="importPlaceholder">
+          <button type="submit" class="btn-secondary" data-t="add"></button>
+        </form>
+        <p id="import-error" class="error" role="alert" hidden></p>
+        <p id="manage-done" class="done" role="status" hidden></p>
+      </section>
+
+      <section class="block" aria-labelledby="h-list">
+        <h2 id="h-list" data-t="allLenses"></h2>
+        <p class="desc" data-t="allLensesDesc"></p>
+        <div id="manage-list"></div>
+      </section>
+
+      <section class="block">
+        <button type="button" id="reset" class="btn-text danger" data-t="reset"></button>
+      </section>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

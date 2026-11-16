@@ -1,0 +1,27 @@
+{
+  "id": "kr-games",
+  "name": {
+    "en": "Korean gaming",
+    "ko": "게임"
+  },
+  "mode": "include",
+  "order": 70,
+  "sites": [
+    {
+      "domain": "inven.co.kr",
+      "name": "인벤"
+    },
+    {
+      "domain": "ruliweb.com",
+      "name": "루리웹"
+    },
+    {
+      "domain": "arca.live",
+      "name": "아카라이브"
+    },
+    {
+      "domain": "thisisgame.com",
+      "name": "디스이즈게임"
+    }
+  ]
+}

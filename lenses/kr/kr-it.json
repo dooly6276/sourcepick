@@ -1,0 +1,35 @@
+{
+  "id": "kr-it",
+  "name": {
+    "en": "Korean tech & gadgets",
+    "ko": "IT 기기"
+  },
+  "mode": "include",
+  "order": 60,
+  "sites": [
+    {
+      "domain": "clien.net",
+      "name": "클리앙"
+    },
+    {
+      "domain": "quasarzone.com",
+      "name": "퀘이사존"
+    },
+    {
+      "domain": "meeco.kr",
+      "name": "미코"
+    },
+    {
+      "domain": "ppomppu.co.kr",
+      "name": "뽐뿌"
+    },
+    {
+      "domain": "coolenjoy.net",
+      "name": "쿨엔조이"
+    },
+    {
+      "domain": "dvdprime.com",
+      "name": "DVD프라임"
+    }
+  ]
+}

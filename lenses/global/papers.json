@@ -1,0 +1,56 @@
+{
+  "id": "papers",
+  "name": {
+    "en": "Papers",
+    "ko": "해외 논문",
+    "ja": "海外論文"
+  },
+  "mode": "include",
+  "order": 50,
+  "sites": [
+    {
+      "domain": "arxiv.org",
+      "name": "arXiv"
+    },
+    {
+      "domain": "ncbi.nlm.nih.gov",
+      "name": "PubMed"
+    },
+    {
+      "domain": "semanticscholar.org",
+      "name": "Semantic Scholar"
+    },
+    {
+      "domain": "researchgate.net",
+      "name": "ResearchGate"
+    },
+    {
+      "domain": "ssrn.com",
+      "name": "SSRN"
+    },
+    {
+      "domain": "jstor.org",
+      "name": "JSTOR"
+    },
+    {
+      "domain": "biorxiv.org",
+      "name": "bioRxiv"
+    },
+    {
+      "domain": "nature.com",
+      "name": "Nature"
+    },
+    {
+      "domain": "sciencedirect.com",
+      "name": "ScienceDirect"
+    },
+    {
+      "domain": "link.springer.com",
+      "name": "Springer"
+    },
+    {
+      "domain": "plos.org",
+      "name": "PLOS"
+    }
+  ]
+}

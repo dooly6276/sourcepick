@@ -1,0 +1,40 @@
+{
+  "id": "opensource",
+  "name": {
+    "en": "Open source",
+    "ko": "오픈소스",
+    "ja": "オープンソース"
+  },
+  "mode": "include",
+  "order": 110,
+  "sites": [
+    {
+      "domain": "github.com",
+      "name": "GitHub"
+    },
+    {
+      "domain": "gitlab.com",
+      "name": "GitLab"
+    },
+    {
+      "domain": "codeberg.org",
+      "name": "Codeberg"
+    },
+    {
+      "domain": "sourceforge.net",
+      "name": "SourceForge"
+    },
+    {
+      "domain": "sr.ht",
+      "name": "SourceHut"
+    },
+    {
+      "domain": "npmjs.com",
+      "name": "npm"
+    },
+    {
+      "domain": "pypi.org",
+      "name": "PyPI"
+    }
+  ]
+}

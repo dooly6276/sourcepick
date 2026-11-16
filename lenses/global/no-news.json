@@ -1,0 +1,90 @@
+{
+  "id": "no-news",
+  "name": {
+    "en": "No major news",
+    "ko": "해외 언론사 제외",
+    "ja": "海外ニュースを除外"
+  },
+  "mode": "exclude",
+  "order": 910,
+  "sites": [
+    {
+      "domain": "cnn.com"
+    },
+    {
+      "domain": "foxnews.com"
+    },
+    {
+      "domain": "nytimes.com"
+    },
+    {
+      "domain": "washingtonpost.com"
+    },
+    {
+      "domain": "theguardian.com"
+    },
+    {
+      "domain": "bbc.com"
+    },
+    {
+      "domain": "bbc.co.uk"
+    },
+    {
+      "domain": "reuters.com"
+    },
+    {
+      "domain": "apnews.com"
+    },
+    {
+      "domain": "bloomberg.com"
+    },
+    {
+      "domain": "forbes.com"
+    },
+    {
+      "domain": "businessinsider.com"
+    },
+    {
+      "domain": "cnbc.com"
+    },
+    {
+      "domain": "usatoday.com"
+    },
+    {
+      "domain": "nbcnews.com"
+    },
+    {
+      "domain": "cbsnews.com"
+    },
+    {
+      "domain": "abcnews.go.com"
+    },
+    {
+      "domain": "npr.org"
+    },
+    {
+      "domain": "wsj.com"
+    },
+    {
+      "domain": "msn.com"
+    },
+    {
+      "domain": "yahoo.com/news"
+    },
+    {
+      "domain": "huffpost.com"
+    },
+    {
+      "domain": "independent.co.uk"
+    },
+    {
+      "domain": "dailymail.co.uk"
+    },
+    {
+      "domain": "nypost.com"
+    },
+    {
+      "domain": "time.com"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "docs",
+  "name": {
+    "en": "Official docs",
+    "ko": "공식 문서",
+    "ja": "公式ドキュメント"
+  },
+  "mode": "include",
+  "order": 40,
+  "sites": [
+    {
+      "domain": "developer.mozilla.org",
+      "name": "MDN"
+    },
+    {
+      "domain": "learn.microsoft.com",
+      "name": "Microsoft Learn"
+    },
+    {
+      "domain": "docs.python.org",
+      "name": "Python"
+    },
+    {
+      "domain": "nodejs.org",
+      "name": "Node.js"
+    },
+    {
+      "domain": "react.dev",
+      "name": "React"
+    },
+    {
+      "domain": "go.dev",
+      "name": "Go"
+    },
+    {
+      "domain": "doc.rust-lang.org",
+      "name": "Rust"
+    },
+    {
+      "domain": "developer.android.com",
+      "name": "Android"
+    },
+    {
+      "domain": "developer.apple.com",
+      "name": "Apple Developer"
+    },
+    {
+      "domain": "docs.github.com",
+      "name": "GitHub Docs"
+    },
+    {
+      "domain": "docs.aws.amazon.com",
+      "name": "AWS"
+    },
+    {
+      "domain": "cloud.google.com",
+      "name": "Google Cloud"
+    }
+  ]
+}

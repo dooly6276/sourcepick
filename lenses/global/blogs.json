@@ -1,0 +1,32 @@
+{
+  "id": "blogs",
+  "name": {
+    "en": "Blogs & newsletters",
+    "ko": "해외 블로그",
+    "ja": "海外ブログ"
+  },
+  "mode": "include",
+  "order": 100,
+  "sites": [
+    {
+      "domain": "substack.com",
+      "name": "Substack"
+    },
+    {
+      "domain": "medium.com",
+      "name": "Medium"
+    },
+    {
+      "domain": "wordpress.com",
+      "name": "WordPress.com"
+    },
+    {
+      "domain": "blogspot.com",
+      "name": "Blogger"
+    },
+    {
+      "domain": "ghost.io",
+      "name": "Ghost"
+    }
+  ]
+}

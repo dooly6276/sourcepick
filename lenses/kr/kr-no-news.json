@@ -1,0 +1,113 @@
+{
+  "id": "kr-no-news",
+  "name": {
+    "en": "No Korean news",
+    "ko": "국내 언론사 제외"
+  },
+  "mode": "exclude",
+  "order": 900,
+  "sites": [
+    {
+      "domain": "news.naver.com"
+    },
+    {
+      "domain": "v.daum.net"
+    },
+    {
+      "domain": "news.nate.com"
+    },
+    {
+      "domain": "yna.co.kr"
+    },
+    {
+      "domain": "chosun.com"
+    },
+    {
+      "domain": "joongang.co.kr"
+    },
+    {
+      "domain": "www.donga.com"
+    },
+    {
+      "domain": "hani.co.kr"
+    },
+    {
+      "domain": "khan.co.kr"
+    },
+    {
+      "domain": "mk.co.kr"
+    },
+    {
+      "domain": "hankyung.com"
+    },
+    {
+      "domain": "sedaily.com"
+    },
+    {
+      "domain": "mt.co.kr"
+    },
+    {
+      "domain": "edaily.co.kr"
+    },
+    {
+      "domain": "newsis.com"
+    },
+    {
+      "domain": "news1.kr"
+    },
+    {
+      "domain": "ytn.co.kr"
+    },
+    {
+      "domain": "news.sbs.co.kr"
+    },
+    {
+      "domain": "imnews.imbc.com"
+    },
+    {
+      "domain": "news.kbs.co.kr"
+    },
+    {
+      "domain": "news.jtbc.co.kr"
+    },
+    {
+      "domain": "nocutnews.co.kr"
+    },
+    {
+      "domain": "ohmynews.com"
+    },
+    {
+      "domain": "asiae.co.kr"
+    },
+    {
+      "domain": "heraldcorp.com"
+    },
+    {
+      "domain": "fnnews.com"
+    },
+    {
+      "domain": "inews24.com"
+    },
+    {
+      "domain": "zdnet.co.kr"
+    },
+    {
+      "domain": "etnews.com"
+    },
+    {
+      "domain": "wikitree.co.kr"
+    },
+    {
+      "domain": "insight.co.kr"
+    },
+    {
+      "domain": "dispatch.co.kr"
+    },
+    {
+      "domain": "seoul.co.kr"
+    },
+    {
+      "domain": "kmib.co.kr"
+    }
+  ]
+}

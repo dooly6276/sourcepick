@@ -1,0 +1,36 @@
+{
+  "id": "recipes",
+  "name": {
+    "en": "Recipes",
+    "ko": "해외 레시피",
+    "ja": "海外レシピ"
+  },
+  "mode": "include",
+  "order": 130,
+  "sites": [
+    {
+      "domain": "seriouseats.com",
+      "name": "Serious Eats"
+    },
+    {
+      "domain": "allrecipes.com",
+      "name": "Allrecipes"
+    },
+    {
+      "domain": "bbcgoodfood.com",
+      "name": "BBC Good Food"
+    },
+    {
+      "domain": "budgetbytes.com",
+      "name": "Budget Bytes"
+    },
+    {
+      "domain": "food52.com",
+      "name": "Food52"
+    },
+    {
+      "domain": "cooking.nytimes.com",
+      "name": "NYT Cooking"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "social",
+  "name": {
+    "en": "Social",
+    "ko": "SNS",
+    "ja": "SNS"
+  },
+  "mode": "include",
+  "order": 70,
+  "sites": [
+    {
+      "domain": "x.com",
+      "name": "X"
+    },
+    {
+      "domain": "threads.com",
+      "name": "Threads"
+    },
+    {
+      "domain": "bsky.app",
+      "name": "Bluesky"
+    },
+    {
+      "domain": "mastodon.social",
+      "name": "Mastodon"
+    },
+    {
+      "domain": "instagram.com",
+      "name": "Instagram"
+    },
+    {
+      "domain": "linkedin.com",
+      "name": "LinkedIn"
+    },
+    {
+      "domain": "facebook.com",
+      "name": "Facebook"
+    }
+  ]
+}

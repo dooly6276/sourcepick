@@ -1,0 +1,28 @@
+{
+  "id": "video",
+  "name": {
+    "en": "Video",
+    "ko": "동영상",
+    "ja": "動画"
+  },
+  "mode": "include",
+  "order": 60,
+  "sites": [
+    {
+      "domain": "youtube.com",
+      "name": "YouTube"
+    },
+    {
+      "domain": "vimeo.com",
+      "name": "Vimeo"
+    },
+    {
+      "domain": "tiktok.com",
+      "name": "TikTok"
+    },
+    {
+      "domain": "dailymotion.com",
+      "name": "Dailymotion"
+    }
+  ]
+}

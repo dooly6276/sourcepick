@@ -1,0 +1,40 @@
+#sourcepick-bar {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 6px;
+  padding-right: 16px;
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", "Hiragino Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  clear: both;
+}
+#sourcepick-bar .sp-label { margin-right: 4px; color: #4d5156; font-weight: 700; }
+#sourcepick-bar button {
+  box-sizing: border-box;
+  height: 32px;
+  margin: 0;
+  padding: 0 12px;
+  font: inherit;
+  color: #1f1f1f;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#sourcepick-bar button:hover { background: #f1f3f4; }
+#sourcepick-bar button[aria-pressed="true"] { color: #fff; background: #1f4fd8; border-color: #1f4fd8; }
+#sourcepick-bar .sp-sep { width: 1px; height: 20px; margin: 0 4px; background: #dadce0; }
+#sourcepick-bar .sp-tail { display: inline-flex; gap: 2px; margin-left: 2px; }
+#sourcepick-bar button.sp-link { padding: 0 8px; color: #1f4fd8; background: none; border-color: transparent; }
+#sourcepick-bar button.sp-link:hover { text-decoration: underline; background: none; }
+
+#sourcepick-bar.sp-dark .sp-label { color: #bdc1c6; }
+#sourcepick-bar.sp-dark button { color: #e8eaed; background: #202124; border-color: #5f6368; }
+#sourcepick-bar.sp-dark button:hover { background: #303134; }
+#sourcepick-bar.sp-dark button[aria-pressed="true"] { color: #0d1220; background: #8ab4f8; border-color: #8ab4f8; }
+#sourcepick-bar.sp-dark .sp-sep { background: #5f6368; }
+#sourcepick-bar.sp-dark button.sp-link { color: #8ab4f8; background: none; border-color: transparent; }

@@ -1,0 +1,28 @@
+{
+  "id": "wiki",
+  "name": {
+    "en": "Wikis",
+    "ko": "해외 위키",
+    "ja": "海外ウィキ"
+  },
+  "mode": "include",
+  "order": 90,
+  "sites": [
+    {
+      "domain": "wikipedia.org",
+      "name": "Wikipedia"
+    },
+    {
+      "domain": "fandom.com",
+      "name": "Fandom"
+    },
+    {
+      "domain": "wikihow.com",
+      "name": "wikiHow"
+    },
+    {
+      "domain": "wikivoyage.org",
+      "name": "Wikivoyage"
+    }
+  ]
+}

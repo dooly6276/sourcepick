@@ -1,0 +1,23 @@
+{
+  "id": "kr-work",
+  "name": {
+    "en": "Korean workplace",
+    "ko": "직장인"
+  },
+  "mode": "include",
+  "order": 20,
+  "sites": [
+    {
+      "domain": "teamblind.com",
+      "name": "블라인드"
+    },
+    {
+      "domain": "community.rememberapp.co.kr",
+      "name": "리멤버 커뮤니티"
+    },
+    {
+      "domain": "jobplanet.co.kr",
+      "name": "잡플래닛"
+    }
+  ]
+}

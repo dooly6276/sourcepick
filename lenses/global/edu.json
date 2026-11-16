@@ -1,0 +1,20 @@
+{
+  "id": "edu",
+  "name": {
+    "en": "Universities",
+    "ko": "해외 대학",
+    "ja": "海外大学"
+  },
+  "mode": "include",
+  "order": 160,
+  "sites": [
+    {
+      "domain": "edu",
+      "name": ".edu"
+    },
+    {
+      "domain": "ac.uk",
+      "name": ".ac.uk"
+    }
+  ]
+}

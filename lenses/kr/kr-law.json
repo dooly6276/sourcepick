@@ -1,0 +1,27 @@
+{
+  "id": "kr-law",
+  "name": {
+    "en": "Korean law",
+    "ko": "법률"
+  },
+  "mode": "include",
+  "order": 110,
+  "sites": [
+    {
+      "domain": "law.go.kr",
+      "name": "국가법령정보센터"
+    },
+    {
+      "domain": "easylaw.go.kr",
+      "name": "찾기쉬운 생활법령정보"
+    },
+    {
+      "domain": "casenote.kr",
+      "name": "케이스노트"
+    },
+    {
+      "domain": "klac.or.kr",
+      "name": "대한법률구조공단"
+    }
+  ]
+}

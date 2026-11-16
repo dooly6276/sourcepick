@@ -1,0 +1,36 @@
+{
+  "id": "jp-forums",
+  "name": {
+    "en": "Japanese forums",
+    "ko": "일본 커뮤니티",
+    "ja": "掲示板、Q&A"
+  },
+  "mode": "include",
+  "order": 10,
+  "sites": [
+    {
+      "domain": "5ch.net",
+      "name": "5ちゃんねる"
+    },
+    {
+      "domain": "chiebukuro.yahoo.co.jp",
+      "name": "Yahoo!知恵袋"
+    },
+    {
+      "domain": "komachi.yomiuri.co.jp",
+      "name": "発言小町"
+    },
+    {
+      "domain": "girlschannel.net",
+      "name": "ガールズちゃんねる"
+    },
+    {
+      "domain": "togetter.com",
+      "name": "Togetter"
+    },
+    {
+      "domain": "b.hatena.ne.jp",
+      "name": "はてなブックマーク"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "kr-qna",
+  "name": {
+    "en": "Naver KnowledgeiN",
+    "ko": "지식iN"
+  },
+  "mode": "include",
+  "order": 50,
+  "sites": [
+    {
+      "domain": "kin.naver.com",
+      "name": "네이버 지식iN"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "design",
+  "name": {
+    "en": "Design",
+    "ko": "디자인",
+    "ja": "デザイン"
+  },
+  "mode": "include",
+  "order": 140,
+  "sites": [
+    {
+      "domain": "dribbble.com",
+      "name": "Dribbble"
+    },
+    {
+      "domain": "behance.net",
+      "name": "Behance"
+    },
+    {
+      "domain": "awwwards.com",
+      "name": "Awwwards"
+    },
+    {
+      "domain": "figma.com/community",
+      "name": "Figma Community"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "travel",
+  "name": {
+    "en": "Travel",
+    "ko": "해외 여행",
+    "ja": "海外旅行"
+  },
+  "mode": "include",
+  "order": 120,
+  "sites": [
+    {
+      "domain": "tripadvisor.com",
+      "name": "Tripadvisor"
+    },
+    {
+      "domain": "lonelyplanet.com",
+      "name": "Lonely Planet"
+    },
+    {
+      "domain": "wikivoyage.org",
+      "name": "Wikivoyage"
+    },
+    {
+      "domain": "flyertalk.com",
+      "name": "FlyerTalk"
+    },
+    {
+      "domain": "reddit.com/r/travel",
+      "name": "r/travel"
+    },
+    {
+      "domain": "ricksteves.com",
+      "name": "Rick Steves"
+    }
+  ]
+}

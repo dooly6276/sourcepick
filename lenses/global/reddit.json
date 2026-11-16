@@ -1,0 +1,16 @@
+{
+  "id": "reddit",
+  "name": {
+    "en": "Reddit",
+    "ko": "Reddit",
+    "ja": "Reddit"
+  },
+  "mode": "include",
+  "order": 20,
+  "sites": [
+    {
+      "domain": "reddit.com",
+      "name": "Reddit"
+    }
+  ]
+}

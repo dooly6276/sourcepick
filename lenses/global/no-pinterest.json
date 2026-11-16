@@ -1,0 +1,28 @@
+{
+  "id": "no-pinterest",
+  "name": {
+    "en": "No Pinterest",
+    "ko": "Pinterest 제외",
+    "ja": "Pinterest を除外"
+  },
+  "mode": "exclude",
+  "order": 900,
+  "sites": [
+    {
+      "domain": "pinterest.com",
+      "name": "Pinterest"
+    },
+    {
+      "domain": "pinterest.co.kr",
+      "name": "Pinterest"
+    },
+    {
+      "domain": "pinterest.jp",
+      "name": "Pinterest"
+    },
+    {
+      "domain": "pinterest.co.uk",
+      "name": "Pinterest"
+    }
+  ]
+}

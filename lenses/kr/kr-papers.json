@@ -1,0 +1,31 @@
+{
+  "id": "kr-papers",
+  "name": {
+    "en": "Korean papers",
+    "ko": "국내 논문"
+  },
+  "mode": "include",
+  "order": 90,
+  "sites": [
+    {
+      "domain": "dbpia.co.kr",
+      "name": "DBpia"
+    },
+    {
+      "domain": "riss.kr",
+      "name": "RISS"
+    },
+    {
+      "domain": "kci.go.kr",
+      "name": "KCI"
+    },
+    {
+      "domain": "scienceon.kisti.re.kr",
+      "name": "ScienceON"
+    },
+    {
+      "domain": "earticle.net",
+      "name": "earticle"
+    }
+  ]
+}

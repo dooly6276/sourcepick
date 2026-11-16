@@ -1,0 +1,28 @@
+{
+  "id": "jp-blogs",
+  "name": {
+    "en": "Japanese blogs",
+    "ko": "일본 블로그",
+    "ja": "ブログ"
+  },
+  "mode": "include",
+  "order": 20,
+  "sites": [
+    {
+      "domain": "note.com",
+      "name": "note"
+    },
+    {
+      "domain": "ameblo.jp",
+      "name": "アメブロ"
+    },
+    {
+      "domain": "hatenablog.com",
+      "name": "はてなブログ"
+    },
+    {
+      "domain": "livedoor.blog",
+      "name": "ライブドアブログ"
+    }
+  ]
+}

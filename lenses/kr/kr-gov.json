@@ -1,0 +1,19 @@
+{
+  "id": "kr-gov",
+  "name": {
+    "en": "Korean government",
+    "ko": "공공기관"
+  },
+  "mode": "include",
+  "order": 100,
+  "sites": [
+    {
+      "domain": "go.kr",
+      "name": "정부 및 공공기관(go.kr)"
+    },
+    {
+      "domain": "re.kr",
+      "name": "연구기관(re.kr)"
+    }
+  ]
+}

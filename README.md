@@ -1,23 +1,83 @@
-# Sourcepick (임시 이름)
+# Sourcepick
 
-구글 검색을 커뮤니티, 블로그, 카페처럼 원하는 출처로만 좁혀 주는 도구. 웹 앱과 크롬 확장 두 가지.
+**Search only the sites you choose.** Forums, Reddit, official docs, papers, Korean communities, Japanese Q&A sites and more, on Google, DuckDuckGo or Brave Search.
 
-## 구조
-- `shared/core.js`: 출처 묶음 목록과 검색어 만드는 함수. 원본은 여기 하나다. 고친 뒤 `scripts/sync-core.sh` 로 `web/`, `extension/` 에 복사한다.
-- `web/`: 정적 웹 앱(빌드 없음). 그대로 아무 정적 호스팅에 올리면 된다.
-  - `?q=검색어` 로 들어오면 화면 없이 구글로 바로 보낸다(주소창 검색엔진 등록용). `g`=묶음 id, `s`=도메인, `p`=기간(d,w,m,y), `n=1` 기사 제외, `f=1` 포럼 탭.
-  - 선택 상태는 브라우저 localStorage `sourcepick:v1` 에만 있다. 서버 없음.
-- `extension/`: 크롬 확장(MV3). 구글 결과 화면 탭 아래에 출처 버튼 줄을 넣는다. 상태는 검색 주소(q)에만 있다.
+[한국어](README.ko.md)
 
-## 로컬에서 보기
+![Sourcepick adds source buttons under the Google search bar. Choosing Reddit narrows the results to Reddit threads.](docs/demo-en.gif)
+
+Search engines bury forum threads, first-hand reviews and primary sources under SEO pages. Typing `site:reddit.com OR site:news.ycombinator.com OR ...` every time works, but nobody wants to. Sourcepick keeps those site lists for you as **sources** and applies them with one click.
+
+- **One click on the results page.** The extension adds a row of source buttons to Google, DuckDuckGo and Brave Search. Combine sources, or turn on exclusions such as *No Pinterest*.
+- **35 built-in sources** for worldwide, Korean and Japanese sites, kept as plain JSON files that anyone can improve.
+- **Your own sources.** Make a source from any list of domains or URL paths (`reddit.com/r/BuyItForLife` works) and share it as a link.
+- **Works on phones too.** Add the web app to your home screen, then share selected text from any Android app to search it with your sources. Tested on Samsung Internet.
+- **Address bar.** Type `sp` and a space in the address bar (extension), or register the web app as a search engine.
+- **No account, no server, no tracking.** Settings stay in your browser. The only network request is the search itself, sent straight to the engine you picked.
+
+## Install
+
+| Where | How |
+|---|---|
+| Chrome, Edge, Whale, Brave, Opera | Chrome Web Store (coming soon). For now: build and load `dist/chrome` as an unpacked extension. |
+| Firefox (desktop and Android) | Firefox Add-ons (coming soon). For now: build and load `dist/firefox/manifest.json` from `about:debugging`. |
+| Any phone or browser | Open the web app and add it to your home screen. |
+
 ```bash
-python3 -m http.server 8791 --bind 127.0.0.1 --directory web
+git clone <this repository>
+cd sourcepick
+npm run build        # writes dist/web, dist/chrome, dist/firefox
 ```
 
-## 확장 설치(개발용)
-크롬 `chrome://extensions` > 개발자 모드 > 압축해제된 확장 프로그램을 로드 > `extension` 폴더.
+No dependencies. Node 18 or later is enough.
 
-## 확인한 사실 (2026-11-16)
-- 구글은 `site:` 26개를 OR 로 이은 검색어(약 54단어)도 마지막 사이트까지 반영했다. 옛 32단어 제한은 지금은 걸리지 않는다.
-- `udm=18` 은 구글 포럼 탭이다(공식 문서 없음, 바뀔 수 있음).
-- `-site:www.donga.com` 처럼 기사 쪽 하위 도메인만 빼야 같은 회사 밑 커뮤니티(mlbpark.donga.com)가 같이 빠지지 않는다.
+## How it works
+
+A source is a list of sites. Choosing sources rewrites your query with search operators that every major engine understands:
+
+```
+mechanical keyboard site:reddit.com OR site:news.ycombinator.com -site:pinterest.com
+```
+
+The results page bar reads the operators back from the URL, so the buttons always show what is applied, and the page stays a normal search URL you can bookmark or share. Time filters, Google's Forums tab and other engine settings are kept.
+
+Google applied all 26 `site:` filters joined with `OR` in our tests (November 2026), so large sources work. Bing is not supported yet because it showed a human verification page to our automated tests.
+
+## Built-in sources
+
+| Region | Sources |
+|---|---|
+| Worldwide | Forums, Reddit, Developers, Official docs, Papers, Video, Social, Product reviews, Wikis, Blogs & newsletters, Open source, Travel, Recipes, Design, Government & public, Universities, No Pinterest, No major news |
+| Korea | Communities, Workplace, Naver & Daum cafes, Blogs, KnowledgeiN, Tech & gadgets, Gaming, Developers, Papers, Government, Law, Wikis, Recipes, No Korean news |
+| Japan | Forums, Blogs, Developers |
+
+Each one is a file in [`lenses/`](lenses). Missing a great site, or a whole country? See [CONTRIBUTING.md](CONTRIBUTING.md). It takes a JSON file and a pull request.
+
+## Project layout
+
+```
+lenses/            built-in sources, one JSON file each (global/, kr/, jp/)
+src/core.js        query building for each engine, share links
+src/store.js       settings (chrome.storage in the extension, localStorage on the web)
+src/i18n.js        interface text (English, Korean)
+src/app/           the main screen, shared by the web app, the extension popup and its settings page
+src/extension/     results-page bar, background script, store listing text
+src/web/           address-bar and share-sheet redirect, service worker, web app manifest
+scripts/           build, lens validation, domain check
+tests/             node --test
+```
+
+```bash
+npm test               # unit tests and lens validation
+npm run check-domains  # checks that every site in lenses/ still responds (network)
+npm run serve          # builds and serves the web app on http://127.0.0.1:8791
+npm run package        # builds zip files for the extension stores
+```
+
+## Privacy
+
+Sourcepick has no server and collects nothing. The extension asks only for `storage`, plus access to search result pages on Google, DuckDuckGo and Brave Search so it can show the source buttons there.
+
+## License
+
+[MIT](LICENSE)

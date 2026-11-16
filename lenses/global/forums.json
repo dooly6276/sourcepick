@@ -1,0 +1,40 @@
+{
+  "id": "forums",
+  "name": {
+    "en": "Forums",
+    "ko": "해외 포럼",
+    "ja": "海外フォーラム"
+  },
+  "mode": "include",
+  "order": 10,
+  "sites": [
+    {
+      "domain": "reddit.com",
+      "name": "Reddit"
+    },
+    {
+      "domain": "news.ycombinator.com",
+      "name": "Hacker News"
+    },
+    {
+      "domain": "stackexchange.com",
+      "name": "Stack Exchange"
+    },
+    {
+      "domain": "quora.com",
+      "name": "Quora"
+    },
+    {
+      "domain": "lobste.rs",
+      "name": "Lobsters"
+    },
+    {
+      "domain": "tildes.net",
+      "name": "Tildes"
+    },
+    {
+      "domain": "lemmy.world",
+      "name": "Lemmy"
+    }
+  ]
+}

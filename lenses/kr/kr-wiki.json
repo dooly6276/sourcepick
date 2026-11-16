@@ -1,0 +1,19 @@
+{
+  "id": "kr-wiki",
+  "name": {
+    "en": "Korean wikis",
+    "ko": "위키"
+  },
+  "mode": "include",
+  "order": 120,
+  "sites": [
+    {
+      "domain": "namu.wiki",
+      "name": "나무위키"
+    },
+    {
+      "domain": "ko.wikipedia.org",
+      "name": "위키백과"
+    }
+  ]
+}

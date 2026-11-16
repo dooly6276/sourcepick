@@ -1,0 +1,24 @@
+{
+  "id": "jp-dev",
+  "name": {
+    "en": "Japanese developers",
+    "ko": "일본 개발",
+    "ja": "開発"
+  },
+  "mode": "include",
+  "order": 30,
+  "sites": [
+    {
+      "domain": "qiita.com",
+      "name": "Qiita"
+    },
+    {
+      "domain": "zenn.dev",
+      "name": "Zenn"
+    },
+    {
+      "domain": "teratail.com",
+      "name": "teratail"
+    }
+  ]
+}

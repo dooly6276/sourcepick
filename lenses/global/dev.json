@@ -1,0 +1,36 @@
+{
+  "id": "dev",
+  "name": {
+    "en": "Developers",
+    "ko": "개발",
+    "ja": "開発"
+  },
+  "mode": "include",
+  "order": 30,
+  "sites": [
+    {
+      "domain": "stackoverflow.com",
+      "name": "Stack Overflow"
+    },
+    {
+      "domain": "github.com",
+      "name": "GitHub"
+    },
+    {
+      "domain": "dev.to",
+      "name": "DEV Community"
+    },
+    {
+      "domain": "news.ycombinator.com",
+      "name": "Hacker News"
+    },
+    {
+      "domain": "lobste.rs",
+      "name": "Lobsters"
+    },
+    {
+      "domain": "medium.com",
+      "name": "Medium"
+    }
+  ]
+}

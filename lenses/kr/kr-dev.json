@@ -1,0 +1,31 @@
+{
+  "id": "kr-dev",
+  "name": {
+    "en": "Korean developers",
+    "ko": "국내 개발"
+  },
+  "mode": "include",
+  "order": 80,
+  "sites": [
+    {
+      "domain": "okky.kr",
+      "name": "OKKY"
+    },
+    {
+      "domain": "velog.io",
+      "name": "velog"
+    },
+    {
+      "domain": "news.hada.io",
+      "name": "GeekNews"
+    },
+    {
+      "domain": "careerly.co.kr",
+      "name": "커리어리"
+    },
+    {
+      "domain": "inflearn.com",
+      "name": "인프런"
+    }
+  ]
+}

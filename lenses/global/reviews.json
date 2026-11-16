@@ -1,0 +1,44 @@
+{
+  "id": "reviews",
+  "name": {
+    "en": "Product reviews",
+    "ko": "해외 리뷰",
+    "ja": "海外製品レビュー"
+  },
+  "mode": "include",
+  "order": 80,
+  "sites": [
+    {
+      "domain": "rtings.com",
+      "name": "RTINGS"
+    },
+    {
+      "domain": "nytimes.com/wirecutter",
+      "name": "Wirecutter"
+    },
+    {
+      "domain": "consumerreports.org",
+      "name": "Consumer Reports"
+    },
+    {
+      "domain": "notebookcheck.net",
+      "name": "Notebookcheck"
+    },
+    {
+      "domain": "gsmarena.com",
+      "name": "GSMArena"
+    },
+    {
+      "domain": "dpreview.com",
+      "name": "DPReview"
+    },
+    {
+      "domain": "outdoorgearlab.com",
+      "name": "OutdoorGearLab"
+    },
+    {
+      "domain": "reddit.com/r/BuyItForLife",
+      "name": "r/BuyItForLife"
+    }
+  ]
+}

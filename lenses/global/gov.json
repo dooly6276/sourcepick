@@ -1,0 +1,40 @@
+{
+  "id": "gov",
+  "name": {
+    "en": "Government & public",
+    "ko": "해외 공공기관",
+    "ja": "海外政府、国際機関"
+  },
+  "mode": "include",
+  "order": 150,
+  "sites": [
+    {
+      "domain": "gov",
+      "name": ".gov"
+    },
+    {
+      "domain": "gov.uk",
+      "name": "GOV.UK"
+    },
+    {
+      "domain": "europa.eu",
+      "name": "EU"
+    },
+    {
+      "domain": "un.org",
+      "name": "UN"
+    },
+    {
+      "domain": "who.int",
+      "name": "WHO"
+    },
+    {
+      "domain": "oecd.org",
+      "name": "OECD"
+    },
+    {
+      "domain": "worldbank.org",
+      "name": "World Bank"
+    }
+  ]
+}
