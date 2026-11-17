@@ -126,6 +126,9 @@
       alreadyAdded: "“{0}” is already in your sources.",
       barPartial: "{1} of {0} sites applied",
       barPartialTitle: "{0} uses only the first {1} words and sites of a search.",
+      limitIncludeLength: "{0} limits how long a search can be, so {3} of your {2} sites will be searched. Use Search one site at a time for the rest.",
+      limitExcludeLength: "{0} limits how long a search can be, so {2} of the sites to exclude will not be excluded.",
+      barPartialTitleLength: "{0} limits how long a search can be, so only some of the sites were applied.",
     },
     ko: {
       appName: APP,
@@ -248,6 +251,9 @@
       alreadyAdded: "'{0}' 출처는 이미 추가되어 있습니다.",
       barPartial: "사이트 {0}개 중 {1}개 적용",
       barPartialTitle: "{0} 검색은 검색어의 단어 수와 사이트 수를 합쳐 {1}개까지만 적용됩니다.",
+      limitIncludeLength: "{0} 검색은 검색어 길이에 제한이 있어 선택한 사이트 {2}개 중 앞의 {3}개로 검색합니다. 나머지 사이트는 사이트별 검색을 이용해 주세요.",
+      limitExcludeLength: "{0} 검색은 검색어 길이에 제한이 있어 제외할 사이트 중 {2}개는 제외되지 않습니다.",
+      barPartialTitleLength: "{0} 검색은 검색어 길이에 제한이 있어 일부 사이트만 적용되었습니다.",
     },
     ja: {
       appName: APP,
@@ -369,6 +375,9 @@
       alreadyAdded: "「{0}」はすでに検索先に追加されています。",
       barPartial: "{0}サイト中{1}サイトに適用",
       barPartialTitle: "{0}では検索キーワードとサイトを合わせて先頭{1}個までしか使われません。",
+      limitIncludeLength: "{0}では検索キーワードの長さに上限があるため、選択した{2}サイトのうち{3}サイトが検索されます。残りは「1サイトずつ検索」をご利用ください。",
+      limitExcludeLength: "{0}では検索キーワードの長さに上限があるため、除外するサイトのうち{2}サイトは除外されません。",
+      barPartialTitleLength: "{0}では検索キーワードの長さに上限があるため、一部のサイトのみ適用されました。",
       excludeDesc: "検索先を選ばずにウェブ全体を検索するときに適用されます。",
     },
   };

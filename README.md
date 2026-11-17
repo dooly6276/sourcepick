@@ -51,7 +51,7 @@ mechanical keyboard site:reddit.com OR site:news.ycombinator.com -site:pinterest
 
 The results page bar reads the operators back from the URL, so the buttons always show what is applied, and the page stays a normal search URL you can bookmark or share. Time filters, Google's Forums tab and other engine settings are kept.
 
-Search engines ignore the end of a long query without saying so. In our November 2026 tests Google applied the first 32 words and sites (`OR` does not count), DuckDuckGo about 22 and Brave about 18. Sourcepick fits every search to the engine: sites to exclude are dropped first when sources are chosen (results come only from the chosen sites anyway), and when the chosen sites still do not fit, the app says how many are searched and offers the rest one site at a time. Bing is not supported yet because it showed a human verification page to our automated tests.
+Search engines ignore the end of a long query without saying so. In our November 2026 tests Google applied the first 32 words and sites (`OR` does not count), DuckDuckGo about 22 and Brave 20. DuckDuckGo and Brave also refuse queries longer than about 500 bytes and 400 characters. Sourcepick fits every search to the engine: sites to exclude are dropped first when sources are chosen (results come only from the chosen sites anyway), and when the chosen sites still do not fit, the app says how many are searched and offers the rest one site at a time. Bing is not supported yet because it showed a human verification page to our automated tests.
 
 ## Built-in sources
 

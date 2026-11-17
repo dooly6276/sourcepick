@@ -96,6 +96,21 @@ test("fit keeps queries inside each engine's word limit", () => {
   assert.equal(core.countWords(q), 1);
 });
 
+test("fit keeps queries inside each engine's length limit", () => {
+  const long = Array.from({ length: 19 }, (_, i) => `community-site-number-${i}.example.com`);
+  const b = core.fit("battery", long, [], "brave");
+  const bq = core.buildQuery("battery", b.include, b.exclude);
+  assert.ok(bq.length <= 395 && b.include.length >= 1 && b.cut.include.length > 0);
+  // DuckDuckGo counts UTF-8 bytes, so Korean words take three each.
+  const d = core.fit("갤럭시배터리발열후기정리 갤럭시배터리발열후기정리", long, [], "duckduckgo");
+  const dq = core.buildQuery("갤럭시배터리발열후기정리 갤럭시배터리발열후기정리", d.include, d.exclude);
+  assert.ok(new TextEncoder().encode(dq).length <= 490);
+  // Short domains stay under the length limit, so only the word limit applies.
+  assert.equal(core.fit("x", Array.from({ length: 30 }, (_, i) => `s${i}.com`), [], "brave").include.length, 19);
+  const q = new URL(core.searchUrl("battery", long, [], { engine: "brave" })).searchParams.get("q");
+  assert.equal(core.lensState(q, { id: "l", mode: "include", sites: long.map((domain) => ({ domain })) }, "brave"), "part");
+});
+
 test("lensState reports sources cut short by the limit", () => {
   const big = { id: "big", mode: "include", sites: Array.from({ length: 40 }, (_, i) => ({ domain: `s${i}.com` })) };
   const q = new URL(core.searchUrl("x", core.lensDomains(big), [], { engine: "google" })).searchParams.get("q");

@@ -131,8 +131,9 @@
     var f = core.fit($("q").value, c.include, c.exclude, state.engine);
     var eng = core.ENGINES[state.engine].name;
     var msg = "";
-    if (f.cut.include.length) msg = t("limitInclude", eng, f.limit, c.include.length, f.include.length);
-    else if (f.cut.exclude.length) msg = t("limitExclude", eng, f.limit, f.cut.exclude.length);
+    var by = f.byLength ? "Length" : "";
+    if (f.cut.include.length) msg = t("limitInclude" + by, eng, f.limit, c.include.length, f.include.length);
+    else if (f.cut.exclude.length) msg = t("limitExclude" + by, eng, f.limit, f.cut.exclude.length);
     showMsg("limit-note", msg);
   }
 

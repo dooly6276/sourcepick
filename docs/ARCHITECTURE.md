@@ -25,13 +25,22 @@ Everything reads state back from the query itself: the results-page bar parses `
 
 ## Engine limits
 
-Search engines silently ignore words past a limit. `core.ENGINES[...].maxTerms` holds what we measured in November 2026 (Google 32, DuckDuckGo about 22, Brave about 18; `OR` does not count). `core.fit()` trims every search to that limit before the URL is built:
+Search engines silently ignore words past a limit, and some refuse long queries outright. `core.ENGINES[...]` holds what we measured in November 2026:
+
+| Engine | `maxTerms` (words and sites, `OR` not counted) | `maxLength` |
+|---|---|---|
+| Google | 32 | none needed |
+| DuckDuckGo | about 22 | about 500 UTF-8 bytes, then it shows its home page (493 worked, 505 did not) |
+| Brave | 20 | about 400 characters, then "Your query is too long" (394 worked, 410 did not) |
+
+`core.fit()` trims every search to both limits before the URL is built:
 
 1. With sites to include, excluded sites outside them are dropped (results come from the included sites anyway).
 2. Included sites come first, then exclusions, in source order.
-3. What was cut is returned, and the app tells the user (`limitInclude`, `limitExclude`).
+3. If the query is still too long, exclusions and then included sites are dropped from the end until it fits.
+4. What was cut is returned with `byLength` when the length limit was the reason, and the app tells the user (`limitInclude`, `limitExclude`, or their `...Length` versions).
 
-If you measure a different limit, change `maxTerms` and say how you measured it in the pull request.
+If you measure a different limit, change `maxTerms` or `maxLength` and say how you measured it in the pull request. The method we used: a common word, then made-up `site:` domains that have no pages, then `site:reddit.com` last. If Reddit results appear, the last term was applied.
 
 ## Adding a search engine
 

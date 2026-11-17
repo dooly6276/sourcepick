@@ -2,7 +2,7 @@
 
 ## 0.3.0
 
-- Searches now fit each engine's word limit (Google 32, DuckDuckGo about 22, Brave about 18, measured November 2026). Before, long source lists were cut off by the engine without notice. The app now says how many sites are searched when they do not all fit.
+- Searches now fit each engine's word limit (Google 32, DuckDuckGo about 22, Brave 20, measured November 2026) and length limit (DuckDuckGo about 500 bytes, Brave about 400 characters). Before, long source lists were cut off by the engine without notice. The app now says how many sites are searched when they do not all fit.
 - Choosing a source selects only that source. Turn on *Choose several sources*, or hold Ctrl, Cmd or Shift, to combine them.
 - *Search one site at a time* moved right under the sources, as buttons.
 - Address-bar search follows the sources selected last instead of the ones selected when the address was copied.

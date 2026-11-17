@@ -16,13 +16,17 @@
     duckduckgo: {
       name: "DuckDuckGo",
       maxTerms: 22,
+      // Longer queries fall back to the home page. Counted in UTF-8 bytes: 493 worked, 505 did not.
+      maxLength: { size: 490, unit: "bytes" },
       url: "https://duckduckgo.com/",
       period: { param: "df", values: { d: "d", w: "w", m: "m", y: "y" } },
       keep: ["df", "kl", "ia", "iax", "kp"],
     },
     brave: {
       name: "Brave",
-      maxTerms: 18,
+      // The 21st word is ignored; past about 400 characters it shows "query is too long" (2026-11).
+      maxTerms: 20,
+      maxLength: { size: 395, unit: "chars" },
       url: "https://search.brave.com/search",
       period: { param: "tf", values: { d: "pd", w: "pw", m: "pm", y: "py" } },
       keep: ["tf", "source", "country", "lang"],
@@ -106,7 +110,23 @@
       (d.indexOf("/") > 0 && within(d.split("/")[0], s) && s.indexOf("/") < 0);
   }
 
-  // Fits the filters into the engine's word limit so nothing is dropped silently.
+  function sizeOf(q, unit) {
+    if (unit !== "bytes") return q.length;
+    return typeof TextEncoder !== "undefined" ? new TextEncoder().encode(q).length : unescape(encodeURIComponent(q)).length;
+  }
+
+  function tooLong(text, include, exclude, eng) {
+    var m = eng.maxLength;
+    return !!m && sizeOf(buildQuery(text, include, exclude), m.unit) > m.size;
+  }
+
+  // True when a query is close enough to the engine's length limit that the next site would not fit.
+  function nearLength(q, engine) {
+    var m = (ENGINES[engine] || ENGINES.google).maxLength;
+    return !!m && sizeOf(String(q || ""), m.unit) > m.size - 40;
+  }
+
+  // Fits the filters into the engine's word and length limits so nothing is dropped silently.
   // With sites to search, an excluded site only matters when it sits inside one of them.
   // Returns { include, exclude, cut: { include: [...], exclude: [...] }, limit }.
   function fit(text, include, exclude, engine) {
@@ -117,7 +137,11 @@
     var room = Math.max(1, eng.maxTerms - countWords(text));
     var incFit = inc.slice(0, room);
     var excFit = exc.slice(0, Math.max(0, room - incFit.length));
+    while (excFit.length && tooLong(text, incFit, excFit, eng)) excFit = excFit.slice(0, -1);
+    var byLength = incFit.length + excFit.length < Math.min(room, inc.length + exc.length);
+    while (incFit.length > 1 && tooLong(text, incFit, excFit, eng)) { incFit = incFit.slice(0, -1); byLength = true; }
     return {
+      byLength: byLength,
       include: incFit,
       exclude: excFit,
       cut: { include: inc.slice(incFit.length), exclude: exc.slice(excFit.length) },
@@ -158,7 +182,7 @@
     if (!ds.length || !n) return "none";
     if (n === ds.length) return "all";
     var eng = ENGINES[engine] || ENGINES.google;
-    var full = countWords(q) + f.include.length + f.exclude.length >= eng.maxTerms;
+    var full = countWords(q) + f.include.length + f.exclude.length >= eng.maxTerms || nearLength(q, engine);
     return full && ds.slice(0, n).every(function (d) { return pool.indexOf(d) >= 0; }) ? "part" : "none";
   }
 
@@ -223,6 +247,7 @@
     fit: fit,
     searchUrl: searchUrl,
     lensState: lensState,
+    nearLength: nearLength,
     activeLensIds: activeLensIds,
     collect: collect,
     lensName: lensName,

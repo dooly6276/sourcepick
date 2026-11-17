@@ -126,7 +126,7 @@
       var note = document.createElement("span");
       note.className = "sp-note";
       note.textContent = i18n.t("barPartial", partial.lens.sites.length, partial.applied);
-      note.title = i18n.t("barPartialTitle", core.ENGINES[ENGINE].name, core.ENGINES[ENGINE].maxTerms);
+      note.title = i18n.t(core.nearLength(q, ENGINE) ? "barPartialTitleLength" : "barPartialTitle", core.ENGINES[ENGINE].name, core.ENGINES[ENGINE].maxTerms);
       tail.appendChild(note);
     }
     if (f.include.length || f.exclude.length) tail.appendChild(button(i18n.t("barClear"), null, function () { go([], []); }, "sp-link"));
