@@ -6,7 +6,7 @@
 [![Release](https://img.shields.io/github/v/release/dooly6276/sourcepick)](https://github.com/dooly6276/sourcepick/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**[웹 앱 열기](https://dooly6276.github.io/sourcepick/)** · [확장 프로그램 다운로드](https://github.com/dooly6276/sourcepick/releases/latest) | [English](README.md)
+**[웹 앱 열기](https://dooly6276.github.io/sourcepick/)** | [확장 프로그램 다운로드](https://github.com/dooly6276/sourcepick/releases/latest) | [English](README.md)
 
 ![구글 검색창 아래에 출처 버튼이 표시되고, 커뮤니티를 선택하면 커뮤니티 글만 검색됩니다.](docs/demo-ko.gif)
 
