@@ -6,7 +6,7 @@
 [![Release](https://img.shields.io/github/v/release/dooly6276/sourcepick)](https://github.com/dooly6276/sourcepick/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**[Try the web app](https://dooly6276.github.io/sourcepick/)** | [Download the extension](https://github.com/dooly6276/sourcepick/releases/latest) | [한국어](README.ko.md)
+**[Try the web app](https://sourcepick.toolnjoy.com/)** | [Download the extension](https://github.com/dooly6276/sourcepick/releases/latest) | [한국어](README.ko.md)
 
 ![Sourcepick adds source buttons under the Google search bar. Choosing Reddit narrows the results to Reddit threads.](docs/demo-en.gif)
 
@@ -25,7 +25,7 @@ Search engines bury forum threads, first-hand reviews and primary sources under 
 
 | Where | How |
 |---|---|
-| Any phone or browser | Open the [web app](https://dooly6276.github.io/sourcepick/) and add it to your home screen. |
+| Any phone or browser | Open the [web app](https://sourcepick.toolnjoy.com/) and add it to your home screen. |
 | Chrome, Edge, Whale, Brave, Opera | Chrome Web Store (coming soon). For now: download `sourcepick-chrome-*.zip` from the [latest release](https://github.com/dooly6276/sourcepick/releases/latest), unzip it, open `chrome://extensions`, turn on Developer mode and choose Load unpacked. |
 | Firefox (desktop and Android) | Firefox Add-ons (coming soon). For now on desktop: download `sourcepick-firefox-*.zip`, open `about:debugging`, This Firefox, Load Temporary Add-on. |
 

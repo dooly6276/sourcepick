@@ -6,7 +6,7 @@
 [![Release](https://img.shields.io/github/v/release/dooly6276/sourcepick)](https://github.com/dooly6276/sourcepick/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**[웹 앱 열기](https://dooly6276.github.io/sourcepick/)** | [확장 프로그램 다운로드](https://github.com/dooly6276/sourcepick/releases/latest) | [English](README.md)
+**[웹 앱 열기](https://sourcepick.toolnjoy.com/)** | [확장 프로그램 다운로드](https://github.com/dooly6276/sourcepick/releases/latest) | [English](README.md)
 
 ![구글 검색창 아래에 출처 버튼이 표시되고, 커뮤니티를 선택하면 커뮤니티 글만 검색됩니다.](docs/demo-ko.gif)
 
@@ -25,7 +25,7 @@
 
 | 사용 환경 | 방법 |
 |---|---|
-| 휴대폰과 그 밖의 브라우저 | [웹 앱](https://dooly6276.github.io/sourcepick/)을 열고 홈 화면에 추가합니다. |
+| 휴대폰과 그 밖의 브라우저 | [웹 앱](https://sourcepick.toolnjoy.com/)을 열고 홈 화면에 추가합니다. |
 | 크롬, 엣지, 웨일, Brave, 오페라 | Chrome 웹 스토어(준비 중). 지금은 [최신 릴리스](https://github.com/dooly6276/sourcepick/releases/latest)에서 `sourcepick-chrome-*.zip`을 받아 압축을 풀고, `chrome://extensions`에서 개발자 모드를 켠 뒤 '압축해제된 확장 프로그램을 로드합니다'를 선택합니다. |
 | 파이어폭스(PC, Android) | Firefox 부가 기능(준비 중). 지금은 PC에서 `sourcepick-firefox-*.zip`을 받아 `about:debugging`의 '이 Firefox'에서 '임시 부가 기능 로드'를 선택합니다. |
 
