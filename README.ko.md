@@ -2,7 +2,11 @@
 
 **원하는 출처의 검색 결과만 볼 수 있습니다.** 커뮤니티, 블로그, 카페, 논문, 공공기관, 해외 포럼, 공식 문서처럼 원하는 곳을 선택해 구글, DuckDuckGo, Brave에서 검색합니다.
 
-[English](README.md)
+[![CI](https://github.com/dooly6276/sourcepick/actions/workflows/ci.yml/badge.svg)](https://github.com/dooly6276/sourcepick/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/dooly6276/sourcepick)](https://github.com/dooly6276/sourcepick/releases/latest)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**[웹 앱 열기](https://dooly6276.github.io/sourcepick/)** · [확장 프로그램 다운로드](https://github.com/dooly6276/sourcepick/releases/latest) | [English](README.md)
 
 ![구글 검색창 아래에 출처 버튼이 표시되고, 커뮤니티를 선택하면 커뮤니티 글만 검색됩니다.](docs/demo-ko.gif)
 
@@ -21,12 +25,14 @@
 
 | 사용 환경 | 방법 |
 |---|---|
-| 크롬, 엣지, 웨일, Brave, 오페라 | Chrome 웹 스토어(준비 중). 지금은 빌드한 뒤 `dist/chrome` 폴더를 압축해제된 확장 프로그램으로 로드합니다. |
-| 파이어폭스(PC, Android) | Firefox 부가 기능(준비 중). 지금은 빌드한 뒤 `about:debugging`에서 `dist/firefox/manifest.json`을 로드합니다. |
-| 휴대폰과 그 밖의 브라우저 | 웹 앱을 열고 홈 화면에 추가합니다. |
+| 휴대폰과 그 밖의 브라우저 | [웹 앱](https://dooly6276.github.io/sourcepick/)을 열고 홈 화면에 추가합니다. |
+| 크롬, 엣지, 웨일, Brave, 오페라 | Chrome 웹 스토어(준비 중). 지금은 [최신 릴리스](https://github.com/dooly6276/sourcepick/releases/latest)에서 `sourcepick-chrome-*.zip`을 받아 압축을 풀고, `chrome://extensions`에서 개발자 모드를 켠 뒤 '압축해제된 확장 프로그램을 로드합니다'를 선택합니다. |
+| 파이어폭스(PC, Android) | Firefox 부가 기능(준비 중). 지금은 PC에서 `sourcepick-firefox-*.zip`을 받아 `about:debugging`의 '이 Firefox'에서 '임시 부가 기능 로드'를 선택합니다. |
+
+직접 빌드하려면 다음과 같이 합니다.
 
 ```bash
-git clone <저장소 주소>
+git clone https://github.com/dooly6276/sourcepick.git
 cd sourcepick
 npm run build        # dist/web, dist/chrome, dist/firefox 생성
 ```
@@ -53,7 +59,7 @@ npm run build        # dist/web, dist/chrome, dist/firefox 생성
 
 ## 출처 추가에 참여하기
 
-빠진 사이트나 나라가 있으면 [`lenses/`](lenses) 폴더에 JSON 파일을 추가해 풀 리퀘스트를 보내 주세요. 방법은 [CONTRIBUTING.md](CONTRIBUTING.md)에 있습니다.
+빠진 사이트나 나라가 있으면 [`lenses/`](lenses) 폴더에 JSON 파일을 추가해 풀 리퀘스트를 보내 주세요. 방법은 [CONTRIBUTING.md](CONTRIBUTING.md)에 있습니다. 코드를 고치기 어려우면 사이트 목록만 [이슈](https://github.com/dooly6276/sourcepick/issues/new?template=new_source.yml)로 남겨 주셔도 됩니다. 구조와 검색엔진, 언어를 추가하는 방법은 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)에 있습니다.
 
 ## 개인정보
 

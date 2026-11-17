@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/dooly6276/sourcepick/discussions
+    about: Ask how to do something, share a source list, or talk about an idea before opening an issue.

@@ -1,6 +1,8 @@
 # Contributing
 
-The most useful contribution is a better source: a missing site, a dead site removed, or a whole new region.
+Thanks for helping! The most useful contribution is a better source: a missing site, a dead site removed, or a whole new region. Translations, engines and browser support are welcome too; [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) shows where everything lives.
+
+Not sure where to start? Look for [`good first issue`](https://github.com/dooly6276/sourcepick/labels/good%20first%20issue), or open a [discussion](https://github.com/dooly6276/sourcepick/discussions) to talk an idea through. Everyone taking part follows the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Add or improve a source
 
@@ -43,4 +45,16 @@ Create `lenses/<code>/`, add the code to `REGIONS` in `scripts/lenses.mjs`, and 
 
 ## Code changes
 
-There are no dependencies and no bundler. `src/` is plain browser JavaScript; `scripts/build.mjs` copies it into `dist/`. Run `npm test` before sending a pull request, and try the change in both the web app and the extension.
+There are no dependencies and no bundler. `src/` is plain browser JavaScript; `scripts/build.mjs` copies it into `dist/`.
+
+```bash
+npm run serve   # web app on http://127.0.0.1:8791
+npm run build   # then load dist/chrome or dist/firefox as an unpacked extension
+npm test        # unit tests and lens validation, also run by CI on every pull request
+```
+
+Before sending a pull request, run `npm test` and try the change in the web app and the extension, including a phone-sized window. Keep pull requests focused on one thing; small ones get merged quickly.
+
+## Releases
+
+Maintainers bump `version` in `package.json`, add a section to `CHANGELOG.md` and push a `v<version>` tag. The release workflow builds the extension packages and publishes them. Every push to `main` also deploys the web app to GitHub Pages.

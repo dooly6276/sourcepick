@@ -1,0 +1,41 @@
+name: Bug report
+description: Something does not work as expected.
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where?
+      multiple: true
+      options:
+        - Extension, results-page buttons
+        - Extension, popup or settings
+        - Web app
+        - Web app installed on a phone
+        - Address-bar search
+        - Android share sheet
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Browser, version and OS
+      placeholder: Chrome 142 on Windows 11, Samsung Internet 28 on Android 14, Safari on iOS 26
+    validations:
+      required: true
+  - type: dropdown
+    id: engine
+    attributes:
+      label: Search engine
+      options: [Google, DuckDuckGo, Brave, Not related]
+  - type: textarea
+    id: steps
+    attributes:
+      label: What did you do, what happened, what did you expect?
+      description: The search results URL helps a lot (it shows the query that was sent).
+    validations:
+      required: true
+  - type: textarea
+    id: shots
+    attributes:
+      label: Screenshots

@@ -3,10 +3,12 @@
   "version": "0.3.0",
   "private": true,
   "description": "Search only the sites you choose: forums, blogs, papers, docs and more. Web app and browser extension for Google, DuckDuckGo and Brave Search.",
-  "homepage": "",
+  "homepage": "https://dooly6276.github.io/sourcepick/",
+  "repository": { "type": "git", "url": "https://github.com/dooly6276/sourcepick.git" },
+  "bugs": "https://github.com/dooly6276/sourcepick/issues",
   "license": "MIT",
   "sourcepick": {
-    "links": { "chrome": "", "firefox": "", "edge": "", "repo": "" }
+    "links": { "chrome": "", "firefox": "", "edge": "", "repo": "https://github.com/dooly6276/sourcepick" }
   },
   "type": "module",
   "scripts": {

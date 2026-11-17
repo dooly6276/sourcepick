@@ -84,7 +84,11 @@ function manifest(target) {
     m.background = { service_worker: "background.js" };
   } else {
     m.background = { scripts: ["lenses.js", ...SHARED, "background.js"] };
-    m.browser_specific_settings = { gecko: { id: "sourcepick@sourcepick.app", strict_min_version: "121.0" }, gecko_android: { strict_min_version: "121.0" } };
+    // Firefox asks every add-on to declare what it collects; Sourcepick collects nothing.
+    m.browser_specific_settings = {
+      gecko: { id: "sourcepick@dooly6276.github.io", strict_min_version: "121.0", data_collection_permissions: { required: ["none"] } },
+      gecko_android: { strict_min_version: "121.0" },
+    };
   }
   return m;
 }

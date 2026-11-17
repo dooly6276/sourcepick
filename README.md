@@ -2,7 +2,11 @@
 
 **Search only the sites you choose.** Forums, Reddit, official docs, papers, Korean communities, Japanese Q&A sites and more, on Google, DuckDuckGo or Brave Search.
 
-[한국어](README.ko.md)
+[![CI](https://github.com/dooly6276/sourcepick/actions/workflows/ci.yml/badge.svg)](https://github.com/dooly6276/sourcepick/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/dooly6276/sourcepick)](https://github.com/dooly6276/sourcepick/releases/latest)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**[Try the web app](https://dooly6276.github.io/sourcepick/)** · [Download the extension](https://github.com/dooly6276/sourcepick/releases/latest) | [한국어](README.ko.md)
 
 ![Sourcepick adds source buttons under the Google search bar. Choosing Reddit narrows the results to Reddit threads.](docs/demo-en.gif)
 
@@ -21,12 +25,16 @@ Search engines bury forum threads, first-hand reviews and primary sources under 
 
 | Where | How |
 |---|---|
-| Chrome, Edge, Whale, Brave, Opera | Chrome Web Store (coming soon). For now: build and load `dist/chrome` as an unpacked extension. |
-| Firefox (desktop and Android) | Firefox Add-ons (coming soon). For now: build and load `dist/firefox/manifest.json` from `about:debugging`. |
-| Any phone or browser | Open the web app and add it to your home screen. |
+| Any phone or browser | Open the [web app](https://dooly6276.github.io/sourcepick/) and add it to your home screen. |
+| Chrome, Edge, Whale, Brave, Opera | Chrome Web Store (coming soon). For now: download `sourcepick-chrome-*.zip` from the [latest release](https://github.com/dooly6276/sourcepick/releases/latest), unzip it, open `chrome://extensions`, turn on Developer mode and choose Load unpacked. |
+| Firefox (desktop and Android) | Firefox Add-ons (coming soon). For now on desktop: download `sourcepick-firefox-*.zip`, open `about:debugging`, This Firefox, Load Temporary Add-on. |
+
+On a phone, the web app is the way in: Samsung Internet, Chrome and Firefox on Android and Safari on iPhone can all add it to the home screen. On Android it also appears in the share sheet, so you can select text in any app and search it with your sources.
+
+To build it yourself:
 
 ```bash
-git clone <this repository>
+git clone https://github.com/dooly6276/sourcepick.git
 cd sourcepick
 npm run build        # writes dist/web, dist/chrome, dist/firefox
 ```
@@ -53,7 +61,17 @@ Search engines ignore the end of a long query without saying so. In our November
 | Korea | Communities, Workplace, Naver & Daum cafes, Blogs, KnowledgeiN, Tech & gadgets, Gaming, Developers, Papers, Government, Law, Wikis, Recipes, No Korean news |
 | Japan | Forums, Blogs, Developers |
 
-Each one is a file in [`lenses/`](lenses). Missing a great site, or a whole country? See [CONTRIBUTING.md](CONTRIBUTING.md). It takes a JSON file and a pull request.
+Each one is a file in [`lenses/`](lenses). Missing a great site, or a whole country? See [CONTRIBUTING.md](CONTRIBUTING.md). It takes a JSON file and a pull request, or just [an issue](https://github.com/dooly6276/sourcepick/issues/new?template=new_source.yml) with the sites.
+
+## Contributing
+
+Sourcepick is small on purpose: plain JavaScript, no dependencies, one `npm test`. Good places to start:
+
+- **Sources for your country or interests.** Most of the value is in good site lists. Issues labeled [`source`](https://github.com/dooly6276/sourcepick/labels/source) and [`good first issue`](https://github.com/dooly6276/sourcepick/labels/good%20first%20issue) are a fine first pull request.
+- **Translations.** The interface has English, Korean and Japanese; adding a language is one block in `src/i18n.js`.
+- **More engines and browsers.** Bing, Startpage, Ecosia, and a Safari extension for iPhone and Mac are open for anyone who wants them ([help wanted](https://github.com/dooly6276/sourcepick/labels/help%20wanted)).
+
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) explains how the pieces fit and how to add an engine or a language. Questions and ideas are welcome in [Discussions](https://github.com/dooly6276/sourcepick/discussions).
 
 ## Project layout
 
