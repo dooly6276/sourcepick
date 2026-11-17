@@ -6,6 +6,8 @@
   var ENGINES = {
     google: {
       name: "Google",
+      // Words after the 32nd are ignored without notice; OR does not count (measured 2026-11).
+      maxTerms: 32,
       url: "https://www.google.com/search",
       period: { param: "tbs", values: { d: "qdr:d", w: "qdr:w", m: "qdr:m", y: "qdr:y" } },
       forums: { param: "udm", value: "18" },
@@ -13,12 +15,14 @@
     },
     duckduckgo: {
       name: "DuckDuckGo",
+      maxTerms: 22,
       url: "https://duckduckgo.com/",
       period: { param: "df", values: { d: "d", w: "w", m: "m", y: "y" } },
       keep: ["df", "kl", "ia", "iax", "kp"],
     },
     brave: {
-      name: "Brave Search",
+      name: "Brave",
+      maxTerms: 18,
       url: "https://search.brave.com/search",
       period: { param: "tf", values: { d: "pd", w: "pw", m: "pm", y: "py" } },
       keep: ["tf", "source", "country", "lang"],
@@ -91,12 +95,43 @@
     return parts.join(" ");
   }
 
+  // Words the engine counts toward its limit: everything but OR and the site filters.
+  function countWords(text) {
+    return stripFilters(text).split(/\s+/).filter(function (t) { return t && t !== "OR" && t !== "|"; }).length;
+  }
+
+  // Is domain d inside site s ("blog.naver.com" is inside "naver.com", "a.com/x/y" inside "a.com/x")?
+  function within(d, s) {
+    return d === s || d.slice(-(s.length + 1)) === "." + s || d.indexOf(s + "/") === 0 ||
+      (d.indexOf("/") > 0 && within(d.split("/")[0], s) && s.indexOf("/") < 0);
+  }
+
+  // Fits the filters into the engine's word limit so nothing is dropped silently.
+  // With sites to search, an excluded site only matters when it sits inside one of them.
+  // Returns { include, exclude, cut: { include: [...], exclude: [...] }, limit }.
+  function fit(text, include, exclude, engine) {
+    var eng = ENGINES[engine] || ENGINES.google;
+    var inc = uniq(include);
+    var exc = uniq(exclude).filter(function (d) { return inc.indexOf(d) < 0; });
+    if (inc.length) exc = exc.filter(function (d) { return inc.some(function (s) { return within(d, s); }); });
+    var room = Math.max(1, eng.maxTerms - countWords(text));
+    var incFit = inc.slice(0, room);
+    var excFit = exc.slice(0, Math.max(0, room - incFit.length));
+    return {
+      include: incFit,
+      exclude: excFit,
+      cut: { include: inc.slice(incFit.length), exclude: exc.slice(excFit.length) },
+      limit: eng.maxTerms,
+    };
+  }
+
   // opts: { engine, period, forums, keepFrom (URLSearchParams of the current results page) }
   function searchUrl(text, include, exclude, opts) {
     var o = opts || {};
     var eng = ENGINES[o.engine] || ENGINES.google;
+    var f = fit(text, include, exclude, o.engine);
     var params = new URLSearchParams();
-    params.set("q", buildQuery(text, include, exclude));
+    params.set("q", buildQuery(text, f.include, f.exclude));
     if (o.keepFrom) {
       eng.keep.forEach(function (k) { var v = o.keepFrom.get(k); if (v) params.set(k, v); });
     }
@@ -113,13 +148,22 @@
 
   function lensDomains(lens) { return lens.sites.map(function (s) { return s.domain; }); }
 
-  // Which lenses are fully applied in a query (used by the results-page bar).
-  function activeLensIds(q, lenses) {
+  // How much of a lens a query applies: "all", "part" (its first sites, when the query is at the
+  // engine's limit and the rest were cut) or "none". Used by the results-page bar.
+  function lensState(q, lens, engine) {
     var f = parseFilters(q);
-    return lenses.filter(function (l) {
-      var pool = l.mode === "exclude" ? f.exclude : f.include;
-      return l.sites.length && lensDomains(l).every(function (d) { return pool.indexOf(d) >= 0; });
-    }).map(function (l) { return l.id; });
+    var pool = lens.mode === "exclude" ? f.exclude : f.include;
+    var ds = lensDomains(lens);
+    var n = ds.filter(function (d) { return pool.indexOf(d) >= 0; }).length;
+    if (!ds.length || !n) return "none";
+    if (n === ds.length) return "all";
+    var eng = ENGINES[engine] || ENGINES.google;
+    var full = countWords(q) + f.include.length + f.exclude.length >= eng.maxTerms;
+    return full && ds.slice(0, n).every(function (d) { return pool.indexOf(d) >= 0; }) ? "part" : "none";
+  }
+
+  function activeLensIds(q, lenses, engine) {
+    return lenses.filter(function (l) { return lensState(q, l, engine) !== "none"; }).map(function (l) { return l.id; });
   }
 
   // Turns a set of active lens ids into include/exclude lists, minus sites the user switched off.
@@ -175,7 +219,10 @@
     stripFilters: stripFilters,
     parseFilters: parseFilters,
     buildQuery: buildQuery,
+    countWords: countWords,
+    fit: fit,
     searchUrl: searchUrl,
+    lensState: lensState,
     activeLensIds: activeLensIds,
     collect: collect,
     lensName: lensName,

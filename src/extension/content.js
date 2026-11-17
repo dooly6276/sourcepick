@@ -20,6 +20,11 @@
       if (appbar && appbar.parentElement) return { parent: appbar.parentElement, before: appbar, alignTo: document.getElementById("center_col") || document.getElementById("rso") };
       var cnt = document.getElementById("cnt");
       if (cnt) return { parent: cnt, before: cnt.firstChild, alignTo: document.getElementById("center_col") };
+      var rso = document.getElementById("rso");
+      if (rso && rso.parentElement) return { parent: rso.parentElement, before: rso, alignTo: null };
+      // Mobile layout (Firefox for Android and others): #main starts with the tab row, then results.
+      var main = document.getElementById("main");
+      if (main && main.firstElementChild) return { parent: main, before: main.firstElementChild.nextSibling, alignTo: null };
       return null;
     },
     duckduckgo: function () {
@@ -45,10 +50,16 @@
     location.assign(core.searchUrl(query(), include, exclude, { engine: ENGINE, keepFrom: url.searchParams }));
   }
 
-  function toggle(lens, on) {
+  // A click searches that source alone; clicking it again searches the whole web. With "choose
+  // several" on, or Ctrl, Cmd or Shift held, clicks add and remove sources instead.
+  function toggle(lens, on, add) {
     var f = core.parseFilters(query());
     var ds = core.lensDomains(lens);
     var key = lens.mode === "exclude" ? "exclude" : "include";
+    if (key === "include" && !add && !state.multi) {
+      go(on ? [] : ds, f.exclude);
+      return;
+    }
     if (on) f[key] = f[key].filter(function (d) { return ds.indexOf(d) < 0; });
     else ds.forEach(function (d) { if (f[key].indexOf(d) < 0) f[key].push(d); });
     go(f.include, f.exclude);
@@ -78,7 +89,6 @@
     var q = query();
     var all = store.allLenses(state);
     var shown = state.shown.map(function (id) { return all.filter(function (l) { return l.id === id; })[0]; }).filter(Boolean);
-    var active = core.activeLensIds(q, all);
     var f = core.parseFilters(q);
 
     var b = document.createElement("div");
@@ -92,18 +102,33 @@
     label.textContent = i18n.t("barLabel");
     b.appendChild(label);
 
+    var scroll = document.createElement("div");
+    scroll.className = "sp-scroll";
+    b.appendChild(scroll);
+    var partial = null;
+    // Excluding sites only matters when searching the whole web: with sources chosen, results
+    // already come from those sites alone, so the exclude buttons are left out then.
     ["include", "exclude"].forEach(function (mode, i) {
       var list = shown.filter(function (l) { return l.mode === mode; });
-      if (!list.length) return;
-      if (i === 1) { var sep = document.createElement("span"); sep.className = "sp-sep"; b.appendChild(sep); }
+      if (!list.length || (mode === "exclude" && f.include.length)) return;
+      if (i === 1 && scroll.children.length) { var sep = document.createElement("span"); sep.className = "sp-sep"; scroll.appendChild(sep); }
       list.forEach(function (l) {
-        var on = active.indexOf(l.id) >= 0;
-        b.appendChild(button(core.lensName(l, i18n.lensLang), on, function () { toggle(l, on); }));
+        var st = core.lensState(q, l, ENGINE);
+        var on = st !== "none";
+        if (st === "part") partial = { lens: l, applied: core.lensDomains(l).filter(function (d) { return f.include.indexOf(d) >= 0 || f.exclude.indexOf(d) >= 0; }).length };
+        scroll.appendChild(button(core.lensName(l, i18n.lensLang), on, function (e) { toggle(l, on, e.ctrlKey || e.metaKey || e.shiftKey); }));
       });
     });
 
     var tail = document.createElement("span");
     tail.className = "sp-tail";
+    if (partial) {
+      var note = document.createElement("span");
+      note.className = "sp-note";
+      note.textContent = i18n.t("barPartial", partial.lens.sites.length, partial.applied);
+      note.title = i18n.t("barPartialTitle", core.ENGINES[ENGINE].name, core.ENGINES[ENGINE].maxTerms);
+      tail.appendChild(note);
+    }
     if (f.include.length || f.exclude.length) tail.appendChild(button(i18n.t("barClear"), null, function () { go([], []); }, "sp-link"));
     tail.appendChild(button(i18n.t("barManage"), null, function () {
       try { chrome.runtime.sendMessage({ type: "openOptions" }); } catch (e) { /* extension was reloaded; the page needs a refresh */ }
@@ -130,6 +155,10 @@
     place.parent.insertBefore(bar, place.before && place.before.parentElement === place.parent ? place.before : null);
     align(place);
     window.onresize = function () { align(place); };
+    // Keep the chosen source in view when the row scrolls sideways.
+    var on = bar.querySelector('.sp-scroll button[aria-pressed="true"]');
+    var row = bar.querySelector(".sp-scroll");
+    if (on && row && on.offsetLeft + on.offsetWidth > row.clientWidth) row.scrollLeft = on.offsetLeft - 8;
   }
 
   // Result pages that load results after the first paint (DuckDuckGo) or change the URL without a

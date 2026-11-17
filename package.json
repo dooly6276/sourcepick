@@ -1,10 +1,13 @@
 {
   "name": "sourcepick",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Search only the sites you choose: forums, blogs, papers, docs and more. Web app and browser extension for Google, DuckDuckGo and Brave Search.",
   "homepage": "",
   "license": "MIT",
+  "sourcepick": {
+    "links": { "chrome": "", "firefox": "", "edge": "", "repo": "" }
+  },
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",

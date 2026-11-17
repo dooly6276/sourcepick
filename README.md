@@ -8,11 +8,13 @@
 
 Search engines bury forum threads, first-hand reviews and primary sources under SEO pages. Typing `site:reddit.com OR site:news.ycombinator.com OR ...` every time works, but nobody wants to. Sourcepick keeps those site lists for you as **sources** and applies them with one click.
 
-- **One click on the results page.** The extension adds a row of source buttons to Google, DuckDuckGo and Brave Search. Combine sources, or turn on exclusions such as *No Pinterest*.
+- **One click on the results page.** The extension adds a row of source buttons to Google, DuckDuckGo and Brave Search. A click switches to that source; hold Ctrl or Shift (or turn on *Choose several sources*) to combine them. On a whole-web search you can turn on exclusions such as *No Pinterest*.
+- **Search one site at a time.** When several sites are searched together, one big site can fill the page. Each site in the selection is one tap away.
 - **35 built-in sources** for worldwide, Korean and Japanese sites, kept as plain JSON files that anyone can improve.
 - **Your own sources.** Make a source from any list of domains or URL paths (`reddit.com/r/BuyItForLife` works) and share it as a link.
 - **Works on phones too.** Add the web app to your home screen, then share selected text from any Android app to search it with your sources. Tested on Samsung Internet.
-- **Address bar.** Type `sp` and a space in the address bar (extension), or register the web app as a search engine.
+- **Address bar.** Type `sp` and a space in the address bar (extension), or register the web app as a search engine. Either way it follows the sources you selected last.
+- **English, Korean and Japanese.** The interface follows your browser language, and each language starts with sources that fit it. Sources for every region are one tap away in Manage.
 - **No account, no server, no tracking.** Settings stay in your browser. The only network request is the search itself, sent straight to the engine you picked.
 
 ## Install
@@ -41,7 +43,7 @@ mechanical keyboard site:reddit.com OR site:news.ycombinator.com -site:pinterest
 
 The results page bar reads the operators back from the URL, so the buttons always show what is applied, and the page stays a normal search URL you can bookmark or share. Time filters, Google's Forums tab and other engine settings are kept.
 
-Google applied all 26 `site:` filters joined with `OR` in our tests (November 2026), so large sources work. Bing is not supported yet because it showed a human verification page to our automated tests.
+Search engines ignore the end of a long query without saying so. In our November 2026 tests Google applied the first 32 words and sites (`OR` does not count), DuckDuckGo about 22 and Brave about 18. Sourcepick fits every search to the engine: sites to exclude are dropped first when sources are chosen (results come only from the chosen sites anyway), and when the chosen sites still do not fit, the app says how many are searched and offers the rest one site at a time. Bing is not supported yet because it showed a human verification page to our automated tests.
 
 ## Built-in sources
 
@@ -59,7 +61,7 @@ Each one is a file in [`lenses/`](lenses). Missing a great site, or a whole coun
 lenses/            built-in sources, one JSON file each (global/, kr/, jp/)
 src/core.js        query building for each engine, share links
 src/store.js       settings (chrome.storage in the extension, localStorage on the web)
-src/i18n.js        interface text (English, Korean)
+src/i18n.js        interface text (English, Korean, Japanese)
 src/app/           the main screen, shared by the web app, the extension popup and its settings page
 src/extension/     results-page bar, background script, store listing text
 src/web/           address-bar and share-sheet redirect, service worker, web app manifest

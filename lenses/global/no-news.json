@@ -27,9 +27,6 @@
       "domain": "bbc.com"
     },
     {
-      "domain": "bbc.co.uk"
-    },
-    {
       "domain": "reuters.com"
     },
     {
@@ -51,40 +48,13 @@
       "domain": "usatoday.com"
     },
     {
-      "domain": "nbcnews.com"
-    },
-    {
-      "domain": "cbsnews.com"
-    },
-    {
-      "domain": "abcnews.go.com"
-    },
-    {
-      "domain": "npr.org"
-    },
-    {
-      "domain": "wsj.com"
-    },
-    {
       "domain": "msn.com"
     },
     {
       "domain": "yahoo.com/news"
     },
     {
-      "domain": "huffpost.com"
-    },
-    {
-      "domain": "independent.co.uk"
-    },
-    {
       "domain": "dailymail.co.uk"
-    },
-    {
-      "domain": "nypost.com"
-    },
-    {
-      "domain": "time.com"
     }
   ]
 }

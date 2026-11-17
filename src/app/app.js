@@ -83,18 +83,37 @@
         type: "button",
         class: "lens-btn" + (on ? " is-on" : ""),
         "aria-pressed": on ? "true" : "false",
-        onclick: function () { toggleActive(l.id); },
+        onclick: function (e) { pick(l.id, e.ctrlKey || e.metaKey || e.shiftKey); },
       }, [el("span", { class: "lens-name", text: name(l) }), el("span", { class: "lens-num", text: String(l.sites.length) })]));
     });
     if (!box.children.length) box.appendChild(el("p", { class: "desc", text: t("noShown") }));
+    box.appendChild(el("a", { href: "#new", class: "lens-btn lens-add", onclick: openNew }, [el("span", { class: "lens-name", text: t("newLensTile") })]));
   }
 
-  function toggleActive(id) {
-    var i = state.active.indexOf(id);
-    if (i >= 0) state.active.splice(i, 1);
-    else state.active.push(id);
+  // A tap chooses that source alone, like a tab; tapping it again searches the whole web.
+  // With "choose several" on (or Ctrl, Cmd or Shift held) taps add and remove sources instead.
+  function pick(id, add) {
+    var includes = state.active.filter(function (x) { var l = byId(x); return l && l.mode === "include"; });
+    var on = state.active.indexOf(id) >= 0;
+    if (add || state.multi) {
+      if (on) state.active.splice(state.active.indexOf(id), 1);
+      else state.active.push(id);
+    } else {
+      state.active = state.active.filter(function (x) { return includes.indexOf(x) < 0; });
+      if (!(on && includes.length === 1)) state.active.push(id);
+    }
     persist();
     renderMain();
+  }
+
+  function toggleActive(id) { pick(id, true); }
+
+  function openNew(e) {
+    if (isPopup) {
+      e.preventDefault();
+      chrome.tabs.create({ url: chrome.runtime.getURL("index.html#new") });
+      window.close();
+    }
   }
 
   function renderSummary() {
@@ -102,6 +121,19 @@
     var n = c.include.length;
     $("site-count").textContent = n ? t("siteCount", n) : t("siteCountNone");
     $("clear").hidden = !state.active.length && !state.extra.length;
+    $("multi").checked = state.multi;
+    renderLimit();
+  }
+
+  // Search engines ignore words past their limit without saying so; tell the user what is left out.
+  function renderLimit() {
+    var c = current();
+    var f = core.fit($("q").value, c.include, c.exclude, state.engine);
+    var eng = core.ENGINES[state.engine].name;
+    var msg = "";
+    if (f.cut.include.length) msg = t("limitInclude", eng, f.limit, c.include.length, f.include.length);
+    else if (f.cut.exclude.length) msg = t("limitExclude", eng, f.limit, f.cut.exclude.length);
+    showMsg("limit-note", msg);
   }
 
   function renderEditor() {
@@ -116,7 +148,7 @@
         input.checked = state.off.indexOf(s.domain) < 0;
         input.addEventListener("change", function () { toggleOff(s.domain, !input.checked); });
         ul.appendChild(el("li", null, [el("label", { class: "site-row" }, [
-          input, el("span", { class: "site-name", text: s.name || s.domain }), el("span", { class: "site-domain", text: s.domain }),
+          input, el("span", { class: "site-name", text: s.name || s.domain }), s.name ? el("span", { class: "site-domain", text: s.domain }) : null,
         ])]));
       });
       box.appendChild(el("div", { class: "list-group" }, [el("h3", { class: "list-head", text: name(l) }), ul]));
@@ -138,7 +170,7 @@
     if (off && i < 0) state.off.push(domain);
     if (!off && i >= 0) state.off.splice(i, 1);
     persist();
-    renderSummary(); renderPerSite(); renderEngineUrl();
+    renderSummary(); renderPerSite();
   }
 
   function removeExtra(d) {
@@ -160,13 +192,17 @@
 
   function renderOptions() {
     renderSegmented("engine", Object.keys(core.ENGINES).map(function (k) { return [k, core.ENGINES[k].name]; }), state.engine, function (v) {
-      state.engine = v; persist(); renderOptions(); renderPerSite(); renderEngineUrl();
+      state.engine = v; persist(); renderOptions(); renderPerSite(); renderLimit();
     });
     renderSegmented("period", core.PERIODS.map(function (p) { return [p, t("period_" + (p || "all"))]; }), state.period, function (v) {
-      state.period = v; persist(); renderPerSite(); renderEngineUrl();
+      state.period = v; persist(); renderPerSite();
     });
     var box = $("exclude-list");
     box.textContent = "";
+    if (shownLenses("exclude").length) {
+      box.appendChild(el("h3", { class: "sub-head", text: t("excludeHead") }));
+      box.appendChild(el("p", { class: "desc tight", text: t("excludeDesc") }));
+    }
     shownLenses("exclude").forEach(function (l) {
       var input = el("input", { type: "checkbox" });
       input.checked = state.active.indexOf(l.id) >= 0;
@@ -185,40 +221,21 @@
     ul.textContent = "";
     if (!q || c.include.length < 2) { sec.hidden = true; return; }
     sec.hidden = false;
-    $("per-site-count").textContent = t("count", c.include.length);
-    c.include.forEach(function (d) {
+    var labels = c.include.map(siteLabel);
+    c.include.forEach(function (d, i) {
+      // Two sites with the same name (Naver blog and Naver cafe paths, for example) show the domain.
+      var text = labels.indexOf(labels[i]) !== labels.lastIndexOf(labels[i]) ? d : labels[i];
       ul.appendChild(el("li", null, [el("a", {
-        href: core.searchUrl(q, [d], c.exclude, opts()), target: "_blank", rel: "noopener",
+        class: "chip", href: core.searchUrl(q, [d], c.exclude, opts()), target: "_blank", rel: "noopener", title: d,
         onclick: function (e) { if (isExt) { e.preventDefault(); openUrl(this.href); } },
-      }, [el("span", { class: "site-name", text: siteLabel(d) }), el("span", { class: "site-domain", text: d })])]));
+      }, [el("span", { text: text })])]));
     });
   }
 
-  // Address-bar URL: lens ids when nothing was switched off, otherwise the explicit site list.
+  // Address-bar URL. Without lens params the redirect page uses whatever is selected on this
+  // screen at the time of the search, so changing sources here also changes address-bar searches.
   function engineUrl() {
-    var base = location.origin + location.pathname.replace(/index\.html$/, "");
-    var p = [];
-    var custom = state.active.some(function (id) { return id.indexOf("my-") === 0; });
-    var hasOff = state.active.map(byId).some(function (l) {
-      return l && l.sites.some(function (s) { return state.off.indexOf(s.domain) >= 0; });
-    });
-    if (custom || hasOff) {
-      var c = current();
-      p.push("s=" + c.include.join(","));
-      if (c.exclude.length) p.push("x=" + c.exclude.join(","));
-    } else {
-      p.push("l=" + state.active.join(","));
-      if (state.extra.length) p.push("s=" + state.extra.join(","));
-    }
-    if (state.engine !== "google") p.push("e=" + state.engine);
-    if (state.period) p.push("p=" + state.period);
-    if (state.engine === "google" && state.forums) p.push("f=1");
-    p.push("q=%s");
-    return base + "?" + p.join("&");
-  }
-
-  function renderEngineUrl() {
-    if (!isExt) $("engine-url").textContent = engineUrl();
+    return location.origin + location.pathname.replace(/index\.html$/, "") + "?q=%s";
   }
 
   function renderMain() {
@@ -227,11 +244,12 @@
     renderEditor();
     renderOptions();
     renderPerSite();
-    renderEngineUrl();
   }
 
   // ---------- manage view ----------
   var REGION_ORDER = ["custom", "kr", "jp", "global"];
+  var HOME_REGION = { ko: "kr", ja: "jp", en: "global" }[LANG];
+  var openRegions = {};
 
   function renderManage() {
     var box = $("manage-list");
@@ -262,7 +280,15 @@
         }
         ul.appendChild(row);
       });
-      box.appendChild(el("div", { class: "list-group" }, [el("h3", { class: "list-head", text: t("region_" + region) }), ul]));
+      var shownCount = list.filter(function (l) { return state.shown.indexOf(l.id) >= 0; }).length;
+      var det = el("details", { class: "fold region" }, [
+        el("summary", null, [el("h3", { text: t("region_" + region) }), el("span", { class: "muted", text: t("shownCount", shownCount, list.length) })]),
+        ul,
+      ]);
+      if (!(region in openRegions)) openRegions[region] = region === "custom" || region === HOME_REGION;
+      det.open = openRegions[region];
+      det.addEventListener("toggle", function () { openRegions[region] = det.open; });
+      box.appendChild(det);
     });
   }
 
@@ -283,6 +309,7 @@
       state.active = state.active.filter(function (x) { return x !== id; });
     }
     persist();
+    renderManage();
   }
 
   function shareUrl(l) {
@@ -319,7 +346,18 @@
     return { good: good, bad: bad };
   }
 
+  function sameLens(a, b) {
+    var x = core.lensDomains(a).slice().sort().join(" "), y = core.lensDomains(b).slice().sort().join(" ");
+    return a.mode === b.mode && x === y;
+  }
+
+  // Adds a lens to "My sources", or returns the id of an identical one already there.
   function addCustom(lens) {
+    var dup = state.custom.filter(function (l) { return sameLens(l, lens); })[0];
+    if (dup) {
+      if (state.shown.indexOf(dup.id) < 0) state.shown.unshift(dup.id);
+      return dup.id;
+    }
     var id = "my-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
     state.custom.push({ id: id, name: lens.name, mode: lens.mode, sites: lens.sites.map(function (s) { return { domain: s.domain }; }) });
     state.shown.unshift(id);
@@ -365,17 +403,21 @@
       history.replaceState(null, "", location.pathname + location.search);
       hash = "";
     }
-    var manage = hash === "#manage";
+    var manage = hash === "#manage" || hash === "#new";
     $("view-main").hidden = manage;
     $("view-manage").hidden = !manage;
-    if (manage) { renderManage(); window.scrollTo(0, 0); }
-    else { renderMain(); renderImportCard(); }
+    if (manage) {
+      renderManage();
+      window.scrollTo(0, 0);
+      if (hash === "#new") { history.replaceState(null, "", location.pathname + location.search + "#manage"); $("new-name").focus(); }
+    } else { renderMain(); renderImportCard(); }
   }
 
   function renderImportCard() {
     var card = $("import-card");
     if (!pendingImport) { card.hidden = true; return; }
     $("import-text").textContent = t("importAsk", pendingImport.name, pendingImport.sites.length);
+    $("import-sites").textContent = sitesSummary(pendingImport);
     card.hidden = false;
   }
 
@@ -388,7 +430,8 @@
       var c = current();
       openUrl(core.searchUrl(q, c.include, c.exclude, opts()));
     });
-    $("q").addEventListener("input", renderPerSite);
+    $("q").addEventListener("input", function () { renderPerSite(); renderLimit(); });
+    $("multi").addEventListener("change", function () { state.multi = this.checked; persist(); });
 
     $("clear").addEventListener("click", function () {
       state.active = state.active.filter(function (id) { var l = byId(id); return l && l.mode === "exclude"; });
@@ -442,9 +485,10 @@
     });
 
     $("forums").addEventListener("change", function () {
-      state.forums = this.checked; persist(); renderPerSite(); renderEngineUrl();
+      state.forums = this.checked; persist(); renderPerSite();
     });
 
+    $("engine-url").textContent = engineUrl();
     $("copy-engine").addEventListener("click", function () {
       copyText(engineUrl(), function () { flash("copy-done", t("copied")); });
     });
@@ -455,7 +499,7 @@
       if (pendingImport.mode === "include") {
         state.active = state.active.filter(function (x) { var l = byId(x); return l && l.mode === "exclude"; });
       }
-      state.active.push(id);
+      if (state.active.indexOf(id) < 0) state.active.push(id);
       pendingImport = null;
       persist();
       renderMain();
@@ -492,11 +536,12 @@
       var lens = core.decodeLens(m ? m[1] : v);
       if (!lens) { showMsg("import-error", t("badLink")); return; }
       showMsg("import-error", "");
+      var before = state.custom.length;
       addCustom(lens);
       $("import-link").value = "";
       persist();
       renderManage();
-      flash("manage-done", t("lensAdded", lens.name));
+      flash("manage-done", t(state.custom.length > before ? "lensAdded" : "alreadyAdded", lens.name));
     });
 
     $("reset").addEventListener("click", function () {
@@ -517,13 +562,27 @@
 
   // ---------- start ----------
   i18n.apply(document);
+  var isPhone = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
   if (isExt) {
     $("bar-web").hidden = true;
     $("bar-ext").hidden = false;
     $("way-phone").hidden = true;
     $("way-ext").hidden = true;
   }
-  if (!isExt && !/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) $("way-phone").open = false;
+  // Phone browsers do not let people add their own search engines.
+  if (!isExt && isPhone) $("way-bar").hidden = true;
+  renderExtLinks();
+
+  // Store buttons once the extension is published; until then a link to the install guide, or nothing.
+  function renderExtLinks() {
+    var links = window.SOURCEPICK_LINKS || {};
+    var box = $("ext-links");
+    [["chrome", "storeChrome"], ["edge", "storeEdge"], ["firefox", "storeFirefox"]].forEach(function (x) {
+      if (links[x[0]]) box.appendChild(el("a", { class: "btn-secondary", href: links[x[0]], target: "_blank", rel: "noopener", text: t(x[1]) }));
+    });
+    if (!box.children.length && links.repo) box.appendChild(el("a", { class: "btn-secondary", href: links.repo + "#install", target: "_blank", rel: "noopener", text: t("installGuide") }));
+    if (!box.children.length) $("way-ext").hidden = true;
+  }
 
   store.load().then(function (s) {
     state = s;

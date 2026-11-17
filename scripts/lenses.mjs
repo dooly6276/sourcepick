@@ -19,6 +19,10 @@ export function validateLens(l, file) {
   if (!["include", "exclude"].includes(l.mode)) at('mode 는 "include" 나 "exclude"');
   if (!Number.isInteger(l.order)) at("order 는 정수");
   if (!Array.isArray(l.sites) || !l.sites.length) at("sites 가 비었음");
+  // Google ignores words past the 32nd, DuckDuckGo about the 22nd, Brave about the 18th (2026-11).
+  // A source has to fit with a few search words on every engine.
+  const max = l.mode === "exclude" ? 16 : 15;
+  if (Array.isArray(l.sites) && l.sites.length > max) at(`sites 가 ${l.sites.length}개, ${l.mode} 출처는 ${max}개까지`);
   const seen = new Set();
   for (const s of l.sites || []) {
     if (!s || typeof s.domain !== "string" || !DOMAIN.test(s.domain)) { at(`잘못된 domain: ${JSON.stringify(s && s.domain)}`); continue; }

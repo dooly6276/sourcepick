@@ -76,3 +76,31 @@ test("share links round-trip, including Korean names", () => {
   assert.deepEqual(back.sites.map((s) => s.domain), ["a.com", "b.co.kr"]);
   assert.equal(core.decodeLens("garbage!!"), null);
 });
+
+test("fit keeps queries inside each engine's word limit", () => {
+  const many = Array.from({ length: 40 }, (_, i) => `s${i}.com`);
+  const g = core.fit("갤럭시 S26 발열", many, [], "google");
+  assert.equal(g.include.length, 29);
+  assert.equal(g.cut.include.length, 11);
+  assert.equal(core.fit("a b", many, [], "duckduckgo").include.length, 20);
+  // Excluded sites outside the chosen sites change nothing, so they are dropped first.
+  const n = core.fit("x", ["naver.com", "clien.net"], ["news.naver.com", "cnn.com", "m.clien.net/service"], "google");
+  assert.deepEqual(n.exclude, ["news.naver.com", "m.clien.net/service"]);
+  // Whole-web search with too many exclusions: the first ones are kept.
+  const e = core.fit("x y", [], many, "google");
+  assert.equal(e.exclude.length, 30);
+  assert.equal(e.cut.exclude.length, 10);
+  // searchUrl applies the same limit.
+  const q = new URL(core.searchUrl("x", many, [], { engine: "google" })).searchParams.get("q");
+  assert.equal(core.parseFilters(q).include.length, 31);
+  assert.equal(core.countWords(q), 1);
+});
+
+test("lensState reports sources cut short by the limit", () => {
+  const big = { id: "big", mode: "include", sites: Array.from({ length: 40 }, (_, i) => ({ domain: `s${i}.com` })) };
+  const q = new URL(core.searchUrl("x", core.lensDomains(big), [], { engine: "google" })).searchParams.get("q");
+  assert.equal(core.lensState(q, big, "google"), "part");
+  assert.equal(core.lensState("x site:s1.com", big, "google"), "none");
+  const small = { id: "sm", mode: "include", sites: [{ domain: "a.com" }, { domain: "b.com" }] };
+  assert.equal(core.lensState("x site:a.com OR site:b.com", small, "google"), "all");
+});

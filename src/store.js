@@ -42,6 +42,7 @@
       engine: "google",
       period: "",
       forums: false,
+      multi: false,
     };
   }
 
@@ -62,6 +63,7 @@
       engine: ["google", "duckduckgo", "brave"].indexOf(s.engine) >= 0 ? s.engine : "google",
       period: ["", "d", "w", "m", "y"].indexOf(s.period) >= 0 ? s.period : "",
       forums: !!s.forums,
+      multi: !!s.multi,
     };
   }
 

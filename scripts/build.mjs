@@ -35,6 +35,10 @@ function common(out) {
   copy(path.join(ASSETS, "icon.svg"), path.join(out, "icons/icon.svg"));
 }
 
+// Store and repository links shown in the app ("Browser extension" section). Empty until published.
+const LINKS = Object.assign({ chrome: "", firefox: "", edge: "", repo: "" }, pkg.sourcepick && pkg.sourcepick.links);
+const CONFIG = `<script>window.SOURCEPICK_WEB_URL = ${JSON.stringify(pkg.homepage || "")}; window.SOURCEPICK_LINKS = ${JSON.stringify(LINKS)};</script>`;
+
 function html({ head = "", redirect = "", bodyClass = "" } = {}) {
   let s = fs.readFileSync(path.join(SRC, "app/index.html"), "utf8");
   s = s.replace("<!--web-head-->", head).replace("<!--web-redirect-->", redirect);
@@ -51,7 +55,7 @@ function buildWeb() {
   for (const f of ["icon-192.png", "icon-512.png", "icon-maskable-512.png", "icon-32.png"]) copy(path.join(ASSETS, f), path.join(out, "icons", f));
   write(path.join(out, "index.html"), html({
     head: '<link rel="manifest" href="manifest.webmanifest">\n  <link rel="apple-touch-icon" href="icons/icon-192.png">',
-    redirect: '<script src="redirect.js"></script>',
+    redirect: CONFIG + '\n  <script src="redirect.js"></script>',
   }));
   return out;
 }
@@ -92,9 +96,8 @@ function buildExtension(target) {
   for (const f of ["content.js", "content.css", "background.js"]) copy(path.join(SRC, "extension", f), path.join(out, f));
   copyDir(path.join(SRC, "extension/_locales"), path.join(out, "_locales"));
   for (const n of [16, 32, 48, 128]) copy(path.join(ASSETS, `icon-${n}.png`), path.join(out, `icons/icon-${n}.png`));
-  const share = `<script>window.SOURCEPICK_WEB_URL = ${JSON.stringify(pkg.homepage || "")};</script>`;
-  write(path.join(out, "index.html"), html({ redirect: share }));
-  write(path.join(out, "popup.html"), html({ bodyClass: "popup", redirect: share }));
+  write(path.join(out, "index.html"), html({ redirect: CONFIG }));
+  write(path.join(out, "popup.html"), html({ bodyClass: "popup", redirect: CONFIG }));
   write(path.join(out, "manifest.json"), JSON.stringify(manifest(target), null, 2) + "\n");
   return out;
 }

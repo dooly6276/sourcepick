@@ -24,6 +24,7 @@ The most useful contribution is a better source: a missing site, a dead site rem
 - `mode` is `include` (search only these sites) or `exclude` (hide these sites).
 - `domain` is lowercase, without `https://` or `www.`. A path narrows it (`reddit.com/r/travel`), and a bare suffix covers a whole domain space (`gov`, `go.kr`).
 - Prefer sites where people write first-hand: forums, Q&A, reviews, primary sources. Keep a source focused; a dozen strong sites beat fifty weak ones.
+- A source can have at most 15 sites (16 for `exclude`). Search engines ignore the end of long queries without saying so: in our November 2026 tests Google applied 32 words and sites, DuckDuckGo about 22 and Brave about 18 (`OR` does not count). Sourcepick fits each search to the engine and tells the user when sites are left out, but a source should fit on its own.
 - In an `exclude` source, use the narrowest domain that still catches the pages, so a community hosted under a news company's domain is not hidden with it.
 
 3. Check it:

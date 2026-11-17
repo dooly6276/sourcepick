@@ -26,6 +26,7 @@
 
       <div id="import-card" class="card" hidden>
         <p id="import-text"></p>
+        <p id="import-sites" class="muted"></p>
         <div class="card-actions">
           <button type="button" id="import-add" class="btn-primary small" data-t="add"></button>
           <button type="button" id="import-close" class="btn-secondary" data-t="close"></button>
@@ -51,6 +52,11 @@
           <span id="site-count"></span>
           <button type="button" id="edit-toggle" class="btn-text" aria-expanded="false" aria-controls="editor" data-t="editSites"></button>
         </div>
+        <label class="check" id="multi-row">
+          <input type="checkbox" id="multi">
+          <span data-t="multiPick"></span>
+        </label>
+        <p id="limit-note" class="note" role="status" hidden></p>
 
         <div id="editor" class="editor" hidden>
           <div id="site-list"></div>
@@ -60,13 +66,20 @@
             <button type="submit" class="btn-secondary" data-t="add"></button>
           </form>
           <p id="add-site-error" class="error" role="alert" hidden></p>
+          <p class="desc" data-t="saveAsDesc"></p>
           <form id="save-lens-form" class="inline-form" autocomplete="off">
             <label class="sr-only" for="save-lens-name" data-t="myLensName"></label>
             <input id="save-lens-name" type="text" maxlength="30" data-t-placeholder="myLensName">
-            <button type="submit" class="btn-secondary" data-t="saveLens"></button>
+            <button type="submit" class="btn-secondary" data-t="saveAsLens"></button>
           </form>
           <p id="save-lens-error" class="error" role="alert" hidden></p>
         </div>
+      </section>
+
+      <section class="block" id="per-site" aria-labelledby="h-per-site" hidden>
+        <h2 id="h-per-site" data-t="perSite"></h2>
+        <p class="desc" data-t="perSiteDesc"></p>
+        <ul id="per-site-list" class="chips"></ul>
       </section>
 
       <section class="block" aria-labelledby="h-options">
@@ -77,18 +90,11 @@
         <fieldset class="segmented cols-5" id="period">
           <legend class="sr-only" data-t="period"></legend>
         </fieldset>
-        <div id="exclude-list"></div>
         <label class="check" id="forums-row">
           <input type="checkbox" id="forums">
           <span data-t="googleForums"></span>
         </label>
-      </section>
-
-      <section class="block" id="per-site" hidden>
-        <details class="fold">
-          <summary><h2 data-t="perSite"></h2><span id="per-site-count" class="muted"></span></summary>
-          <ul id="per-site-list" class="link-list"></ul>
-        </details>
+        <div id="exclude-list"></div>
       </section>
 
       <section class="block more" aria-labelledby="h-more">
@@ -143,6 +149,7 @@
           <summary><h3 data-t="wayExt"></h3></summary>
           <div class="fold-body">
             <p class="desc" data-t="wayExtDesc"></p>
+            <div id="ext-links" class="row-actions"></div>
           </div>
         </details>
       </section>
