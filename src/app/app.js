@@ -38,14 +38,6 @@
 
   function persist() { return store.save(state); }
 
-  function savedMatches() {
-    persist();
-    var saved = store.readLocal();
-    var a = core.collect(lenses(), saved.active, saved.off, saved.extra), c = current();
-    return JSON.stringify([a.include, a.exclude, saved.engine, saved.period, saved.forums]) ===
-      JSON.stringify([c.include, c.exclude, state.engine, state.period, state.forums]);
-  }
-
   function current() { return core.collect(lenses(), state.active, state.off, state.extra); }
 
   function opts() {
@@ -433,13 +425,9 @@
   // ---------- events ----------
   function bind() {
     $("search-form").addEventListener("submit", function (e) {
-      var q = $("q").value.trim();
-      if (!q) { e.preventDefault(); $("q").focus(); return; }
-      // On phones the web app searches in the same tab through ?q= (redirect.js reads the saved
-      // selection). Being a real form submission also lets Chrome offer Sourcepick as a search
-      // engine. Falls back to the old way when the selection could not be saved.
-      if (!isExt && isPhone && savedMatches()) { $("q").value = q; return; }
       e.preventDefault();
+      var q = $("q").value.trim();
+      if (!q) { $("q").focus(); return; }
       var c = current();
       openUrl(core.searchUrl(q, c.include, c.exclude, opts()));
     });

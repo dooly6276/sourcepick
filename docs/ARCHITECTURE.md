@@ -42,6 +42,16 @@ Search engines silently ignore words past a limit, and some refuse long queries 
 
 If you measure a different limit, change `maxTerms` or `maxLength` and say how you measured it in the pull request. The method we used: a common word, then made-up `site:` domains that have no pages, then `site:reddit.com` last. If Reddit results appear, the last term was applied.
 
+## Address-bar search
+
+The web app answers `?q=` (`src/web/redirect.js`) with the sources saved in that browser, so any browser that lets you add a custom search engine can use `https://dooly6276.github.io/sourcepick/?q=%s`. The page also links `opensearch.xml`. As of November 2026 (phones checked on a Galaxy Note20 and an iPhone):
+
+- Desktop Chrome, Edge and Firefox: you can add the address by hand. Firefox also offers it from the OpenSearch link.
+- Chrome for Android has no way to add an engine by hand. It only lists sites it registered itself, and Chromium skips any page whose path is not `/` (`GenerateKeywordFromNavigationEntry` in `search_engine_tab_helper.cc`). The web app lives under `/sourcepick/`, so it is never offered. Serving it from the root of its own domain would change this.
+- Samsung Internet and iOS Safari only offer a fixed list of engines.
+
+On phones the share sheet (Android) and the home-screen app cover this instead.
+
 ## Adding a search engine
 
 1. Add an entry to `ENGINES` in `src/core.js`: `name`, `maxTerms`, `url`, the time-filter parameter, and `keep` (URL parameters to carry over when the bar re-runs a search).
