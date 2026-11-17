@@ -47,10 +47,8 @@ If you measure a different limit, change `maxTerms` or `maxLength` and say how y
 The web app answers `?q=` (`src/web/redirect.js`) with the sources saved in that browser, so any browser that lets you add a custom search engine can use `https://sourcepick.toolnjoy.com/?q=%s`. The page also links `opensearch.xml`. As of November 2026 (Android checked on a Galaxy Note20):
 
 - Desktop Chrome, Edge and Firefox: you can add the address by hand. Firefox also offers it from the OpenSearch link.
-- Chrome for Android has no way to add an engine by hand. It only lists sites it registered itself, and Chromium skips any page whose path is not `/` (`GenerateKeywordFromNavigationEntry` in `search_engine_tab_helper.cc`). The web app lives under `/sourcepick/`, so it is never offered. Serving it from the root of its own domain would change this.
-- Samsung Internet and iOS Safari only offer a fixed list of engines.
-
-On phones the share sheet (Android) and the home-screen app cover this instead.
+- Chrome for Android has no way to add an engine by hand. It lists a site under Settings > Search engine > Recently visited after a real form submission on that site, and only when the form's page has the path `/` (`GenerateKeywordFromNavigationEntry` in `search_engine_tab_helper.cc`). That is why the web app has its own host, and why on phones its search form submits normally (`./?q=`, then `redirect.js`) instead of opening a new tab. The web app shows these steps in Chrome for Android.
+- Samsung Internet and iOS Safari only offer a fixed list of engines. On those, the share sheet (Android) and the home-screen app cover this instead.
 
 ## Adding a search engine
 

@@ -583,8 +583,14 @@
     $("way-phone").hidden = true;
     $("way-ext").hidden = true;
   }
-  // Phone browsers do not let people add their own search engines.
-  if (!isExt && isPhone) $("way-bar").hidden = true;
+  // Phone browsers do not let people add their own search engines. Chrome for Android lists the web
+  // app after one search from its form (see docs/ARCHITECTURE.md); Samsung Internet and Safari do not.
+  var ua = navigator.userAgent;
+  var isAndroidChrome = /Android/.test(ua) && /Chrome\//.test(ua) && !/SamsungBrowser|EdgA|OPR|Whale|Firefox|YaBrowser|; wv\)/.test(ua);
+  if (!isExt && isPhone) {
+    if (isAndroidChrome) { $("bar-web").hidden = true; $("bar-android").hidden = false; }
+    else $("way-bar").hidden = true;
+  }
   renderExtLinks();
 
   // Store buttons once the extension is published; until then a link to the install guide, or nothing.

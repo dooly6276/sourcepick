@@ -17,7 +17,7 @@ Search engines bury forum threads, first-hand reviews and primary sources under 
 - **35 built-in sources** for worldwide, Korean and Japanese sites, kept as plain JSON files that anyone can improve.
 - **Your own sources.** Make a source from any list of domains or URL paths (`reddit.com/r/BuyItForLife` works) and share it as a link.
 - **Works on phones too.** Add the web app to your home screen, then share selected text from any Android app to search it with your sources. Tested on Samsung Internet and Chrome for Android.
-- **Address bar.** Type `sp` and a space in the address bar (extension), or, in a desktop browser, register the web app as a search engine. Either way it follows the sources you selected last.
+- **Address bar.** Type `sp` and a space in the address bar (extension), or make the web app your search engine in a desktop browser or Chrome for Android. Either way it follows the sources you selected last.
 - **English, Korean and Japanese.** The interface follows your browser language, and each language starts with sources that fit it. Sources for every region are one tap away in Manage.
 - **No account, no server, no tracking.** Settings stay in your browser. The only network request is the search itself, sent straight to the engine you picked.
 
