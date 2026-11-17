@@ -562,7 +562,8 @@
 
   // ---------- start ----------
   i18n.apply(document);
-  var isPhone = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  // iPad and some iPhone setups report a Mac user agent; a touch screen on "Macintosh" means iOS.
+  var isPhone = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
   if (isExt) {
     $("bar-web").hidden = true;
     $("bar-ext").hidden = false;
