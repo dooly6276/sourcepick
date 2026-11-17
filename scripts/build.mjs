@@ -53,8 +53,19 @@ function buildWeb() {
   for (const f of ["redirect.js", "manifest.webmanifest"]) copy(path.join(SRC, "web", f), path.join(out, f));
   write(path.join(out, "sw.js"), fs.readFileSync(path.join(SRC, "web/sw.js"), "utf8").replace("__VERSION__", pkg.version));
   for (const f of ["icon-192.png", "icon-512.png", "icon-maskable-512.png", "icon-32.png"]) copy(path.join(ASSETS, f), path.join(out, "icons", f));
+  // Lets browsers (Chrome on Android and computers, Firefox) offer Sourcepick as a search engine.
+  const home = (pkg.homepage || "").replace(/\/?$/, "/");
+  write(path.join(out, "opensearch.xml"), `<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Sourcepick</ShortName>
+  <Description>Search only the sites you choose</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="32" height="32" type="image/png">${home}icons/icon-32.png</Image>
+  <Url type="text/html" method="get" template="${home}?q={searchTerms}"/>
+</OpenSearchDescription>
+`);
   write(path.join(out, "index.html"), html({
-    head: '<link rel="manifest" href="manifest.webmanifest">\n  <link rel="apple-touch-icon" href="icons/icon-192.png">',
+    head: '<link rel="manifest" href="manifest.webmanifest">\n  <link rel="apple-touch-icon" href="icons/icon-192.png">\n  <link rel="search" type="application/opensearchdescription+xml" title="Sourcepick" href="opensearch.xml">',
     redirect: CONFIG + '\n  <script src="redirect.js"></script>',
   }));
   return out;
