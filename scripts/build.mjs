@@ -32,12 +32,15 @@ function common(out) {
   write(path.join(out, "lenses.js"), lensesJs);
   for (const f of SHARED) copy(path.join(SRC, f), path.join(out, f));
   for (const f of APP) copy(path.join(SRC, "app", f), path.join(out, f));
+  write(path.join(out, "config.js"), CONFIG_JS);
   copy(path.join(ASSETS, "icon.svg"), path.join(out, "icons/icon.svg"));
 }
 
 // Store and repository links shown in the app ("Browser extension" section). Empty until published.
 const LINKS = Object.assign({ chrome: "", firefox: "", edge: "", repo: "" }, pkg.sourcepick && pkg.sourcepick.links);
-const CONFIG = `<script>window.SOURCEPICK_WEB_URL = ${JSON.stringify(pkg.homepage || "")}; window.SOURCEPICK_LINKS = ${JSON.stringify(LINKS)};</script>`;
+// A separate file, not an inline <script>: extension pages only run scripts from their own files (CSP script-src 'self').
+const CONFIG_JS = `window.SOURCEPICK_WEB_URL = ${JSON.stringify(pkg.homepage || "")};\nwindow.SOURCEPICK_LINKS = ${JSON.stringify(LINKS)};\n`;
+const CONFIG = '<script src="config.js"></script>';
 
 function html({ head = "", redirect = "", bodyClass = "" } = {}) {
   let s = fs.readFileSync(path.join(SRC, "app/index.html"), "utf8");

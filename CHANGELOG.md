@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- The extension's settings page and popup no longer log a Content Security Policy error in Chrome. Links shared from the extension now point to the web app instead of a chrome-extension:// address, and the install guide link shows again.
+
 ## 0.3.1
 
 - Searches are also trimmed to DuckDuckGo's and Brave's length limits (about 500 bytes and 400 characters). Long custom sources used to get an error page or the DuckDuckGo home page.
