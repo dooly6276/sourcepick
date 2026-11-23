@@ -20,14 +20,6 @@
       "name": "더쿠"
     },
     {
-      "domain": "pann.nate.com",
-      "name": "네이트판"
-    },
-    {
-      "domain": "instiz.net",
-      "name": "인스티즈"
-    },
-    {
       "domain": "clien.net",
       "name": "클리앙"
     },
@@ -40,16 +32,36 @@
       "name": "뽐뿌"
     },
     {
+      "domain": "teamblind.com",
+      "name": "블라인드"
+    },
+    {
+      "domain": "cafe.daum.net",
+      "name": "다음 카페"
+    },
+    {
+      "domain": "pann.nate.com",
+      "name": "네이트판"
+    },
+    {
+      "domain": "instiz.net",
+      "name": "인스티즈"
+    },
+    {
+      "domain": "inven.co.kr",
+      "name": "인벤"
+    },
+    {
+      "domain": "arca.live",
+      "name": "아카라이브"
+    },
+    {
       "domain": "mlbpark.donga.com",
       "name": "엠엘비파크"
     },
     {
       "domain": "dogdrip.net",
       "name": "개드립"
-    },
-    {
-      "domain": "arca.live",
-      "name": "아카라이브"
     },
     {
       "domain": "damoang.net",
@@ -66,6 +78,34 @@
     {
       "domain": "bobaedream.co.kr",
       "name": "보배드림"
+    },
+    {
+      "domain": "quasarzone.com",
+      "name": "퀘이사존"
+    },
+    {
+      "domain": "meeco.kr",
+      "name": "미코"
+    },
+    {
+      "domain": "okky.kr",
+      "name": "OKKY"
+    },
+    {
+      "domain": "community.rememberapp.co.kr",
+      "name": "리멤버 커뮤니티"
+    },
+    {
+      "domain": "coolenjoy.net",
+      "name": "쿨엔조이"
+    },
+    {
+      "domain": "dvdprime.com",
+      "name": "DVD프라임"
+    },
+    {
+      "domain": "cafe.naver.com",
+      "name": "네이버 카페"
     }
   ]
 }

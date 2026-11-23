@@ -8,8 +8,8 @@
 
   var DEFAULTS = {
     ko: {
-      shown: ["kr-community", "kr-work", "kr-cafe", "kr-blog", "kr-qna", "video", "forums", "kr-it", "kr-games",
-        "kr-dev", "kr-papers", "kr-gov", "kr-law", "kr-wiki", "kr-no-news", "no-pinterest"],
+      shown: ["kr-community", "kr-blog", "kr-qna", "video", "kr-wiki", "forums", "kr-papers", "kr-gov", "kr-law",
+        "kr-no-news", "no-pinterest"],
       active: ["kr-community"],
     },
     ja: {

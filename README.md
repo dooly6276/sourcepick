@@ -58,7 +58,7 @@ Search engines ignore the end of a long query without saying so. In our November
 | Region | Sources |
 |---|---|
 | Worldwide | Forums, Reddit, Developers, Official docs, Papers, Video, Social, Product reviews, Wikis, Blogs & newsletters, Open source, Travel, Recipes, Design, Government & public, Universities, No Pinterest, No major news |
-| Korea | Communities, Workplace, Naver & Daum cafes, Blogs, KnowledgeiN, Tech & gadgets, Gaming, Developers, Papers, Government, Law, Wikis, Recipes, No Korean news |
+| Korea | Communities (25 sites, including Blind and Daum cafes), Blogs, KnowledgeiN, Papers, Government, Law, Wikis, Recipes, No Korean news |
 | Japan | Forums, Blogs, Developers |
 
 Each one is a file in [`lenses/`](lenses). Missing a great site, or a whole country? See [CONTRIBUTING.md](CONTRIBUTING.md). It takes a JSON file and a pull request, or just [an issue](https://github.com/dooly6276/sourcepick/issues/new?template=new_source.yml) with the sites.

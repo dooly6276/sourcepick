@@ -20,8 +20,11 @@ export function validateLens(l, file) {
   if (!Number.isInteger(l.order)) at("order 는 정수");
   if (!Array.isArray(l.sites) || !l.sites.length) at("sites 가 비었음");
   // Google ignores words past the 32nd, DuckDuckGo about the 22nd, Brave about the 18th (2026-11).
-  // A source has to fit with a few search words on every engine.
-  const max = l.mode === "exclude" ? 16 : 15;
+  // A source has to leave room for a few search words on Google, the default engine. On DuckDuckGo
+  // and Brave the first sites are used and the screen says how many were left out (core.fit).
+  // 11-24: one 25-site "communities" source beat separate topic sources in Google tests (games went
+  // to Inven, graphics cards to Quasarzone, salary talk to Blind and Remember), so the cap is 25.
+  const max = l.mode === "exclude" ? 16 : 25;
   if (Array.isArray(l.sites) && l.sites.length > max) at(`sites 가 ${l.sites.length}개, ${l.mode} 출처는 ${max}개까지`);
   const seen = new Set();
   for (const s of l.sites || []) {

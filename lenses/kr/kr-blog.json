@@ -18,6 +18,22 @@
     {
       "domain": "brunch.co.kr",
       "name": "브런치스토리"
+    },
+    {
+      "domain": "velog.io",
+      "name": "velog"
+    },
+    {
+      "domain": "blogspot.com",
+      "name": "Blogger"
+    },
+    {
+      "domain": "wordpress.com",
+      "name": "WordPress.com"
+    },
+    {
+      "domain": "medium.com",
+      "name": "Medium"
     }
   ]
 }
