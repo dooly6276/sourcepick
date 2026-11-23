@@ -60,7 +60,7 @@
       custom: (arr(s.custom) || []).filter(function (l) {
         return l && typeof l.id === "string" && typeof l.name === "string" && Array.isArray(l.sites);
       }),
-      engine: ["google", "duckduckgo", "brave"].indexOf(s.engine) >= 0 ? s.engine : "google",
+      engine: ["google", "bing", "duckduckgo", "brave"].indexOf(s.engine) >= 0 ? s.engine : "google",
       period: ["", "d", "w", "m", "y"].indexOf(s.period) >= 0 ? s.period : "",
       forums: !!s.forums,
       multi: !!s.multi,

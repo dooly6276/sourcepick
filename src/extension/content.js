@@ -1,4 +1,4 @@
-// Adds a row of source buttons to Google, DuckDuckGo and Brave Search result pages.
+// Adds a row of source buttons to Google, Bing, DuckDuckGo and Brave Search result pages.
 // A button rewrites the site: filters at the end of the query and searches again, so the page URL
 // always reflects what is applied. The buttons shown follow the extension's settings.
 (function () {
@@ -10,7 +10,7 @@
   window.__sourcepickBar = true;
 
   var host = location.hostname;
-  var ENGINE = /(^|\.)google\./.test(host) ? "google" : /duckduckgo\.com$/.test(host) ? "duckduckgo" : /search\.brave\.com$/.test(host) ? "brave" : null;
+  var ENGINE = /(^|\.)google\./.test(host) ? "google" : /(^|\.)bing\.com$/.test(host) ? "bing" : /duckduckgo\.com$/.test(host) ? "duckduckgo" : /search\.brave\.com$/.test(host) ? "brave" : null;
   if (!ENGINE) return;
 
   // Where the bar goes on each engine. Each returns { parent, before, alignTo } or null.
@@ -26,6 +26,13 @@
       var main = document.getElementById("main");
       if (main && main.firstElementChild) return { parent: main, before: main.firstElementChild.nextSibling, alignTo: null };
       return null;
+    },
+    bing: function () {
+      // Above the results-count row, so answer blocks at the top of the results do not push it down.
+      var results = document.getElementById("b_results");
+      var tween = document.getElementById("b_tween");
+      if (tween && tween.parentElement) return { parent: tween.parentElement, before: tween, alignTo: results || tween };
+      return results && results.parentElement ? { parent: results.parentElement, before: results, alignTo: results } : null;
     },
     duckduckgo: function () {
       var main = document.querySelector('section[data-testid="mainline"]');

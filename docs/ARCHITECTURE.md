@@ -25,7 +25,7 @@ Everything reads state back from the query itself: the results-page bar parses `
 
 ## Popup over a results page
 
-When the toolbar popup opens over a Google, DuckDuckGo or Brave results tab, it asks the content script for that page (`sourcepick:page` message: engine, query, URL parameters). The search box then holds the page's words, the source buttons show the sources applied there, and any change searches that tab again with `chrome.tabs.update`. No extra permission is needed: the content script only runs on results pages, so the message fails quietly everywhere else and the popup opens new tabs as before.
+When the toolbar popup opens over a Google, Bing, DuckDuckGo or Brave results tab, it asks the content script for that page (`sourcepick:page` message: engine, query, URL parameters). The search box then holds the page's words, the source buttons show the sources applied there, and any change searches that tab again with `chrome.tabs.update`. No extra permission is needed: the content script only runs on results pages, so the message fails quietly everywhere else and the popup opens new tabs as before.
 
 ## Engine limits
 
@@ -34,6 +34,7 @@ Search engines silently ignore words past a limit, and some refuse long queries 
 | Engine | `maxTerms` (words and sites, `OR` not counted) | `maxLength` |
 |---|---|---|
 | Google | 32 | none needed |
+| Bing | 60 (no limit found) | 1,750 characters: 1,777 gave a full page of results, 1,822 only four |
 | DuckDuckGo | about 22 | about 500 UTF-8 bytes, then it shows its home page (493 worked, 505 did not) |
 | Brave | 20 | about 400 characters, then "Your query is too long" (394 worked, 410 did not) |
 

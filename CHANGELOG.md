@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Bing is supported: the web app can search it, and the extension adds the source buttons to Bing results. Bing kept 60 sites in our tests, so large sources fit whole.
+- Google is the default engine and the main screen no longer shows an engine picker. Bing, DuckDuckGo and Brave are under Manage sources, and the search options summary names the engine only when it is not Google.
 - Edit sites shows how many sites of each source are on, with Select all to turn them back on, and Share selected sites copies a link that adds the sites in use as a source.
 - Korean sources gain Exclude blogs and Exclude Namuwiki, which replace Exclude Pinterest in the Korean defaults. The add-site example is danawa.com.
 - The extension's settings page and popup no longer log a Content Security Policy error in Chrome. Links shared from the extension now point to the web app instead of a chrome-extension:// address, and the install guide link shows again.

@@ -1,4 +1,4 @@
 {
   "name": { "message": "Sourcepick" },
-  "description": { "message": "選んだサイトの検索結果だけを表示します。Google、DuckDuckGo、Brave の検索結果ページに、掲示板、ブログ、論文などの検索先ボタンを追加します。" }
+  "description": { "message": "選んだサイトの検索結果だけを表示します。Google、Bing、DuckDuckGo、Brave の検索結果ページに、掲示板、ブログ、論文などの検索先ボタンを追加します。" }
 }

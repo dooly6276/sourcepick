@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Sourcepick</title>
-  <meta name="description" content="Search Google, DuckDuckGo or Brave only on the sites you choose: forums, blogs, papers, docs and more.">
+  <meta name="description" content="Search Google, Bing, DuckDuckGo or Brave only on the sites you choose: forums, blogs, papers, docs and more.">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#16181c" media="(prefers-color-scheme: dark)">
   <!--web-head-->
@@ -87,9 +87,6 @@
         <details class="fold opt-fold" id="opt-fold">
           <summary><h2 data-t="options"></h2><span id="opt-summary" class="muted"></span></summary>
           <div class="fold-body">
-            <fieldset class="segmented cols-3" id="engine">
-              <legend class="sr-only" data-t="engine"></legend>
-            </fieldset>
             <fieldset class="segmented cols-5" id="period">
               <legend class="sr-only" data-t="period"></legend>
             </fieldset>
@@ -217,6 +214,13 @@
         <div id="manage-list"></div>
       </section>
 
+      <section class="block" aria-labelledby="h-engine">
+        <h2 id="h-engine" data-t="engine"></h2>
+        <p class="desc" data-t="engineDesc"></p>
+        <fieldset class="segmented cols-2 engine-pick" id="engine">
+          <legend class="sr-only" data-t="engine"></legend>
+        </fieldset>
+      </section>
       <section class="block">
         <button type="button" id="reset" class="btn-text danger" data-t="reset"></button>
       </section>

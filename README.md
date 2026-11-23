@@ -1,6 +1,6 @@
 # Sourcepick
 
-**Search only the sites you choose.** Forums, Reddit, official docs, papers, Korean communities, Japanese Q&A sites and more, on Google, DuckDuckGo or Brave Search.
+**Search only the sites you choose.** Forums, Reddit, official docs, papers, Korean communities, Japanese Q&A sites and more, on Google, Bing, DuckDuckGo or Brave Search.
 
 [![CI](https://github.com/dooly6276/sourcepick/actions/workflows/ci.yml/badge.svg)](https://github.com/dooly6276/sourcepick/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/dooly6276/sourcepick)](https://github.com/dooly6276/sourcepick/releases/latest)
@@ -12,7 +12,7 @@
 
 Search engines bury forum threads, first-hand reviews and primary sources under SEO pages. Typing `site:reddit.com OR site:news.ycombinator.com OR ...` every time works, but nobody wants to. Sourcepick keeps those site lists for you as **sources** and applies them with one click.
 
-- **One click on the results page.** The extension adds a row of source buttons to Google, DuckDuckGo and Brave Search. A click switches to that source; hold Ctrl or Shift (or turn on *Choose several sources*) to combine them. On a whole-web search you can turn on exclusions such as *No Pinterest*.
+- **One click on the results page.** The extension adds a row of source buttons to Google, Bing, DuckDuckGo and Brave Search. A click switches to that source; hold Ctrl or Shift (or turn on *Choose several sources*) to combine them. On a whole-web search you can turn on exclusions such as *No Pinterest*.
 - **Search one site at a time.** When several sites are searched together, one big site can fill the page. Each site in the selection is one tap away.
 - **32 built-in sources** for worldwide, Korean and Japanese sites, kept as plain JSON files that anyone can improve.
 - **Your own sources.** Make a source from any list of domains or URL paths (`reddit.com/r/BuyItForLife` works) and share it as a link.
@@ -51,7 +51,7 @@ mechanical keyboard site:reddit.com OR site:news.ycombinator.com -site:pinterest
 
 The results page bar reads the operators back from the URL, so the buttons always show what is applied, and the page stays a normal search URL you can bookmark or share. Time filters, Google's Forums tab and other engine settings are kept.
 
-Search engines ignore the end of a long query without saying so. In our November 2026 tests Google applied the first 32 words and sites (`OR` does not count), DuckDuckGo about 22 and Brave 20. DuckDuckGo and Brave also refuse queries longer than about 500 bytes and 400 characters. Sourcepick fits every search to the engine: sites to exclude are dropped first when sources are chosen (results come only from the chosen sites anyway), and when the chosen sites still do not fit, the app says how many are searched and offers the rest one site at a time. Bing is not supported yet because it showed a human verification page to our automated tests.
+Search engines ignore the end of a long query without saying so. In our November 2026 tests Google applied the first 32 words and sites (`OR` does not count), DuckDuckGo about 22 and Brave 20. Bing kept 60 sites, but past about 1,800 characters it returns only a few results. DuckDuckGo and Brave also refuse queries longer than about 500 bytes and 400 characters. Sourcepick fits every search to the engine: sites to exclude are dropped first when sources are chosen (results come only from the chosen sites anyway), and when the chosen sites still do not fit, the app says how many are searched and offers the rest one site at a time.
 
 ## Built-in sources
 
@@ -69,7 +69,7 @@ Sourcepick is small on purpose: plain JavaScript, no dependencies, one `npm test
 
 - **Sources for your country or interests.** Most of the value is in good site lists. Issues labeled [`source`](https://github.com/dooly6276/sourcepick/labels/source) and [`good first issue`](https://github.com/dooly6276/sourcepick/labels/good%20first%20issue) are a fine first pull request.
 - **Translations.** The interface has English, Korean and Japanese; adding a language is one block in `src/i18n.js`.
-- **More engines and browsers.** Bing, Startpage, Ecosia, and a Safari extension for iPhone and Mac are open for anyone who wants them ([help wanted](https://github.com/dooly6276/sourcepick/labels/help%20wanted)).
+- **More engines and browsers.** Startpage, Ecosia and a Safari extension for iPhone and Mac are open for anyone who wants them ([help wanted](https://github.com/dooly6276/sourcepick/labels/help%20wanted)).
 
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) explains how the pieces fit and how to add an engine or a language. Questions and ideas are welcome in [Discussions](https://github.com/dooly6276/sourcepick/discussions).
 
@@ -96,7 +96,7 @@ npm run package        # builds zip files for the extension stores
 
 ## Privacy
 
-Sourcepick has no server and collects nothing. The extension asks only for `storage`, plus access to search result pages on Google, DuckDuckGo and Brave Search so it can show the source buttons there.
+Sourcepick has no server and collects nothing. The extension asks only for `storage`, plus access to search result pages on Google, Bing, DuckDuckGo and Brave Search so it can show the source buttons there.
 
 ## License
 

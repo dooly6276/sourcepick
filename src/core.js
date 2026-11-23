@@ -13,6 +13,20 @@
       forums: { param: "udm", value: "18" },
       keep: ["tbs", "udm", "hl", "gl", "lr", "safe", "tbm"],
     },
+    bing: {
+      name: "Bing",
+      // 60 sites still kept every result on the chosen site. Up to 1,777 characters gave a full page
+      // of results; at 1,822 Bing returned only four (measured 2026-11-24).
+      maxTerms: 60,
+      maxLength: { size: 1750, unit: "chars" },
+      url: "https://www.bing.com/search",
+      // Bing has presets for a day, a week and a month; a year is a custom range in days since 1970.
+      period: { param: "filters", values: { d: 'ex1:"ez1"', w: 'ex1:"ez2"', m: 'ex1:"ez3"', y: function (now) {
+        var today = Math.floor(now / 86400000);
+        return 'ex1:"ez5_' + (today - 365) + "_" + today + '"';
+      } } },
+      keep: ["filters", "setlang", "cc", "mkt", "safesearch"],
+    },
     duckduckgo: {
       name: "DuckDuckGo",
       maxTerms: 22,
@@ -149,6 +163,17 @@
     };
   }
 
+  // Which period key a results page uses, from the value of the engine's period parameter.
+  function periodKey(engine, value) {
+    var eng = ENGINES[engine];
+    if (!eng || !value) return "";
+    var now = Date.now();
+    return Object.keys(eng.period.values).filter(function (k) {
+      var v = eng.period.values[k];
+      return (typeof v === "function" ? v(now) : v) === value;
+    })[0] || "";
+  }
+
   // opts: { engine, period, forums, keepFrom (URLSearchParams of the current results page) }
   function searchUrl(text, include, exclude, opts) {
     var o = opts || {};
@@ -160,7 +185,9 @@
       eng.keep.forEach(function (k) { var v = o.keepFrom.get(k); if (v) params.set(k, v); });
     }
     if (o.period !== undefined) {
-      if (o.period && eng.period.values[o.period]) params.set(eng.period.param, eng.period.values[o.period]);
+      var pv = o.period && eng.period.values[o.period];
+      if (typeof pv === "function") pv = pv(o.now || Date.now());
+      if (pv) params.set(eng.period.param, pv);
       else if (o.period === "") params.delete(eng.period.param);
     }
     if (eng.forums && o.forums !== undefined) {
@@ -246,6 +273,7 @@
     countWords: countWords,
     fit: fit,
     searchUrl: searchUrl,
+    periodKey: periodKey,
     lensState: lensState,
     nearLength: nearLength,
     activeLensIds: activeLensIds,

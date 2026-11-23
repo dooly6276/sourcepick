@@ -119,7 +119,7 @@
   function toggleActive(id) { pick(id, true); }
 
   // ---------- current tab (extension popup) ----------
-  // Opened over a Google, DuckDuckGo or Brave results page, the popup works on that page: the
+  // Opened over a Google, Bing, DuckDuckGo or Brave results page, the popup works on that page: the
   // search box holds its words, the buttons show its sources, and changes search that tab again.
   var tab = null;
 
@@ -142,8 +142,7 @@
     var f = core.parseFilters(q);
     var covered = [];
     state.engine = tab.engine;
-    var pv = tab.keep.get(eng.period.param);
-    state.period = Object.keys(eng.period.values).filter(function (k) { return eng.period.values[k] === pv; })[0] || "";
+    state.period = core.periodKey(tab.engine, tab.keep.get(eng.period.param));
     if (eng.forums) state.forums = tab.keep.get(eng.forums.param) === eng.forums.value;
     state.active = shownLenses().filter(function (l) {
       var on = core.lensState(q, l, tab.engine) !== "none";
@@ -288,9 +287,6 @@
   }
 
   function renderOptions() {
-    renderSegmented("engine", Object.keys(core.ENGINES).map(function (k) { return [k, core.ENGINES[k].name]; }), state.engine, function (v) {
-      state.engine = v; persist(); renderOptions(); renderPerSite(); renderLimit(); applyTab();
-    });
     renderSegmented("period", core.PERIODS.map(function (p) { return [p, t("period_" + (p || "all"))]; }), state.period, function (v) {
       state.period = v; persist(); renderOptions(); renderPerSite(); applyTab();
     });
@@ -309,7 +305,9 @@
     $("forums-row").hidden = state.engine !== "google";
     $("forums").checked = state.forums;
     $("multi").checked = state.multi;
-    var bits = [core.ENGINES[state.engine].name, t("period_" + (state.period || "all"))];
+    // Google is the default; the summary names the engine only when someone picked another one.
+    var bits = state.engine === "google" ? [] : [core.ENGINES[state.engine].name];
+    bits.push(t("period_" + (state.period || "all")));
     if (state.engine === "google" && state.forums) bits.push(t("forumsShort"));
     var ex = shownLenses("exclude").filter(function (l) { return state.active.indexOf(l.id) >= 0; }).length;
     if (ex) bits.push(t("excludeShort", ex));
@@ -354,7 +352,15 @@
   var HOME_REGION = { ko: "kr", ja: "jp", en: "global" }[LANG];
   var openRegions = {};
 
+  // Other engines live in Manage so the main screen stays on Google for most people.
+  function renderEngine() {
+    renderSegmented("engine", Object.keys(core.ENGINES).map(function (k) { return [k, core.ENGINES[k].name]; }), state.engine, function (v) {
+      state.engine = v; persist(); renderEngine(); renderOptions(); renderPerSite(); renderLimit(); applyTab();
+    });
+  }
+
   function renderManage() {
+    renderEngine();
     var box = $("manage-list");
     box.textContent = "";
     var all = lenses();

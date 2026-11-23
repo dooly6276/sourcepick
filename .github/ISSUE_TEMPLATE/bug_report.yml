@@ -27,7 +27,7 @@ body:
     id: engine
     attributes:
       label: Search engine
-      options: [Google, DuckDuckGo, Brave, Not related]
+      options: [Google, Bing, DuckDuckGo, Brave, Not related]
   - type: textarea
     id: steps
     attributes:

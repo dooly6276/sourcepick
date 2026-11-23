@@ -1,4 +1,4 @@
 {
   "name": { "message": "Sourcepick" },
-  "description": { "message": "원하는 출처의 검색 결과만 볼 수 있습니다. 구글, DuckDuckGo, Brave 검색 결과 화면에 커뮤니티, 블로그, 논문 같은 출처 버튼을 추가합니다." }
+  "description": { "message": "원하는 출처의 검색 결과만 볼 수 있습니다. 구글, Bing, DuckDuckGo, Brave 검색 결과 화면에 커뮤니티, 블로그, 논문 같은 출처 버튼을 추가합니다." }
 }

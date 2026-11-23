@@ -21,7 +21,7 @@ const APP = ["app.js", "style.css"];
 
 const GOOGLE_HOSTS = ["com", "co.kr", "co.jp", "co.uk", "ca", "com.au", "de", "fr", "es", "it", "nl", "co.in", "com.br", "com.mx", "com.tw", "com.hk", "com.sg"]
   .map((tld) => `https://www.google.${tld}/search*`);
-const CONTENT_MATCHES = [...GOOGLE_HOSTS, "https://duckduckgo.com/*", "https://search.brave.com/search*"];
+const CONTENT_MATCHES = [...GOOGLE_HOSTS, "https://www.bing.com/search*", "https://duckduckgo.com/*", "https://search.brave.com/search*"];
 
 function reset(dir) { fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive: true }); }
 function copy(from, to) { fs.mkdirSync(path.dirname(to), { recursive: true }); fs.copyFileSync(from, to); }

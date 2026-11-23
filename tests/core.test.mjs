@@ -49,6 +49,17 @@ test("searchUrl per engine", () => {
   assert.equal(d.searchParams.get("df"), "m");
   const b = new URL(core.searchUrl("x", [], [], { engine: "brave", period: "y" }));
   assert.equal(b.searchParams.get("tf"), "py");
+  const w = new URL(core.searchUrl("x", ["a.com"], [], { engine: "bing", period: "w" }));
+  assert.equal(w.hostname, "www.bing.com");
+  assert.equal(w.searchParams.get("filters"), 'ex1:"ez2"');
+  const now = Date.UTC(2026, 10, 24);
+  const y = new URL(core.searchUrl("x", [], [], { engine: "bing", period: "y", now }));
+  const day = Math.floor(now / 86400000);
+  assert.equal(y.searchParams.get("filters"), 'ex1:"ez5_' + (day - 365) + "_" + day + '"');
+  assert.equal(core.periodKey("bing", 'ex1:"ez3"'), "m");
+  assert.equal(core.periodKey("bing", core.searchUrl("x", [], [], { engine: "bing", period: "y" }).match(/filters=([^&]+)/) && new URL(core.searchUrl("x", [], [], { engine: "bing", period: "y" })).searchParams.get("filters")), "y");
+  assert.equal(core.periodKey("google", "qdr:w"), "w");
+  assert.equal(core.periodKey("google", ""), "");
   const keep = new URLSearchParams("q=old&tbs=qdr:d&hl=ko&start=10");
   const k = new URL(core.searchUrl("old", ["a.com"], [], { engine: "google", keepFrom: keep }));
   assert.equal(k.searchParams.get("tbs"), "qdr:d");
