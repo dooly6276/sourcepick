@@ -1,0 +1,27 @@
+{
+  "id": "kr-edu",
+  "name": {
+    "en": "Korean universities",
+    "ko": "대학"
+  },
+  "mode": "include",
+  "order": 105,
+  "sites": [
+    {
+      "domain": "ac.kr",
+      "name": "국내 대학"
+    },
+    {
+      "domain": "edu",
+      "name": "미국 대학"
+    },
+    {
+      "domain": "ac.uk",
+      "name": "영국 대학"
+    },
+    {
+      "domain": "ac.jp",
+      "name": "일본 대학"
+    }
+  ]
+}

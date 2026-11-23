@@ -1,0 +1,31 @@
+{
+  "id": "kr-used",
+  "name": {
+    "en": "Korean secondhand",
+    "ko": "중고거래"
+  },
+  "mode": "include",
+  "order": 85,
+  "sites": [
+    {
+      "domain": "daangn.com",
+      "name": "당근"
+    },
+    {
+      "domain": "bunjang.co.kr",
+      "name": "번개장터"
+    },
+    {
+      "domain": "web.joongna.com",
+      "name": "중고나라"
+    },
+    {
+      "domain": "cafe.naver.com/joonggonara",
+      "name": "중고나라 카페"
+    },
+    {
+      "domain": "fruitsfamily.com",
+      "name": "후루츠패밀리"
+    }
+  ]
+}

@@ -35,6 +35,14 @@
     {
       "domain": "facebook.com",
       "name": "Facebook"
+    },
+    {
+      "domain": "tumblr.com",
+      "name": "Tumblr"
+    },
+    {
+      "domain": "pinterest.com",
+      "name": "Pinterest"
     }
   ]
 }

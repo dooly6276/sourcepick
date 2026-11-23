@@ -34,6 +34,22 @@
     {
       "domain": "medium.com",
       "name": "Medium"
+    },
+    {
+      "domain": "post.naver.com",
+      "name": "네이버 포스트"
+    },
+    {
+      "domain": "postype.com",
+      "name": "포스타입"
+    },
+    {
+      "domain": "contents.premium.naver.com",
+      "name": "네이버 프리미엄콘텐츠"
+    },
+    {
+      "domain": "maily.so",
+      "name": "메일리"
     }
   ]
 }

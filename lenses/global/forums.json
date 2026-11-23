@@ -35,6 +35,58 @@
     {
       "domain": "lemmy.world",
       "name": "Lemmy"
+    },
+    {
+      "domain": "stackoverflow.com",
+      "name": "Stack Overflow"
+    },
+    {
+      "domain": "superuser.com",
+      "name": "Super User"
+    },
+    {
+      "domain": "resetera.com",
+      "name": "ResetEra"
+    },
+    {
+      "domain": "metafilter.com",
+      "name": "MetaFilter"
+    },
+    {
+      "domain": "slashdot.org",
+      "name": "Slashdot"
+    },
+    {
+      "domain": "steamcommunity.com",
+      "name": "Steam Community"
+    },
+    {
+      "domain": "gamefaqs.gamespot.com",
+      "name": "GameFAQs"
+    },
+    {
+      "domain": "mumsnet.com",
+      "name": "Mumsnet"
+    },
+    {
+      "domain": "head-fi.org",
+      "name": "Head-Fi"
+    },
+    {
+      "domain": "forums.macrumors.com",
+      "name": "MacRumors Forums"
+    },
+    {
+      "domain": "linustechtips.com",
+      "name": "Linus Tech Tips"
+    },
+    {
+      "domain": "avsforum.com",
+      "name": "AVS Forum"
+    },
+    {
+      "domain": "lemmy.ml",
+      "name": "Lemmy.ml"
     }
   ]
 }

@@ -1,0 +1,63 @@
+{
+  "id": "kr-reviews",
+  "name": {
+    "en": "Korean reviews",
+    "ko": "리뷰"
+  },
+  "mode": "include",
+  "order": 90,
+  "sites": [
+    {
+      "domain": "diningcode.com",
+      "name": "다이닝코드"
+    },
+    {
+      "domain": "catchtable.co.kr",
+      "name": "캐치테이블"
+    },
+    {
+      "domain": "siksinhot.com",
+      "name": "식신"
+    },
+    {
+      "domain": "hwahae.co.kr",
+      "name": "화해"
+    },
+    {
+      "domain": "glowpick.com",
+      "name": "글로우픽"
+    },
+    {
+      "domain": "pedia.watcha.com",
+      "name": "왓챠피디아"
+    },
+    {
+      "domain": "kinolights.com",
+      "name": "키노라이츠"
+    },
+    {
+      "domain": "jobplanet.co.kr",
+      "name": "잡플래닛"
+    },
+    {
+      "domain": "modoodoc.com",
+      "name": "모두닥"
+    },
+    {
+      "domain": "tripadvisor.co.kr",
+      "name": "트립어드바이저"
+    },
+    {
+      "domain": "danawa.com",
+      "name": "다나와"
+    },
+    {
+      "domain": "ohou.se",
+      "name": "오늘의집"
+    },
+    {
+      "domain": "goodoc.co.kr",
+      "name": "굿닥"
+    }
+  ]
+}

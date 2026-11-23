@@ -23,6 +23,26 @@
     {
       "domain": "livedoor.blog",
       "name": "ライブドアブログ"
+    },
+    {
+      "domain": "fc2.com",
+      "name": "FC2"
+    },
+    {
+      "domain": "hatenadiary.jp",
+      "name": "はてなダイアリー"
+    },
+    {
+      "domain": "exblog.jp",
+      "name": "エキサイトブログ"
+    },
+    {
+      "domain": "seesaa.net",
+      "name": "Seesaa"
+    },
+    {
+      "domain": "jugem.jp",
+      "name": "JUGEM"
     }
   ]
 }

@@ -31,6 +31,22 @@
     {
       "domain": "b.hatena.ne.jp",
       "name": "はてなブックマーク"
+    },
+    {
+      "domain": "okwave.jp",
+      "name": "OKWAVE"
+    },
+    {
+      "domain": "bbs.kakaku.com",
+      "name": "価格.com 掲示板"
+    },
+    {
+      "domain": "open2ch.net",
+      "name": "おーぷん2ちゃんねる"
+    },
+    {
+      "domain": "bakusai.com",
+      "name": "爆サイ"
     }
   ]
 }

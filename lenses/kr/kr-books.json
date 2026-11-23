@@ -1,0 +1,31 @@
+{
+  "id": "kr-books",
+  "name": {
+    "en": "Korean bookstores",
+    "ko": "서점"
+  },
+  "mode": "include",
+  "order": 150,
+  "sites": [
+    {
+      "domain": "yes24.com",
+      "name": "예스24"
+    },
+    {
+      "domain": "aladin.co.kr",
+      "name": "알라딘"
+    },
+    {
+      "domain": "kyobobook.co.kr",
+      "name": "교보문고"
+    },
+    {
+      "domain": "ridibooks.com",
+      "name": "리디"
+    },
+    {
+      "domain": "millie.co.kr",
+      "name": "밀리의 서재"
+    }
+  ]
+}

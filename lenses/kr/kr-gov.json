@@ -14,6 +14,58 @@
     {
       "domain": "re.kr",
       "name": "연구기관(re.kr)"
+    },
+    {
+      "domain": "korea.kr",
+      "name": "정책브리핑"
+    },
+    {
+      "domain": "kosis.kr",
+      "name": "국가통계포털"
+    },
+    {
+      "domain": "bok.or.kr",
+      "name": "한국은행"
+    },
+    {
+      "domain": "fss.or.kr",
+      "name": "금융감독원"
+    },
+    {
+      "domain": "nhis.or.kr",
+      "name": "국민건강보험공단"
+    },
+    {
+      "domain": "nps.or.kr",
+      "name": "국민연금공단"
+    },
+    {
+      "domain": "hira.or.kr",
+      "name": "건강보험심사평가원"
+    },
+    {
+      "domain": "comwel.or.kr",
+      "name": "근로복지공단"
+    },
+    {
+      "domain": "hrdkorea.or.kr",
+      "name": "한국산업인력공단"
+    },
+    {
+      "domain": "kisa.or.kr",
+      "name": "한국인터넷진흥원"
+    },
+    {
+      "domain": "kotra.or.kr",
+      "name": "KOTRA"
+    },
+    {
+      "domain": "kosha.or.kr",
+      "name": "안전보건공단"
+    },
+    {
+      "domain": "lh.or.kr",
+      "name": "LH"
     }
   ]
 }

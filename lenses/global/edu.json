@@ -15,6 +15,21 @@
     {
       "domain": "ac.uk",
       "name": ".ac.uk"
+    },
+    {
+      "domain": "ac.jp"
+    },
+    {
+      "domain": "edu.au"
+    },
+    {
+      "domain": "mit.edu"
+    },
+    {
+      "domain": "coursera.org"
+    },
+    {
+      "domain": "khanacademy.org"
     }
   ]
 }

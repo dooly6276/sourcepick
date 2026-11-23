@@ -1,0 +1,63 @@
+{
+  "id": "kr-jobs",
+  "name": {
+    "en": "Korean job sites",
+    "ko": "채용"
+  },
+  "mode": "include",
+  "order": 140,
+  "sites": [
+    {
+      "domain": "saramin.co.kr",
+      "name": "사람인"
+    },
+    {
+      "domain": "jobkorea.co.kr",
+      "name": "잡코리아"
+    },
+    {
+      "domain": "wanted.co.kr",
+      "name": "원티드"
+    },
+    {
+      "domain": "jobplanet.co.kr",
+      "name": "잡플래닛"
+    },
+    {
+      "domain": "catch.co.kr",
+      "name": "캐치"
+    },
+    {
+      "domain": "linkareer.com",
+      "name": "링커리어"
+    },
+    {
+      "domain": "incruit.com",
+      "name": "인크루트"
+    },
+    {
+      "domain": "work24.go.kr",
+      "name": "고용24"
+    },
+    {
+      "domain": "albamon.com",
+      "name": "알바몬"
+    },
+    {
+      "domain": "alba.co.kr",
+      "name": "알바천국"
+    },
+    {
+      "domain": "rocketpunch.com",
+      "name": "로켓펀치"
+    },
+    {
+      "domain": "jasoseol.com",
+      "name": "자소설닷컴"
+    },
+    {
+      "domain": "gamejob.co.kr",
+      "name": "게임잡"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "id": "kr-news",
+  "name": {
+    "en": "Korean news",
+    "ko": "언론사"
+  },
+  "mode": "include",
+  "order": 70,
+  "sites": [
+    {
+      "domain": "yna.co.kr",
+      "name": "연합뉴스"
+    },
+    {
+      "domain": "chosun.com",
+      "name": "조선일보"
+    },
+    {
+      "domain": "joongang.co.kr",
+      "name": "중앙일보"
+    },
+    {
+      "domain": "donga.com",
+      "name": "동아일보"
+    },
+    {
+      "domain": "hani.co.kr",
+      "name": "한겨레"
+    },
+    {
+      "domain": "khan.co.kr",
+      "name": "경향신문"
+    },
+    {
+      "domain": "hankookilbo.com",
+      "name": "한국일보"
+    },
+    {
+      "domain": "seoul.co.kr",
+      "name": "서울신문"
+    },
+    {
+      "domain": "mk.co.kr",
+      "name": "매일경제"
+    },
+    {
+      "domain": "hankyung.com",
+      "name": "한국경제"
+    },
+    {
+      "domain": "sedaily.com",
+      "name": "서울경제"
+    },
+    {
+      "domain": "mt.co.kr",
+      "name": "머니투데이"
+    },
+    {
+      "domain": "edaily.co.kr",
+      "name": "이데일리"
+    },
+    {
+      "domain": "news.kbs.co.kr",
+      "name": "KBS"
+    },
+    {
+      "domain": "imnews.imbc.com",
+      "name": "MBC"
+    },
+    {
+      "domain": "news.sbs.co.kr",
+      "name": "SBS"
+    },
+    {
+      "domain": "news.jtbc.co.kr",
+      "name": "JTBC"
+    },
+    {
+      "domain": "ytn.co.kr",
+      "name": "YTN"
+    },
+    {
+      "domain": "newsis.com",
+      "name": "뉴시스"
+    },
+    {
+      "domain": "news1.kr",
+      "name": "뉴스1"
+    },
+    {
+      "domain": "nocutnews.co.kr",
+      "name": "노컷뉴스"
+    },
+    {
+      "domain": "ohmynews.com",
+      "name": "오마이뉴스"
+    },
+    {
+      "domain": "etnews.com",
+      "name": "전자신문"
+    },
+    {
+      "domain": "zdnet.co.kr",
+      "name": "지디넷코리아"
+    },
+    {
+      "domain": "sisain.co.kr",
+      "name": "시사IN"
+    }
+  ]
+}

@@ -35,6 +35,34 @@
     {
       "domain": "worldbank.org",
       "name": "World Bank"
+    },
+    {
+      "domain": "imf.org",
+      "name": "IMF"
+    },
+    {
+      "domain": "wto.org",
+      "name": "WTO"
+    },
+    {
+      "domain": "nih.gov",
+      "name": "NIH"
+    },
+    {
+      "domain": "cdc.gov",
+      "name": "CDC"
+    },
+    {
+      "domain": "gc.ca",
+      "name": "Canada"
+    },
+    {
+      "domain": "gov.au",
+      "name": "Australia"
+    },
+    {
+      "domain": "go.jp",
+      "name": "Japan"
     }
   ]
 }

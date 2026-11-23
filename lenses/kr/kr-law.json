@@ -22,6 +22,34 @@
     {
       "domain": "klac.or.kr",
       "name": "대한법률구조공단"
+    },
+    {
+      "domain": "scourt.go.kr",
+      "name": "대법원"
+    },
+    {
+      "domain": "ccourt.go.kr",
+      "name": "헌법재판소"
+    },
+    {
+      "domain": "moleg.go.kr",
+      "name": "법제처"
+    },
+    {
+      "domain": "lbox.kr",
+      "name": "엘박스"
+    },
+    {
+      "domain": "lawnb.com",
+      "name": "로앤비"
+    },
+    {
+      "domain": "lawtimes.co.kr",
+      "name": "법률신문"
+    },
+    {
+      "domain": "koreanbar.or.kr",
+      "name": "대한변호사협회"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "id": "kr-qna",
   "name": {
-    "en": "Naver KnowledgeiN",
-    "ko": "지식iN"
+    "en": "Korean Q&A",
+    "ko": "질문과 답변"
   },
   "mode": "include",
   "order": 50,
@@ -10,6 +10,10 @@
     {
       "domain": "kin.naver.com",
       "name": "네이버 지식iN"
+    },
+    {
+      "domain": "a-ha.io",
+      "name": "아하"
     }
   ]
 }

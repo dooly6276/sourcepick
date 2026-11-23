@@ -1,0 +1,111 @@
+{
+  "id": "kr-shop",
+  "name": {
+    "en": "Korean shopping",
+    "ko": "쇼핑몰"
+  },
+  "mode": "include",
+  "order": 80,
+  "sites": [
+    {
+      "domain": "danawa.com",
+      "name": "다나와"
+    },
+    {
+      "domain": "enuri.com",
+      "name": "에누리"
+    },
+    {
+      "domain": "coupang.com",
+      "name": "쿠팡"
+    },
+    {
+      "domain": "shopping.naver.com",
+      "name": "네이버쇼핑"
+    },
+    {
+      "domain": "smartstore.naver.com",
+      "name": "스마트스토어"
+    },
+    {
+      "domain": "11st.co.kr",
+      "name": "11번가"
+    },
+    {
+      "domain": "gmarket.co.kr",
+      "name": "G마켓"
+    },
+    {
+      "domain": "auction.co.kr",
+      "name": "옥션"
+    },
+    {
+      "domain": "ssg.com",
+      "name": "SSG.COM"
+    },
+    {
+      "domain": "lotteon.com",
+      "name": "롯데온"
+    },
+    {
+      "domain": "kurly.com",
+      "name": "컬리"
+    },
+    {
+      "domain": "musinsa.com",
+      "name": "무신사"
+    },
+    {
+      "domain": "oliveyoung.co.kr",
+      "name": "올리브영"
+    },
+    {
+      "domain": "ohou.se",
+      "name": "오늘의집"
+    },
+    {
+      "domain": "29cm.co.kr",
+      "name": "29CM"
+    },
+    {
+      "domain": "e-himart.co.kr",
+      "name": "하이마트"
+    },
+    {
+      "domain": "a-bly.com",
+      "name": "에이블리"
+    },
+    {
+      "domain": "zigzag.kr",
+      "name": "지그재그"
+    },
+    {
+      "domain": "kream.co.kr",
+      "name": "KREAM"
+    },
+    {
+      "domain": "aliexpress.com",
+      "name": "알리익스프레스"
+    },
+    {
+      "domain": "gsshop.com",
+      "name": "GS SHOP"
+    },
+    {
+      "domain": "cjonstyle.com",
+      "name": "CJ온스타일"
+    },
+    {
+      "domain": "hmall.com",
+      "name": "현대Hmall"
+    },
+    {
+      "domain": "homeplus.co.kr",
+      "name": "홈플러스"
+    },
+    {
+      "domain": "idus.com",
+      "name": "아이디어스"
+    }
+  ]
+}

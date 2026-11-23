@@ -23,6 +23,22 @@
     {
       "domain": "figma.com/community",
       "name": "Figma Community"
+    },
+    {
+      "domain": "mobbin.com",
+      "name": "Mobbin"
+    },
+    {
+      "domain": "land-book.com",
+      "name": "Land-book"
+    },
+    {
+      "domain": "siteinspire.com",
+      "name": "Siteinspire"
+    },
+    {
+      "domain": "designspiration.com",
+      "name": "Designspiration"
     }
   ]
 }

@@ -23,6 +23,26 @@
     {
       "domain": "wikivoyage.org",
       "name": "Wikivoyage"
+    },
+    {
+      "domain": "wiktionary.org",
+      "name": "Wiktionary"
+    },
+    {
+      "domain": "wikibooks.org",
+      "name": "Wikibooks"
+    },
+    {
+      "domain": "wikisource.org",
+      "name": "Wikisource"
+    },
+    {
+      "domain": "britannica.com",
+      "name": "Britannica"
+    },
+    {
+      "domain": "wikidata.org",
+      "name": "Wikidata"
     }
   ]
 }

@@ -23,6 +23,26 @@
     {
       "domain": "dailymotion.com",
       "name": "Dailymotion"
+    },
+    {
+      "domain": "twitch.tv",
+      "name": "Twitch"
+    },
+    {
+      "domain": "bilibili.com",
+      "name": "Bilibili"
+    },
+    {
+      "domain": "nicovideo.jp",
+      "name": "Niconico"
+    },
+    {
+      "domain": "ted.com",
+      "name": "TED"
+    },
+    {
+      "domain": "rumble.com",
+      "name": "Rumble"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "id": "kr-wiki",
   "name": {
-    "en": "Korean wikis",
-    "ko": "위키"
+    "en": "Korean wikis and encyclopedias",
+    "ko": "위키와 백과사전"
   },
   "mode": "include",
   "order": 120,
@@ -14,6 +14,42 @@
     {
       "domain": "ko.wikipedia.org",
       "name": "위키백과"
+    },
+    {
+      "domain": "terms.naver.com",
+      "name": "네이버 지식백과"
+    },
+    {
+      "domain": "100.daum.net",
+      "name": "다음백과"
+    },
+    {
+      "domain": "encykorea.aks.ac.kr",
+      "name": "한국민족문화대백과"
+    },
+    {
+      "domain": "doopedia.co.kr",
+      "name": "두산백과"
+    },
+    {
+      "domain": "librewiki.net",
+      "name": "리브레 위키"
+    },
+    {
+      "domain": "ko.wikibooks.org",
+      "name": "위키책"
+    },
+    {
+      "domain": "ko.wiktionary.org",
+      "name": "위키낱말사전"
+    },
+    {
+      "domain": "ko.wikisource.org",
+      "name": "위키문헌"
+    },
+    {
+      "domain": "wiki.hash.kr",
+      "name": "해시넷"
     }
   ]
 }

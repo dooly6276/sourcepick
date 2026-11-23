@@ -26,6 +26,18 @@
     {
       "domain": "earticle.net",
       "name": "earticle"
+    },
+    {
+      "domain": "kiss.kstudy.com",
+      "name": "KISS"
+    },
+    {
+      "domain": "koreascience.kr",
+      "name": "KoreaScience"
+    },
+    {
+      "domain": "scholar.kyobobook.co.kr",
+      "name": "교보문고 스콜라"
     }
   ]
 }

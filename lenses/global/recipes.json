@@ -31,6 +31,18 @@
     {
       "domain": "cooking.nytimes.com",
       "name": "NYT Cooking"
+    },
+    {
+      "domain": "bonappetit.com",
+      "name": "Bon Appétit"
+    },
+    {
+      "domain": "simplyrecipes.com",
+      "name": "Simply Recipes"
+    },
+    {
+      "domain": "kingarthurbaking.com",
+      "name": "King Arthur Baking"
     }
   ]
 }

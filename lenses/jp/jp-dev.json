@@ -19,6 +19,18 @@
     {
       "domain": "teratail.com",
       "name": "teratail"
+    },
+    {
+      "domain": "atmarkit.itmedia.co.jp",
+      "name": "@IT"
+    },
+    {
+      "domain": "codezine.jp",
+      "name": "CodeZine"
+    },
+    {
+      "domain": "gihyo.jp",
+      "name": "gihyo.jp"
     }
   ]
 }

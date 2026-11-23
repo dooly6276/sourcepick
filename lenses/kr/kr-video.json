@@ -1,0 +1,51 @@
+{
+  "id": "kr-video",
+  "name": {
+    "en": "Video (Korea)",
+    "ko": "동영상"
+  },
+  "mode": "include",
+  "order": 60,
+  "sites": [
+    {
+      "domain": "youtube.com",
+      "name": "유튜브"
+    },
+    {
+      "domain": "tv.naver.com",
+      "name": "네이버TV"
+    },
+    {
+      "domain": "chzzk.naver.com",
+      "name": "치지직"
+    },
+    {
+      "domain": "sooplive.co.kr",
+      "name": "SOOP"
+    },
+    {
+      "domain": "tv.kakao.com",
+      "name": "카카오TV"
+    },
+    {
+      "domain": "tiktok.com",
+      "name": "틱톡"
+    },
+    {
+      "domain": "twitch.tv",
+      "name": "트위치"
+    },
+    {
+      "domain": "vimeo.com",
+      "name": "비메오"
+    },
+    {
+      "domain": "bilibili.com",
+      "name": "빌리빌리"
+    },
+    {
+      "domain": "ted.com",
+      "name": "TED"
+    }
+  ]
+}
