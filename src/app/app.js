@@ -211,14 +211,20 @@
     active.forEach(function (l) {
       var ul = el("ul", { class: "site-rows" });
       l.sites.forEach(function (s) {
-        var input = el("input", { type: "checkbox" });
+        var input = el("input", { type: "checkbox", "data-domain": s.domain });
         input.checked = state.off.indexOf(s.domain) < 0;
         input.addEventListener("change", function () { toggleOff(s.domain, !input.checked); });
         ul.appendChild(el("li", null, [el("label", { class: "site-row" }, [
           input, el("span", { class: "site-name", text: s.name || s.domain }), s.name ? el("span", { class: "site-domain", text: s.domain }) : null,
         ])]));
       });
-      box.appendChild(el("div", { class: "list-group" }, [el("h3", { class: "list-head", text: name(l) }), ul]));
+      var on = l.sites.filter(function (s) { return state.off.indexOf(s.domain) < 0; }).length;
+      var head = el("div", { class: "list-head" }, [
+        el("h3", { text: name(l) }),
+        el("span", { class: "list-count", text: on + "/" + l.sites.length }),
+        on < l.sites.length ? el("button", { type: "button", class: "btn-text", text: t("selectAll"), onclick: function () { turnOnAll(l); } }) : null,
+      ]);
+      box.appendChild(el("div", { class: "list-group" }, [head, ul]));
     });
     if (state.extra.length) {
       var ul2 = el("ul", { class: "site-rows" });
@@ -237,7 +243,31 @@
     if (off && i < 0) state.off.push(domain);
     if (!off && i >= 0) state.off.splice(i, 1);
     persist();
-    renderSummary(); renderPerSite();
+    renderEditor(); renderSummary(); renderPerSite();
+    // Redrawing the list drops focus; put it back on the same box for keyboard users.
+    var box = document.querySelector('#site-list input[data-domain="' + domain + '"]');
+    if (box) box.focus({ preventScroll: true });
+  }
+
+  function turnOnAll(l) {
+    var ds = core.lensDomains(l);
+    state.off = state.off.filter(function (d) { return ds.indexOf(d) < 0; });
+    persist();
+    renderEditor(); renderSummary(); renderPerSite();
+  }
+
+  // Shares the sites in use right now as one source; the person who opens the link can add it.
+  function shareSelection() {
+    var c = current();
+    if (!c.include.length) { showMsg("share-done", t("needSites")); return; }
+    var picked = state.active.map(byId).filter(function (l) { return l && l.mode === "include"; }).map(name);
+    var nm = $("save-lens-name").value.trim() || picked.join(", ").slice(0, 30) || t("addedSites");
+    var url = shareUrl({ name: nm, mode: "include", sites: c.include.map(function (d) { return { domain: d }; }) });
+    if (navigator.share && window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
+      navigator.share({ title: nm, url: url }).catch(function () { /* closed the share sheet */ });
+      return;
+    }
+    copyText(url, function () { flash("share-done", t("selectionCopied")); });
   }
 
   function removeExtra(d) {
@@ -562,6 +592,8 @@
       persist();
       renderMain();
     });
+
+    $("share-selection").addEventListener("click", shareSelection);
 
     $("forums").addEventListener("change", function () {
       state.forums = this.checked; persist(); renderOptions(); renderPerSite(); applyTab();

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Edit sites shows how many sites of each source are on, with Select all to turn them back on, and Share selected sites copies a link that adds the sites in use as a source.
+- Korean sources gain Exclude blogs and Exclude Namuwiki, which replace Exclude Pinterest in the Korean defaults. The add-site example is danawa.com.
 - The extension's settings page and popup no longer log a Content Security Policy error in Chrome. Links shared from the extension now point to the web app instead of a chrome-extension:// address, and the install guide link shows again.
 
 ## 0.3.1
