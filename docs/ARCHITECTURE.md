@@ -23,6 +23,10 @@ query site:a.com OR site:b.com -site:c.com
 
 Everything reads state back from the query itself: the results-page bar parses `site:` and `-site:` from the URL (`core.parseFilters`, `core.lensState`), so a results URL is always the full truth and can be bookmarked or shared.
 
+## Popup over a results page
+
+When the toolbar popup opens over a Google, DuckDuckGo or Brave results tab, it asks the content script for that page (`sourcepick:page` message: engine, query, URL parameters). The search box then holds the page's words, the source buttons show the sources applied there, and any change searches that tab again with `chrome.tabs.update`. No extra permission is needed: the content script only runs on results pages, so the message fails quietly everywhere else and the popup opens new tabs as before.
+
 ## Engine limits
 
 Search engines silently ignore words past a limit, and some refuse long queries outright. `core.ENGINES[...]` holds what we measured in November 2026:

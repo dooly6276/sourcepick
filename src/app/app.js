@@ -91,8 +91,9 @@
         type: "button",
         class: "lens-btn" + (on ? " is-on" : ""),
         "aria-pressed": on ? "true" : "false",
+        title: t("tileTitle", l.sites.length),
         onclick: function (e) { pick(l.id, e.ctrlKey || e.metaKey || e.shiftKey); },
-      }, [el("span", { class: "lens-name", text: name(l) }), el("span", { class: "lens-num", text: String(l.sites.length) })]));
+      }, [el("span", { class: "lens-name", text: name(l) })]));
     });
     if (!box.children.length) box.appendChild(el("p", { class: "desc", text: t("noShown") }));
     box.appendChild(el("a", { href: "#new", class: "lens-btn lens-add", onclick: openNew }, [el("span", { class: "lens-name", text: t("newLensTile") })]));
@@ -112,9 +113,66 @@
     }
     persist();
     renderMain();
+    applyTab();
   }
 
   function toggleActive(id) { pick(id, true); }
+
+  // ---------- current tab (extension popup) ----------
+  // Opened over a Google, DuckDuckGo or Brave results page, the popup works on that page: the
+  // search box holds its words, the buttons show its sources, and changes search that tab again.
+  var tab = null;
+
+  function connectTab(done) {
+    if (!isPopup || !chrome.tabs || !chrome.tabs.query) { done(); return; }
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      var cur = !chrome.runtime.lastError && tabs && tabs[0];
+      if (!cur) { done(); return; }
+      chrome.tabs.sendMessage(cur.id, { type: "sourcepick:page" }, function (r) {
+        if (chrome.runtime.lastError || !r || !core.ENGINES[r.engine]) { done(); return; }
+        tab = { id: cur.id, engine: r.engine, keep: new URLSearchParams(r.search || "") };
+        mirrorPage(r.query || "");
+        done();
+      });
+    });
+  }
+
+  function mirrorPage(q) {
+    var eng = core.ENGINES[tab.engine];
+    var f = core.parseFilters(q);
+    var covered = [];
+    state.engine = tab.engine;
+    var pv = tab.keep.get(eng.period.param);
+    state.period = Object.keys(eng.period.values).filter(function (k) { return eng.period.values[k] === pv; })[0] || "";
+    if (eng.forums) state.forums = tab.keep.get(eng.forums.param) === eng.forums.value;
+    state.active = shownLenses().filter(function (l) {
+      var on = core.lensState(q, l, tab.engine) !== "none";
+      if (on) covered = covered.concat(core.lensDomains(l));
+      return on;
+    }).map(function (l) { return l.id; });
+    state.off = [];
+    state.extra = f.include.filter(function (d) { return covered.indexOf(d) < 0; });
+    $("q").value = core.stripFilters(q);
+    var note = $("tab-note");
+    note.textContent = t("tabNote", eng.name);
+    note.hidden = false;
+  }
+
+  function applyTab() {
+    if (!tab) return false;
+    var q = $("q").value.trim();
+    if (!q) return false;
+    var c = current();
+    var url = core.searchUrl(q, c.include, c.exclude, {
+      engine: state.engine, period: state.period, forums: opts().forums,
+      keepFrom: state.engine === tab.engine ? tab.keep : null,
+    });
+    chrome.tabs.update(tab.id, { url: url });
+    tab.engine = state.engine;
+    tab.keep = new URL(url).searchParams;
+    $("tab-note").textContent = t("tabNote", core.ENGINES[state.engine].name);
+    return true;
+  }
 
   function openNew(e) {
     if (isPopup) {
@@ -201,10 +259,10 @@
 
   function renderOptions() {
     renderSegmented("engine", Object.keys(core.ENGINES).map(function (k) { return [k, core.ENGINES[k].name]; }), state.engine, function (v) {
-      state.engine = v; persist(); renderOptions(); renderPerSite(); renderLimit();
+      state.engine = v; persist(); renderOptions(); renderPerSite(); renderLimit(); applyTab();
     });
     renderSegmented("period", core.PERIODS.map(function (p) { return [p, t("period_" + (p || "all"))]; }), state.period, function (v) {
-      state.period = v; persist(); renderPerSite();
+      state.period = v; persist(); renderOptions(); renderPerSite(); applyTab();
     });
     var box = $("exclude-list");
     box.textContent = "";
@@ -220,6 +278,12 @@
     });
     $("forums-row").hidden = state.engine !== "google";
     $("forums").checked = state.forums;
+    $("multi").checked = state.multi;
+    var bits = [core.ENGINES[state.engine].name, t("period_" + (state.period || "all"))];
+    if (state.engine === "google" && state.forums) bits.push(t("forumsShort"));
+    var ex = shownLenses("exclude").filter(function (l) { return state.active.indexOf(l.id) >= 0; }).length;
+    if (ex) bits.push(t("excludeShort", ex));
+    $("opt-summary").textContent = bits.join(", ");
   }
 
   function renderPerSite() {
@@ -440,6 +504,7 @@
       // engine. Falls back to the old way when the selection could not be saved.
       if (!isExt && isPhone && savedMatches()) { $("q").value = q; return; }
       e.preventDefault();
+      if (applyTab()) return;
       var c = current();
       openUrl(core.searchUrl(q, c.include, c.exclude, opts()));
     });
@@ -451,6 +516,7 @@
       state.extra = [];
       persist();
       renderMain();
+      applyTab();
     });
 
     $("open-manage").addEventListener("click", function (e) {
@@ -498,7 +564,7 @@
     });
 
     $("forums").addEventListener("change", function () {
-      state.forums = this.checked; persist(); renderPerSite();
+      state.forums = this.checked; persist(); renderOptions(); renderPerSite(); applyTab();
     });
 
     $("engine-url").textContent = engineUrl();
@@ -611,7 +677,7 @@
     state.shown = state.shown.filter(function (id) { return ids.indexOf(id) >= 0; });
     state.active = state.active.filter(function (id) { return ids.indexOf(id) >= 0; });
     bind();
-    route();
+    connectTab(route);
     if (!isPopup && !pendingImport && $("view-manage").hidden && matchMedia("(min-width: 700px)").matches) $("q").focus();
     if (isPopup) $("q").focus();
   });

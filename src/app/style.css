@@ -52,6 +52,8 @@ body {
 
 .top h1 { margin: 0; font-size: 26px; letter-spacing: -0.02em; }
 .lead { margin: 4px 0 0; color: var(--muted); }
+.top-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.top-row .btn-text { margin-right: -6px; }
 .top.with-back { display: flex; flex-direction: column; align-items: flex-start; }
 .top .back { margin-left: -4px; }
 
@@ -101,26 +103,31 @@ button:focus-visible, a:focus-visible, summary:focus-visible, .seg input:focus-v
 .card p { margin: 0 0 12px; }
 .card-actions, .row-actions { display: flex; gap: 8px; }
 
-.lens-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; }
+.lens-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .lens-btn {
-  display: flex; align-items: center; justify-content: space-between; gap: 6px;
-  min-height: 48px; padding: 6px 12px; text-align: left;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 44px; padding: 6px 14px; text-align: center;
   color: var(--text); background: var(--bg);
   border: 1px solid var(--line); border-radius: var(--radius);
 }
 .lens-btn .lens-name { min-width: 0; font-weight: 500; line-height: 1.3; word-break: keep-all; overflow-wrap: break-word; }
-.lens-btn .lens-num { flex: none; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
-@media (max-width: 380px) { .lens-btn { padding: 6px 9px; gap: 4px; } }
+.lens-btn:hover { border-color: var(--accent); }
+@media (max-width: 380px) { .lens-btn { padding: 6px 12px; } }
 :lang(ja) .lens-btn .lens-name { word-break: normal; line-break: strict; }
 .lens-btn.lens-add { white-space: nowrap; justify-content: center; color: var(--accent); border-style: dashed; text-decoration: none; }
 .lens-btn.is-on { color: var(--accent-text); background: var(--accent); border-color: var(--accent); }
-.lens-btn.is-on .lens-num { color: inherit; opacity: 0.8; }
+.lens-btn.is-on .lens-name { font-weight: 700; }
 
 .summary {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
   margin-top: 6px; color: var(--muted); font-size: 15px;
 }
-.summary .btn-text { margin-right: -6px; }
+.summary-actions { display: flex; gap: 2px; margin-right: -6px; }
+.tab-note { margin: 0; color: var(--muted); font-size: 14px; }
+.opt-fold summary { gap: 10px; }
+.opt-fold summary h2 { flex: none; margin: 0; }
+.opt-fold summary .muted { min-width: 0; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.opt-fold .fold-body { padding-top: 2px; }
 
 .editor { margin-top: 8px; padding: 4px 16px 16px; background: var(--surface); border-radius: var(--radius); }
 .list-group + .list-group { border-top: 1px solid var(--line); }
@@ -183,7 +190,6 @@ label.site-row { cursor: pointer; }
 .desc.tight { margin: 2px 0 0; font-size: 14px; }
 body.popup #per-site .desc { display: none; }
 .note { margin: 8px 0 0; padding: 10px 12px; font-size: 14px; line-height: 1.5; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
-#multi-row { margin-top: 2px; font-size: 15px; color: var(--muted); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
 .chip {
   display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
@@ -230,4 +236,15 @@ body.popup .wrap { padding: 16px 16px 20px; }
 body.popup .top h1 { font-size: 20px; }
 body.popup .lead, body.popup .more { display: none !important; }
 body.popup .search { margin-top: 12px; }
-body.popup .block { margin-top: 20px; }
+body.popup .block { margin-top: 16px; }
+body.popup .block h2 { font-size: 16px; margin-bottom: 8px; }
+body.popup .lens-btn { min-height: 40px; padding: 4px 12px; font-size: 15px; }
+body.popup .summary { font-size: 14px; }
+body.popup .summary .btn-text, body.popup .top-row .btn-text { min-height: 36px; font-size: 14px; }
+body.popup .opt-fold summary { min-height: 44px; }
+body.popup .seg span { min-height: 38px; font-size: 14px; }
+body.popup .check { min-height: 36px; font-size: 14px; }
+body.popup .chip { min-height: 36px; padding: 0 12px; font-size: 14px; }
+body.popup #per-site h2 { margin-bottom: 6px; }
+body.popup #per-site-list { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+body.popup #per-site-list .chip { white-space: nowrap; }

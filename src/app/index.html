@@ -20,7 +20,10 @@
   <main class="wrap">
     <div id="view-main">
       <header class="top">
-        <h1 data-t="appName"></h1>
+        <div class="top-row">
+          <h1 data-t="appName"></h1>
+          <a href="#manage" id="open-manage" class="btn-text" data-t="manage"></a>
+        </div>
         <p class="lead" data-t="lead"></p>
       </header>
 
@@ -38,24 +41,18 @@
         <input id="q" name="q" type="search" enterkeyhint="search" data-t-placeholder="queryPlaceholder">
         <button type="submit" class="btn-primary" data-t="search"></button>
       </form>
+      <p id="tab-note" class="tab-note" hidden></p>
 
       <section class="block" aria-labelledby="h-source">
-        <div class="block-head">
-          <h2 id="h-source" data-t="sources"></h2>
-          <div class="head-actions">
-            <button type="button" id="clear" class="btn-text" data-t="clear"></button>
-            <a href="#manage" id="open-manage" class="btn-text" data-t="manage"></a>
-          </div>
-        </div>
+        <h2 id="h-source" data-t="sources"></h2>
         <div id="lens-grid" class="lens-grid"></div>
         <div class="summary">
           <span id="site-count"></span>
-          <button type="button" id="edit-toggle" class="btn-text" aria-expanded="false" aria-controls="editor" data-t="editSites"></button>
+          <span class="summary-actions">
+            <button type="button" id="clear" class="btn-text" data-t="clear"></button>
+            <button type="button" id="edit-toggle" class="btn-text" aria-expanded="false" aria-controls="editor" data-t="editSites"></button>
+          </span>
         </div>
-        <label class="check" id="multi-row">
-          <input type="checkbox" id="multi">
-          <span data-t="multiPick"></span>
-        </label>
         <p id="limit-note" class="note" role="status" hidden></p>
 
         <div id="editor" class="editor" hidden>
@@ -82,19 +79,27 @@
         <ul id="per-site-list" class="chips"></ul>
       </section>
 
-      <section class="block" aria-labelledby="h-options">
-        <h2 id="h-options" data-t="options"></h2>
-        <fieldset class="segmented cols-3" id="engine">
-          <legend class="sr-only" data-t="engine"></legend>
-        </fieldset>
-        <fieldset class="segmented cols-5" id="period">
-          <legend class="sr-only" data-t="period"></legend>
-        </fieldset>
-        <label class="check" id="forums-row">
-          <input type="checkbox" id="forums">
-          <span data-t="googleForums"></span>
-        </label>
-        <div id="exclude-list"></div>
+      <section class="block">
+        <details class="fold opt-fold" id="opt-fold">
+          <summary><h2 data-t="options"></h2><span id="opt-summary" class="muted"></span></summary>
+          <div class="fold-body">
+            <fieldset class="segmented cols-3" id="engine">
+              <legend class="sr-only" data-t="engine"></legend>
+            </fieldset>
+            <fieldset class="segmented cols-5" id="period">
+              <legend class="sr-only" data-t="period"></legend>
+            </fieldset>
+            <label class="check" id="forums-row">
+              <input type="checkbox" id="forums">
+              <span data-t="googleForums"></span>
+            </label>
+            <label class="check" id="multi-row">
+              <input type="checkbox" id="multi">
+              <span data-t="multiPick"></span>
+            </label>
+            <div id="exclude-list"></div>
+          </div>
+        </details>
       </section>
 
       <section class="block more" aria-labelledby="h-more">

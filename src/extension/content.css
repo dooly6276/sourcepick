@@ -2,7 +2,7 @@
   box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
   margin: 8px 0 6px;
   padding-right: 16px;
@@ -11,11 +11,12 @@
   line-height: 1;
   clear: both;
 }
-#sourcepick-bar .sp-label { flex: none; margin-right: 4px; color: #4d5156; font-weight: 700; }
+#sourcepick-bar .sp-label { flex: none; height: 32px; display: inline-flex; align-items: center; margin: 2px 4px 0 0; color: #4d5156; font-weight: 700; }
 #sourcepick-bar .sp-scroll {
-  display: flex; align-items: center; gap: 6px; min-width: 0; flex: 0 1 auto;
-  overflow-x: auto; scrollbar-width: thin; padding: 2px 0;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; flex: 0 1 auto;
+  padding: 2px 0;
 }
+#sourcepick-bar .sp-scroll.sp-fold { max-height: 36px; overflow: hidden; }
 #sourcepick-bar .sp-note { align-self: center; padding: 0 6px; color: #70757a; font-size: 13px; white-space: nowrap; }
 #sourcepick-bar button {
   box-sizing: border-box;
@@ -31,9 +32,9 @@
   white-space: nowrap;
 }
 #sourcepick-bar button:hover { background: #f1f3f4; }
-#sourcepick-bar button[aria-pressed="true"] { color: #fff; background: #1f4fd8; border-color: #1f4fd8; }
+#sourcepick-bar button[aria-pressed="true"] { color: #fff; background: #1f4fd8; border-color: #1f4fd8; font-weight: 700; }
 #sourcepick-bar .sp-sep { flex: none; width: 1px; height: 20px; margin: 0 4px; background: #dadce0; }
-#sourcepick-bar .sp-tail { flex: none; display: inline-flex; align-items: center; gap: 2px; margin-left: 2px; }
+#sourcepick-bar .sp-tail { flex: none; display: inline-flex; align-items: center; gap: 2px; height: 32px; margin: 2px 0 0 2px; }
 #sourcepick-bar button.sp-link { padding: 0 8px; color: #1f4fd8; background: none; border-color: transparent; }
 #sourcepick-bar button.sp-link:hover { text-decoration: underline; background: none; }
 
@@ -47,7 +48,9 @@
 
 /* Touch screens (Firefox for Android): larger buttons, row scrolls sideways under the finger. */
 @media (pointer: coarse) {
-  #sourcepick-bar { padding-left: 12px; margin: 6px 0; }
+  #sourcepick-bar { padding-left: 12px; margin: 6px 0; align-items: center; }
+  #sourcepick-bar .sp-scroll { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  #sourcepick-bar .sp-tail { height: auto; margin-top: 0; }
   #sourcepick-bar button { height: 44px; padding: 0 14px; font-size: 15px; }
   #sourcepick-bar .sp-label { display: none; }
 }

@@ -41,6 +41,7 @@
 
   var state = null;
   var bar = null;
+  var expanded = false;
   var lastUrl = "";
 
   function query() { return new URL(location.href).searchParams.get("q") || ""; }
@@ -116,7 +117,9 @@
         var st = core.lensState(q, l, ENGINE);
         var on = st !== "none";
         if (st === "part") partial = { lens: l, applied: core.lensDomains(l).filter(function (d) { return f.include.indexOf(d) >= 0 || f.exclude.indexOf(d) >= 0; }).length };
-        scroll.appendChild(button(core.lensName(l, i18n.lensLang), on, function (e) { toggle(l, on, e.ctrlKey || e.metaKey || e.shiftKey); }));
+        var btn = button(core.lensName(l, i18n.lensLang), on, function (e) { toggle(l, on, e.ctrlKey || e.metaKey || e.shiftKey); });
+        btn.title = i18n.t("tileTitle", l.sites.length);
+        scroll.appendChild(btn);
       });
     });
 
@@ -139,8 +142,11 @@
 
   function align(place) {
     if (!bar || !place.alignTo) return;
-    var left = place.alignTo.getBoundingClientRect().left - bar.parentElement.getBoundingClientRect().left;
-    bar.style.paddingLeft = Math.max(12, Math.round(left)) + "px";
+    var box = place.alignTo.getBoundingClientRect();
+    var left = Math.max(12, Math.round(box.left - bar.parentElement.getBoundingClientRect().left));
+    bar.style.paddingLeft = left + "px";
+    // Wrap within the results column instead of running past it.
+    if (box.width > 300) bar.style.maxWidth = (left + Math.round(box.width) + 16) + "px";
   }
 
   function render() {
@@ -156,9 +162,29 @@
     align(place);
     window.onresize = function () { align(place); };
     // Keep the chosen source in view when the row scrolls sideways.
+    fold();
     var on = bar.querySelector('.sp-scroll button[aria-pressed="true"]');
     var row = bar.querySelector(".sp-scroll");
     if (on && row && on.offsetLeft + on.offsetWidth > row.clientWidth) row.scrollLeft = on.offsetLeft - 8;
+  }
+
+  // With a mouse the row shows one line of sources and a button for the rest, so the bar does not
+  // push the results down. A chosen source on a later line keeps the row open. Touch screens scroll.
+  function fold() {
+    if (matchMedia("(pointer: coarse)").matches) return;
+    var row = bar.querySelector(".sp-scroll");
+    var btns = Array.prototype.slice.call(row.querySelectorAll("button"));
+    if (!btns.length) return;
+    var top0 = btns[0].offsetTop;
+    var later = btns.filter(function (b) { return b.offsetTop > top0 + 4; });
+    if (!later.length) return;
+    var open = expanded || later.some(function (b) { return b.getAttribute("aria-pressed") === "true"; });
+    if (!open) row.classList.add("sp-fold");
+    var tail = bar.querySelector(".sp-tail");
+    tail.insertBefore(button(open ? i18n.t("barLess") : i18n.t("barMore", later.length), null, function () {
+      expanded = !open;
+      render();
+    }, "sp-link"), tail.firstChild);
   }
 
   // Result pages that load results after the first paint (DuckDuckGo) or change the URL without a
@@ -178,4 +204,11 @@
     }, 500);
   });
   store.onChange(function (s) { state = s; render(); });
+
+  // The toolbar popup asks which results page is open so it can show and change its sources.
+  try {
+    chrome.runtime.onMessage.addListener(function (msg, sender, reply) {
+      if (msg && msg.type === "sourcepick:page") reply({ engine: ENGINE, query: query(), search: location.search });
+    });
+  } catch (e) { /* no extension messaging on this page */ }
 })();
