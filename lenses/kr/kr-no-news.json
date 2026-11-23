@@ -2,7 +2,7 @@
   "id": "kr-no-news",
   "name": {
     "en": "No Korean news",
-    "ko": "국내 언론사 제외"
+    "ko": "언론사 제외"
   },
   "mode": "exclude",
   "order": 900,

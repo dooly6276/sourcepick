@@ -9,7 +9,7 @@
   var DEFAULTS = {
     ko: {
       shown: ["kr-community", "kr-blog", "kr-qna", "video", "kr-wiki", "forums", "kr-papers", "kr-gov", "kr-law",
-        "kr-no-news", "no-pinterest"],
+        "kr-no-blog", "kr-no-news", "kr-no-namu"],
       active: ["kr-community"],
     },
     ja: {

@@ -14,7 +14,7 @@ Search engines bury forum threads, first-hand reviews and primary sources under 
 
 - **One click on the results page.** The extension adds a row of source buttons to Google, DuckDuckGo and Brave Search. A click switches to that source; hold Ctrl or Shift (or turn on *Choose several sources*) to combine them. On a whole-web search you can turn on exclusions such as *No Pinterest*.
 - **Search one site at a time.** When several sites are searched together, one big site can fill the page. Each site in the selection is one tap away.
-- **35 built-in sources** for worldwide, Korean and Japanese sites, kept as plain JSON files that anyone can improve.
+- **32 built-in sources** for worldwide, Korean and Japanese sites, kept as plain JSON files that anyone can improve.
 - **Your own sources.** Make a source from any list of domains or URL paths (`reddit.com/r/BuyItForLife` works) and share it as a link.
 - **Works on phones too.** Add the web app to your home screen, then share selected text from any Android app to search it with your sources. Tested on Samsung Internet and Chrome for Android.
 - **Address bar.** Type `sp` and a space in the address bar (extension), or make the web app your search engine in a desktop browser or Chrome for Android. Either way it follows the sources you selected last.
@@ -58,7 +58,7 @@ Search engines ignore the end of a long query without saying so. In our November
 | Region | Sources |
 |---|---|
 | Worldwide | Forums, Reddit, Developers, Official docs, Papers, Video, Social, Product reviews, Wikis, Blogs & newsletters, Open source, Travel, Recipes, Design, Government & public, Universities, No Pinterest, No major news |
-| Korea | Communities (25 sites, including Blind and Daum cafes), Blogs, KnowledgeiN, Papers, Government, Law, Wikis, Recipes, No Korean news |
+| Korea | Communities (25 sites, including Blind and Daum cafes), Blogs, KnowledgeiN, Papers, Government, Law, Wikis, Recipes, No Korean blogs, No Korean news, No Namuwiki |
 | Japan | Forums, Blogs, Developers |
 
 Each one is a file in [`lenses/`](lenses). Missing a great site, or a whole country? See [CONTRIBUTING.md](CONTRIBUTING.md). It takes a JSON file and a pull request, or just [an issue](https://github.com/dooly6276/sourcepick/issues/new?template=new_source.yml) with the sites.

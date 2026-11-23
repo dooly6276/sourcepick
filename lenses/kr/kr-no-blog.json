@@ -1,0 +1,27 @@
+{
+  "id": "kr-no-blog",
+  "name": {
+    "en": "No Korean blogs",
+    "ko": "블로그 제외"
+  },
+  "mode": "exclude",
+  "order": 910,
+  "sites": [
+    {
+      "domain": "blog.naver.com",
+      "name": "네이버 블로그"
+    },
+    {
+      "domain": "tistory.com",
+      "name": "티스토리"
+    },
+    {
+      "domain": "brunch.co.kr",
+      "name": "브런치스토리"
+    },
+    {
+      "domain": "post.naver.com",
+      "name": "네이버 포스트"
+    }
+  ]
+}

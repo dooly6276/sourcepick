@@ -1,0 +1,15 @@
+{
+  "id": "kr-no-namu",
+  "name": {
+    "en": "No Namuwiki",
+    "ko": "나무위키 제외"
+  },
+  "mode": "exclude",
+  "order": 920,
+  "sites": [
+    {
+      "domain": "namu.wiki",
+      "name": "나무위키"
+    }
+  ]
+}
