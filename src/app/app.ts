@@ -126,6 +126,12 @@
   function pick(id: string, add: boolean): void {
     let includes = state.active.filter(function (x) { let l = byId(x); return l && l.mode === "include"; });
     let on = state.active.indexOf(id) >= 0;
+    // Over a plain results page, a source that only looks selected (saved earlier) is applied to the
+    // tab on the first press instead of being turned off.
+    if (pagePlain) {
+      pagePlain = false;
+      if (on && tab) { renderMain(); applyTab(); return; }
+    }
     if (add || state.multi) {
       if (on) state.active.splice(state.active.indexOf(id), 1);
       else state.active.push(id);
@@ -152,6 +158,8 @@
   interface Tab { id: number; engine: EngineId; keep: URLSearchParams }
   let tab: Tab | null = null;
   let pageExtra: string[] = [];
+  // The results page has no site filters, so the buttons show the saved sources, not the page's.
+  let pagePlain = false;
 
   function connectTab(done: () => void): void {
     if (!isPopup || !chrome.tabs || !chrome.tabs.query) { done(); return; }
@@ -175,6 +183,13 @@
     state.engine = tab.engine;
     state.period = core.periodKey(tab.engine, tab.keep.get(eng.period.param));
     if (eng.forums) state.forums = tab.keep.get(eng.forums.param) === eng.forums.value;
+    $("q").value = core.stripFilters(q);
+    let note = $("tab-note");
+    note.textContent = t("tabNote", eng.name);
+    note.hidden = false;
+    // A plain search with no site filters: keep the saved sources, so choosing one applies it to
+    // this search instead of the popup first wiping the user's selection.
+    if (!f.include.length && !f.exclude.length) { pageExtra = []; pagePlain = true; return; }
     state.active = shownLenses().filter(function (l) {
       let on = core.lensState(q, l, tab.engine) !== "none";
       if (on) covered = covered.concat(core.lensDomains(l));
@@ -183,10 +198,6 @@
     state.off = [];
     state.extra = f.include.filter(function (d) { return covered.indexOf(d) < 0; });
     pageExtra = state.extra.slice();
-    $("q").value = core.stripFilters(q);
-    let note = $("tab-note");
-    note.textContent = t("tabNote", eng.name);
-    note.hidden = false;
   }
 
   function applyTab(): boolean {

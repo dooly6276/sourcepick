@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Opening the popup over a results page searched without sources keeps your saved sources and the sites you turned off, and the first press of a selected source applies it to that search.
 - Manage sources has a Source order list with up and down buttons, so the source buttons can be put in any order.
 - The web app keeps the last search in the box when you come back from the results, so it is easy to change and search again.
 - Back in Manage sources returns to the main screen without adding a history step, so the browser's back button no longer reopens Manage.
