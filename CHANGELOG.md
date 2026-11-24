@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.0
 
 - The popup fits Chrome's 600 px limit again: it shows three rows of sources and a button for the rest. "1 site selected" instead of "1 sites selected".
 - With sources chosen, the results page search box and tab title show only your words, not the long `site:` list. Searching again from that box (Enter, the search button or a suggestion) keeps the chosen sources; Clear or the source buttons change them. Works on Google, Bing, DuckDuckGo and Brave.
