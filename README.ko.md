@@ -26,6 +26,7 @@
 | 사용 환경 | 방법 |
 |---|---|
 | 휴대폰과 그 밖의 브라우저 | [웹 앱](https://sourcepick.toolnjoy.com/)을 열고 홈 화면에 추가합니다. |
+| 툴앤조이 | 설치 없이 [툴앤조이 사이트 지정 검색](https://toolnjoy.com/site-search)에서도 같은 한국 출처로 구글 검색을 할 수 있습니다. |
 | 크롬, 엣지, 웨일, Brave, 오페라 | Chrome 웹 스토어(준비 중). 지금은 [최신 릴리스](https://github.com/dooly6276/sourcepick/releases/latest)에서 `sourcepick-chrome-*.zip`을 받아 압축을 풀고, `chrome://extensions`에서 개발자 모드를 켠 뒤 '압축해제된 확장 프로그램을 로드합니다'를 선택합니다. |
 | 파이어폭스(PC, Android) | Firefox 부가 기능(준비 중). 지금은 PC에서 `sourcepick-firefox-*.zip`을 받아 `about:debugging`의 '이 Firefox'에서 '임시 부가 기능 로드'를 선택합니다. |
 
