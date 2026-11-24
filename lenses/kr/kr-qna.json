@@ -14,6 +14,42 @@
     {
       "domain": "a-ha.io",
       "name": "아하"
+    },
+    {
+      "domain": "hidoc.co.kr/healthqna",
+      "name": "하이닥 건강 Q&A"
+    },
+    {
+      "domain": "lawtalk.co.kr/qna",
+      "name": "로톡 상담 사례"
+    },
+    {
+      "domain": "okky.kr/questions",
+      "name": "OKKY Q&A"
+    },
+    {
+      "domain": "inflearn.com/community/questions",
+      "name": "인프런 질문"
+    },
+    {
+      "domain": "comento.kr/job-questions",
+      "name": "코멘토"
+    },
+    {
+      "domain": "soomgo.com/qna",
+      "name": "숨고 Q&A"
+    },
+    {
+      "domain": "itdaa.net",
+      "name": "잇다"
+    },
+    {
+      "domain": "jisiklog.com",
+      "name": "지식로그"
+    },
+    {
+      "domain": "stackoverflow.com",
+      "name": "Stack Overflow"
     }
   ]
 }
