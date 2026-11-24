@@ -22,9 +22,10 @@ Not sure where to start? Look for [`good first issue`](https://github.com/dooly6
 }
 ```
 
-- `name.en` is required. Add the names you know; the interface shows the visitor's language when it exists.
+- `name.en` is required. Add the names you know (`ko`, `ja`); the interface shows the visitor's language when it exists. Give each site a `name` the way the service writes it (Naver Blog, Stack Overflow); a site without one shows its domain.
 - `mode` is `include` (search only these sites) or `exclude` (hide these sites).
-- `domain` is lowercase, without `https://` or `www.`. A path narrows it (`reddit.com/r/travel`), and a bare suffix covers a whole domain space (`gov`, `go.kr`).
+- `domain` is lowercase, without `https://` or `www.` (an `exclude` source may keep `www.`, as in `www.donga.com`, so that `mlbpark.donga.com` is not hidden). A path narrows it (`reddit.com/r/travel`), and a bare suffix covers a whole domain space (`gov`, `go.kr`).
+- A site appears once in a source, and a site that another entry already covers (`mit.edu` next to `edu`, `a.com/x` next to `a.com`) is left out. The tests check both.
 - Prefer sites where people write first-hand: forums, Q&A, reviews, primary sources. Keep a source focused; a dozen strong sites beat fifty weak ones.
 - A source can have at most 25 sites (16 for `exclude`). Search engines ignore the end of long queries without saying so: in our November 2026 tests Google applied 32 words and sites, DuckDuckGo about 22 and Brave 20 (`OR` does not count), Bing 60 or more, and DuckDuckGo and Brave also refuse queries longer than about 500 bytes and 400 characters. Sourcepick fits each search to the engine and tells the user when sites are left out, but a source should fit on its own.
 - In an `exclude` source, use the narrowest domain that still catches the pages, so a community hosted under a news company's domain is not hidden with it.
@@ -32,7 +33,7 @@ Not sure where to start? Look for [`good first issue`](https://github.com/dooly6
 3. Check it:
 
 ```bash
-npm test                       # validates every lens file
+npm test                       # validates every lens file (limits, duplicates, nested sites)
 npm run check-domains -- <id>  # checks that the sites respond
 npm run build                  # then reload the extension or the web app to try it
 ```
@@ -45,7 +46,7 @@ Create `lenses/<code>/`, add the code to `REGIONS` in `scripts/lenses.ts`, and a
 
 ## Code changes
 
-There are no runtime dependencies and no bundler. `src/` is strict TypeScript that `tsc` compiles to plain scripts in `.build/`; `scripts/build.ts` copies them into `dist/`. Run `npm install` once, then `npm run typecheck` and `npm test`.
+There are no runtime dependencies and no bundler. `src/` is strict TypeScript that `tsc` compiles to plain scripts in `.build/`; `scripts/build.ts` copies them into `dist/`. Run `npm install` once, then `npm run typecheck` and `npm test` (`npm test` compiles first).
 
 ```bash
 npm run serve   # web app on http://127.0.0.1:8791
@@ -57,4 +58,4 @@ Before sending a pull request, run `npm test` and try the change in the web app 
 
 ## Releases
 
-Maintainers bump `version` in `package.json`, add a section to `CHANGELOG.md` and push a `v<version>` tag. The release workflow builds the extension packages and publishes them. Every push to `main` also deploys the web app to GitHub Pages.
+Maintainers bump `version` in `package.json` (the extension manifest and the zip names follow it), add a section to `CHANGELOG.md` and push a `v<version>` tag. The release workflow checks that the tag matches `package.json`, runs the tests, builds `sourcepick-chrome-<version>.zip` and `sourcepick-firefox-<version>.zip` and attaches them to a GitHub Release with the changelog section as notes. Store listing drafts are in `store/`. Every push to `main` also deploys the web app to GitHub Pages.

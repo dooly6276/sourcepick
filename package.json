@@ -1,8 +1,9 @@
 {
   "name": "sourcepick",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "private": true,
   "description": "Search only the sites you choose: forums, blogs, papers, docs and more. Web app and browser extension for Google, Bing, DuckDuckGo and Brave Search.",
+  "keywords": ["search", "site-search", "site-operator", "google", "bing", "duckduckgo", "brave-search", "browser-extension", "chrome-extension", "firefox-addon", "pwa", "typescript"],
   "homepage": "https://sourcepick.toolnjoy.com/",
   "repository": { "type": "git", "url": "https://github.com/dooly6276/sourcepick.git" },
   "bugs": "https://github.com/dooly6276/sourcepick/issues",

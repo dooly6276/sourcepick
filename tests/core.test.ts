@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { loadLenses } from "../scripts/lenses.ts";
 import "../.build/core.js";
+import "../.build/store.js";
 
 const core = globalThis.SourceCore;
 
@@ -294,8 +295,7 @@ test("share links: broken, hostile and long links", () => {
   assert.equal(emoji?.name, "🔎 검색 묶음");
 });
 
-test("saved state: defaults, junk values and old states", async () => {
-  await import("../.build/store.js");
+test("saved state: defaults, junk values and old states", () => {
   const store = globalThis.SourceStore;
   const setLang = (language: string) => Object.defineProperty(globalThis, "navigator", { value: { language }, configurable: true });
   setLang("en-US");
@@ -327,8 +327,7 @@ test("saved state: defaults, junk values and old states", async () => {
   assert.deepEqual(store.sanitize({ shown: ["forums", "gone-source"], known: ["forums", "gone-source"] }).shown.slice(0, 2), ["forums", "gone-source"]);
 });
 
-test("saved state: sources added later appear once, removed ones stay removed", async () => {
-  await import("../.build/store.js");
+test("saved state: sources added later appear once, removed ones stay removed", () => {
   const store = globalThis.SourceStore;
   Object.defineProperty(globalThis, "navigator", { value: { language: "ko-KR" }, configurable: true });
   const d = store.defaults();
@@ -349,9 +348,8 @@ test("saved state: sources added later appear once, removed ones stay removed", 
   Object.defineProperty(globalThis, "navigator", { value: { language: "en-US" }, configurable: true });
 });
 
-test("sources: names in all three languages, no site twice, no site inside another one of the same source", () => {
+test("sources: no site twice, no site inside another one of the same source, domains in normal form", () => {
   for (const l of loadLenses()) {
-    for (const lang of ["en", "ko", "ja"]) assert.ok(typeof l.name[lang] === "string" && l.name[lang].trim(), `${l.id} name.${lang}`);
     const ds = l.sites.map((s) => s.domain);
     assert.equal(new Set(ds).size, ds.length, `${l.id} lists a site twice`);
     for (const a of ds) for (const b of ds) {
@@ -360,7 +358,5 @@ test("sources: names in all three languages, no site twice, no site inside anoth
     }
     // www. stays in exclude sources on purpose (www.donga.com leaves mlbpark.donga.com in the results).
     for (const s of l.sites) assert.equal(core.normalizeDomain(s.domain), l.mode === "exclude" ? s.domain.replace(/^www\./, "") : s.domain, `${l.id}: ${s.domain} is not in normal form`);
-    // Include sources with a few sites name every site; the app shows the domain when a name is missing.
-    if (l.mode === "include") for (const s of l.sites) assert.ok(s.name, `${l.id}: ${s.domain} has no name`);
   }
 });

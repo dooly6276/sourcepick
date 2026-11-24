@@ -61,7 +61,7 @@ The web app answers `?q=` (`src/web/redirect.ts`) with the sources saved in that
 1. Add an entry to `ENGINES` in `src/core.ts`: `name`, `maxTerms`, `url`, the time-filter parameter, and `keep` (URL parameters to carry over when the bar re-runs a search).
 2. Add its results-page URL patterns to `CONTENT_MATCHES` in `scripts/build.ts`.
 3. Add a placement function to `PLACE` in `src/extension/content.ts` that returns where the bar goes (`parent`, `before`, optional `alignTo`). Test it on desktop and on a phone-sized window; engines often serve a different layout to phones.
-4. Add the engine to the `engine` check in `src/store.ts` (`sanitize`).
+4. Add the engine to `EngineId` in `src/types.d.ts` and to the `engine` check in `src/store.ts` (`sanitize`).
 5. Add tests for its URL in `tests/core.test.ts`.
 
 ## Adding an interface language
@@ -74,4 +74,4 @@ Create `lenses/<code>/`, add the code to `REGIONS` in `scripts/lenses.ts`, and a
 
 ## Testing
 
-`npm test` runs unit tests and validates every lens file. For the screens, run `npm run serve` and try the change in a phone-sized window too. To try the extension, run `npm run build` and load `dist/chrome` (Chrome, Edge, Whale, Brave, Opera: `chrome://extensions`, developer mode, Load unpacked) or `dist/firefox/manifest.json` (Firefox: `about:debugging`, This Firefox, Load Temporary Add-on).
+`npm test` compiles `src/` and runs the unit tests (query building, filter parsing, share links, saved-state cleanup) and the checks of every lens file. `npm run typecheck` checks all TypeScript projects without writing files. For the screens, run `npm run serve` and try the change in a phone-sized window too. To try the extension, run `npm run build` and load `dist/chrome` (Chrome, Edge, Whale, Brave, Opera: `chrome://extensions`, developer mode, Load unpacked) or `dist/firefox/manifest.json` (Firefox: `about:debugging`, This Firefox, Load Temporary Add-on).

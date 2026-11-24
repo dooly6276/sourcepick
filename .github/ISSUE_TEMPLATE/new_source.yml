@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks! Sources are plain JSON files in `lenses/`. If you are comfortable editing one, a pull request is even faster: see CONTRIBUTING.md.
+        Thanks! Sources are plain JSON files in `lenses/`. If you are comfortable editing one, a pull request is even faster: see CONTRIBUTING.md. A source holds at most 25 sites (16 for sources that hide sites), so one source stays focused.
   - type: dropdown
     id: kind
     attributes:
