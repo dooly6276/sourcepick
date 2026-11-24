@@ -2,7 +2,8 @@
   "id": "kr-community",
   "name": {
     "en": "Korean communities",
-    "ko": "커뮤니티"
+    "ko": "커뮤니티",
+    "ja": "韓国コミュニティ"
   },
   "mode": "include",
   "order": 10,

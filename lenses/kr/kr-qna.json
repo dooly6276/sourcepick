@@ -2,7 +2,8 @@
   "id": "kr-qna",
   "name": {
     "en": "Korean Q&A",
-    "ko": "질문과 답변"
+    "ko": "질문과 답변",
+    "ja": "韓国Q&A"
   },
   "mode": "include",
   "order": 50,

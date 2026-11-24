@@ -2,7 +2,8 @@
   "id": "kr-no-blog",
   "name": {
     "en": "No Korean blogs",
-    "ko": "블로그 제외"
+    "ko": "블로그 제외",
+    "ja": "韓国ブログを除外"
   },
   "mode": "exclude",
   "order": 910,

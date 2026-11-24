@@ -2,7 +2,8 @@
   "id": "kr-stats",
   "name": {
     "en": "Korean statistics",
-    "ko": "통계"
+    "ko": "통계",
+    "ja": "韓国統計"
   },
   "mode": "include",
   "order": 101,

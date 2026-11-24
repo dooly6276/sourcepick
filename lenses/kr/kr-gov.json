@@ -2,7 +2,8 @@
   "id": "kr-gov",
   "name": {
     "en": "Korean government",
-    "ko": "공공기관"
+    "ko": "공공기관",
+    "ja": "韓国の公的機関"
   },
   "mode": "include",
   "order": 100,

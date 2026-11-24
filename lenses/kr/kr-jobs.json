@@ -2,7 +2,8 @@
   "id": "kr-jobs",
   "name": {
     "en": "Korean job sites",
-    "ko": "채용"
+    "ko": "채용",
+    "ja": "韓国の求人サイト"
   },
   "mode": "include",
   "order": 140,

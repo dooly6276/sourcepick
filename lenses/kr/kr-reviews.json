@@ -2,7 +2,8 @@
   "id": "kr-reviews",
   "name": {
     "en": "Korean reviews",
-    "ko": "리뷰"
+    "ko": "리뷰",
+    "ja": "韓国レビュー"
   },
   "mode": "include",
   "order": 90,

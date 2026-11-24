@@ -17,19 +17,20 @@
       "name": ".ac.uk"
     },
     {
-      "domain": "ac.jp"
+      "domain": "ac.jp",
+      "name": ".ac.jp"
     },
     {
-      "domain": "edu.au"
+      "domain": "edu.au",
+      "name": ".edu.au"
     },
     {
-      "domain": "mit.edu"
+      "domain": "coursera.org",
+      "name": "Coursera"
     },
     {
-      "domain": "coursera.org"
-    },
-    {
-      "domain": "khanacademy.org"
+      "domain": "khanacademy.org",
+      "name": "Khan Academy"
     }
   ]
 }

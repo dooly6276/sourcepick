@@ -2,7 +2,8 @@
   "id": "kr-wiki",
   "name": {
     "en": "Korean wikis and encyclopedias",
-    "ko": "위키와 백과사전"
+    "ko": "위키와 백과사전",
+    "ja": "韓国のウィキと百科事典"
   },
   "mode": "include",
   "order": 120,
@@ -48,8 +49,8 @@
       "name": "위키문헌"
     },
     {
-      "domain": "wiki.hash.kr",
-      "name": "해시넷"
+      "domain": "wiki1.kr",
+      "name": "위키원"
     }
   ]
 }

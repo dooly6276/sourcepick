@@ -2,7 +2,8 @@
   "id": "kr-books",
   "name": {
     "en": "Korean bookstores",
-    "ko": "서점"
+    "ko": "서점",
+    "ja": "韓国の書店"
   },
   "mode": "include",
   "order": 150,

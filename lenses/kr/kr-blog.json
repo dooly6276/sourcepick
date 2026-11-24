@@ -2,7 +2,8 @@
   "id": "kr-blog",
   "name": {
     "en": "Korean blogs",
-    "ko": "블로그"
+    "ko": "블로그",
+    "ja": "韓国ブログ"
   },
   "mode": "include",
   "order": 40,

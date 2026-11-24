@@ -2,7 +2,8 @@
   "id": "kr-shop",
   "name": {
     "en": "Korean shopping",
-    "ko": "쇼핑몰"
+    "ko": "쇼핑몰",
+    "ja": "韓国ショッピング"
   },
   "mode": "include",
   "order": 80,

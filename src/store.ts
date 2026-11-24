@@ -40,6 +40,8 @@
       if (known.indexOf(id) >= 0 || out.indexOf(id) >= 0) return;
       let old = REPLACED[id] ? out.indexOf(REPLACED[id]) : -1;
       if (old >= 0) { out[old] = id; return; }
+      // The user had the old source and removed it: keep it removed instead of adding its replacement.
+      if (REPLACED[id] && known.indexOf(REPLACED[id]) >= 0) return;
       let at = out.findIndex(function (x) { return /(^|-)no-/.test(x); });
       if (at < 0 || /(^|-)no-/.test(id)) out.push(id); else out.splice(at, 0, id);
     });
@@ -72,20 +74,29 @@
 
   function arr(x: unknown): unknown[] | null { return Array.isArray(x) ? x : null; }
 
+  // A list of unique strings, or null when the stored value is not a list. Anything else in it is dropped.
+  function strs(x: unknown): string[] | null {
+    if (!Array.isArray(x)) return null;
+    return x.filter(function (v, i): v is string { return typeof v === "string" && x.indexOf(v) === i; });
+  }
+
   function sanitize(raw: unknown): State {
     let d = defaults();
     if (!raw || typeof raw !== "object") return d;
     let s = raw as Record<string, unknown>;
-    let known = (arr(s.known) as string[] | null) || OLD[lang()];
+    let known = strs(s.known) || OLD[lang()];
     return {
       v: 2,
-      shown: arr(s.shown) ? addNew(s.shown as string[], known, d) : d.shown,
+      shown: strs(s.shown) ? addNew(strs(s.shown) as string[], known, d) : d.shown,
       known: known.concat(d.shown.filter(function (id) { return known.indexOf(id) < 0; })),
-      active: (arr(s.active) as string[] | null) || d.active,
-      off: (arr(s.off) as string[] | null) || [],
-      extra: (arr(s.extra) as string[] | null) || [],
+      active: strs(s.active) || d.active,
+      off: strs(s.off) || [],
+      extra: strs(s.extra) || [],
       custom: ((arr(s.custom) as CustomLens[] | null) || []).filter(function (l) {
         return l && typeof l.id === "string" && typeof l.name === "string" && Array.isArray(l.sites);
+      }).map(function (l) {
+        // A site entry without a text domain would break every later read of the lens.
+        return Object.assign({}, l, { sites: l.sites.filter(function (x) { return x && typeof x.domain === "string"; }) });
       }),
       engine: (["google", "bing", "duckduckgo", "brave"] as unknown[]).indexOf(s.engine) >= 0 ? (s.engine as EngineId) : "google",
       period: (["", "d", "w", "m", "y"] as unknown[]).indexOf(s.period) >= 0 ? (s.period as Period) : "",

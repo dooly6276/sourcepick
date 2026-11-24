@@ -59,34 +59,55 @@
     let slash = s.indexOf("/");
     let host = (slash >= 0 ? s.slice(0, slash) : s).toLowerCase().replace(/^www\./, "").replace(/\.$/, "");
     let rest = slash >= 0 ? s.slice(slash) : "";
-    if (!/^(?:[a-z0-9-]+\.)*[a-z0-9-]+$/.test(host) || host.length > 253) return null;
+    if (!/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(host) || host.length > 253) return null;
     if (!/[a-z]/.test(host.split(".").pop() as string)) return null;
     if (rest && !/^(\/[A-Za-z0-9._~%-]+)+$/.test(rest)) rest = "";
     return host + rest;
   }
 
-  function isFilterToken(t: string): boolean { return /^-?site:\S+$/i.test(t); }
+  // A site: or -site: token, possibly wrapped in the parentheses people type around a group of them.
+  function isFilterToken(t: string): boolean { return /^\(*-?site:\S+?\)*$/i.test(t); }
+
+  // Removes unmatched parentheses left behind when a filter group such as "(foo site:a.com)" was cut out.
+  function balanceParens(s: string): string {
+    let open: number[] = [], drop: Record<number, boolean> = {};
+    for (let i = 0; i < s.length; i++) {
+      if (s[i] === "(") open.push(i);
+      else if (s[i] === ")") { if (open.length) open.pop(); else drop[i] = true; }
+    }
+    open.forEach(function (i) { drop[i] = true; });
+    return s.split("").filter(function (_, i) { return !drop[i]; }).join("").replace(/\s+/g, " ").trim();
+  }
 
   // Removes site: and -site: filters (and the ORs that join them) so a lens can be re-applied.
+  // "apple OR site:a.com OR pear" keeps the user's own OR: "apple OR pear".
   function stripFilters(q: string | null | undefined): string {
     let tokens = String(q || "").trim().split(/\s+/).filter(Boolean);
-    let out: string[] = [];
-    for (let i = 0; i < tokens.length; i++) {
+    let isOr = function (t: string) { return t === "OR" || t === "|"; };
+    let out: string[] = [], hadParens = false;
+    let i = 0;
+    while (i < tokens.length) {
       let t = tokens[i];
-      if (isFilterToken(t)) continue;
-      if (t === "OR" || t === "|") {
-        let prev = tokens[i - 1], next = tokens[i + 1];
-        if ((prev && isFilterToken(prev)) || (next && isFilterToken(next)) || !out.length) continue;
+      if (!isFilterToken(t) && !isOr(t)) { out.push(t); i++; continue; }
+      // A run of filters and ORs: find where it ends and whether it holds a filter at all.
+      let j = i, hasFilter = false;
+      while (j < tokens.length && (isFilterToken(tokens[j]) || isOr(tokens[j]))) {
+        if (isFilterToken(tokens[j])) { hasFilter = true; if (/[()]/.test(tokens[j])) hadParens = true; }
+        j++;
       }
-      out.push(t);
+      let run = tokens.slice(i, j);
+      if (!hasFilter) { if (out.length) out.push.apply(out, run); }
+      else if (isOr(run[0]) && isOr(run[run.length - 1]) && out.length && j < tokens.length) out.push(run[0]);
+      i = j;
     }
-    return out.join(" ");
+    let r = out.join(" ");
+    return hadParens ? balanceParens(r) : r;
   }
 
   function parseFilters(q: string | null | undefined): Filters {
     let include: string[] = [], exclude: string[] = [];
     String(q || "").split(/\s+/).forEach(function (t) {
-      let m = t.match(/^(-?)site:(\S+)$/i);
+      let m = t.replace(/^\(+/, "").replace(/\)+$/, "").match(/^(-?)site:(\S+)$/i);
       if (!m) return;
       let d = normalizeDomain(m[2]);
       if (!d) return;
@@ -96,7 +117,7 @@
   }
 
   function uniq(list: (string | null | undefined)[] | null | undefined): string[] {
-    let seen: Record<string, boolean> = {}, out: string[] = [];
+    let seen: Record<string, boolean> = Object.create(null), out: string[] = [];
     (list || []).forEach(function (x) { if (x && !seen[x]) { seen[x] = true; out.push(x); } });
     return out;
   }
@@ -170,7 +191,10 @@
     let now = Date.now();
     return (Object.keys(eng.period.values) as ("d" | "w" | "m" | "y")[]).filter(function (k) {
       let v = eng.period.values[k];
-      return (typeof v === "function" ? v(now) : v) === value;
+      if (typeof v !== "function") return v === value;
+      // A date-based value (Bing's year) names today's date, so a page opened earlier still counts.
+      for (let back = -1; back <= 60; back++) if (v(now - back * 86400000) === value) return true;
+      return false;
     })[0] || "";
   }
 
@@ -255,8 +279,11 @@
       let bytes = new Uint8Array(bin.length);
       for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
       let data = JSON.parse(new TextDecoder().decode(bytes));
-      let name = String(data.n || "").trim().slice(0, 40);
-      let sites = uniq((Array.isArray(data.s) ? data.s : []).map(normalizeDomain)).slice(0, 60);
+      let name = (typeof data.n === "string" ? data.n : "").trim().slice(0, 40);
+      // An entry with spaces in it is not a domain; normalizeDomain alone would keep its first word.
+      let sites = uniq((Array.isArray(data.s) ? data.s : []).map(function (x: unknown) {
+        return typeof x === "string" && !/\s/.test(x.trim()) ? normalizeDomain(x) : null;
+      })).slice(0, 60);
       if (!name || !sites.length) return null;
       return { name: name, mode: data.m === "x" ? "exclude" : "include", sites: sites.map(function (d) { return { domain: d }; }) };
     } catch (e) {
