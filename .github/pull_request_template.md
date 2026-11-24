@@ -5,6 +5,6 @@
 **Why**
 
 **Checked**
-- [ ] `npm test` passes
+- [ ] `npm run typecheck` and `npm test` pass
 - [ ] Tried it in the web app and/or the extension (say which browser)
 - [ ] For source changes: each new site has a reason above, and `npm run check-domains -- <id>` passes

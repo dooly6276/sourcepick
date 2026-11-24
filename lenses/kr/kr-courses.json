@@ -2,7 +2,8 @@
   "id": "kr-courses",
   "name": {
     "en": "Korean online courses",
-    "ko": "강의"
+    "ko": "강의",
+    "ja": "韓国オンライン講座"
   },
   "mode": "include",
   "order": 106,

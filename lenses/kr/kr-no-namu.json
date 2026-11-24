@@ -2,7 +2,8 @@
   "id": "kr-no-namu",
   "name": {
     "en": "No Namuwiki",
-    "ko": "나무위키 제외"
+    "ko": "나무위키 제외",
+    "ja": "ナムウィキを除外"
   },
   "mode": "exclude",
   "order": 920,

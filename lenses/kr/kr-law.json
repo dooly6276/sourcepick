@@ -2,7 +2,8 @@
   "id": "kr-law",
   "name": {
     "en": "Korean law",
-    "ko": "법률"
+    "ko": "법률",
+    "ja": "韓国の法律"
   },
   "mode": "include",
   "order": 110,

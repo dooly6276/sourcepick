@@ -2,7 +2,8 @@
   "id": "kr-recipes",
   "name": {
     "en": "Korean recipes",
-    "ko": "레시피"
+    "ko": "레시피",
+    "ja": "韓国レシピ"
   },
   "mode": "include",
   "order": 130,

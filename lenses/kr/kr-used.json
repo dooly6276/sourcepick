@@ -2,7 +2,8 @@
   "id": "kr-used",
   "name": {
     "en": "Korean secondhand",
-    "ko": "중고거래"
+    "ko": "중고거래",
+    "ja": "韓国の中古取引"
   },
   "mode": "include",
   "order": 85,

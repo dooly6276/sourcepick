@@ -2,7 +2,8 @@
   "id": "kr-papers",
   "name": {
     "en": "Korean papers",
-    "ko": "국내 논문"
+    "ko": "국내 논문",
+    "ja": "韓国論文"
   },
   "mode": "include",
   "order": 90,
