@@ -112,10 +112,11 @@ function manifest(target: "chrome" | "firefox") {
     m.background = { service_worker: "background.js" };
   } else {
     m.background = { scripts: ["lenses.js", ...SHARED, "background.js"] };
-    // Firefox asks every add-on to declare what it collects; Sourcepick collects nothing.
+    // Firefox asks every add-on to declare what it collects; Sourcepick collects nothing. That key
+    // arrived in Firefox 140 (142 on Android), the oldest versions Mozilla still supports.
     m.browser_specific_settings = {
-      gecko: { id: "sourcepick@dooly6276.github.io", strict_min_version: "121.0", data_collection_permissions: { required: ["none"] } },
-      gecko_android: { strict_min_version: "121.0" },
+      gecko: { id: "sourcepick@dooly6276.github.io", strict_min_version: "140.0", data_collection_permissions: { required: ["none"] } },
+      gecko_android: { strict_min_version: "142.0" },
     };
   }
   return m;

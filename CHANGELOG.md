@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- With sources chosen, the results page search box and tab title show only your words, not the long `site:` list. Searching again from that box (Enter, the search button or a suggestion) keeps the chosen sources; Clear or the source buttons change them. Works on Google, Bing, DuckDuckGo and Brave.
+- Results-page bar fixes: it sits above the results on Google Images, no longer covers Bing's result count, stays at the top of DuckDuckGo results, keeps full-size buttons on Brave phones, and moves Clear and Manage to their own line when a note leaves the sources too little room. The Firefox add-on needs Firefox 140 (142 on Android), the first versions with the data collection setting.
+
 - When two copies of the extension are installed (for example the store version and a developer copy), the results page shows one source bar instead of two.
 - The source is now TypeScript (strict). The built web app and extensions behave the same as before.
 - Ten new Korean sources: Video (Naver TV, Chzzk, SOOP), News, Shopping, Reviews, Statistics, Universities, Courses, Jobs, Secondhand and Bookstores. Public bodies, wikis and encyclopedias, law, papers, worldwide forums, video, wikis and government, and the Japanese sources list more sites. New default sources are added once to settings saved earlier; sources you removed stay removed.
