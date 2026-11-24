@@ -1,0 +1,32 @@
+{
+  "id": "jp-gov",
+  "name": {
+    "en": "Japanese government",
+    "ko": "일본 공공기관",
+    "ja": "公的機関"
+  },
+  "mode": "include",
+  "order": 100,
+  "sites": [
+    {
+      "domain": "go.jp",
+      "name": "官公庁(go.jp)"
+    },
+    {
+      "domain": "lg.jp",
+      "name": "自治体(lg.jp)"
+    },
+    {
+      "domain": "boj.or.jp",
+      "name": "日本銀行"
+    },
+    {
+      "domain": "jpx.co.jp",
+      "name": "日本取引所グループ"
+    },
+    {
+      "domain": "nhk.or.jp",
+      "name": "NHK"
+    }
+  ]
+}

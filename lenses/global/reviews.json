@@ -1,9 +1,9 @@
 {
   "id": "reviews",
   "name": {
-    "en": "Product reviews",
+    "en": "Reviews",
     "ko": "해외 리뷰",
-    "ja": "海外製品レビュー"
+    "ja": "海外レビュー"
   },
   "mode": "include",
   "order": 80,
@@ -39,6 +39,74 @@
     {
       "domain": "reddit.com/r/BuyItForLife",
       "name": "r/BuyItForLife"
+    },
+    {
+      "domain": "tomsguide.com",
+      "name": "Tom's Guide"
+    },
+    {
+      "domain": "techradar.com",
+      "name": "TechRadar"
+    },
+    {
+      "domain": "pcmag.com",
+      "name": "PCMag"
+    },
+    {
+      "domain": "cnet.com",
+      "name": "CNET"
+    },
+    {
+      "domain": "soundguys.com",
+      "name": "SoundGuys"
+    },
+    {
+      "domain": "tomshardware.com",
+      "name": "Tom's Hardware"
+    },
+    {
+      "domain": "trustpilot.com",
+      "name": "Trustpilot"
+    },
+    {
+      "domain": "yelp.com",
+      "name": "Yelp"
+    },
+    {
+      "domain": "imdb.com",
+      "name": "IMDb"
+    },
+    {
+      "domain": "rottentomatoes.com",
+      "name": "Rotten Tomatoes"
+    },
+    {
+      "domain": "metacritic.com",
+      "name": "Metacritic"
+    },
+    {
+      "domain": "letterboxd.com",
+      "name": "Letterboxd"
+    },
+    {
+      "domain": "glassdoor.com",
+      "name": "Glassdoor"
+    },
+    {
+      "domain": "edmunds.com",
+      "name": "Edmunds"
+    },
+    {
+      "domain": "caranddriver.com",
+      "name": "Car and Driver"
+    },
+    {
+      "domain": "wired.com",
+      "name": "WIRED"
+    },
+    {
+      "domain": "thesweethome.com",
+      "name": "The Sweethome"
     }
   ]
 }

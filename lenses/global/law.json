@@ -1,0 +1,84 @@
+{
+  "id": "law",
+  "name": {
+    "en": "Law",
+    "ko": "해외 법률",
+    "ja": "海外法律"
+  },
+  "mode": "include",
+  "order": 158,
+  "sites": [
+    {
+      "domain": "law.cornell.edu",
+      "name": "Cornell LII"
+    },
+    {
+      "domain": "justia.com",
+      "name": "Justia"
+    },
+    {
+      "domain": "findlaw.com",
+      "name": "FindLaw"
+    },
+    {
+      "domain": "courtlistener.com",
+      "name": "CourtListener"
+    },
+    {
+      "domain": "supremecourt.gov",
+      "name": "U.S. Supreme Court"
+    },
+    {
+      "domain": "congress.gov",
+      "name": "Congress.gov"
+    },
+    {
+      "domain": "govinfo.gov",
+      "name": "GovInfo"
+    },
+    {
+      "domain": "ecfr.gov",
+      "name": "eCFR"
+    },
+    {
+      "domain": "uscode.house.gov",
+      "name": "U.S. Code"
+    },
+    {
+      "domain": "legislation.gov.uk",
+      "name": "legislation.gov.uk"
+    },
+    {
+      "domain": "eur-lex.europa.eu",
+      "name": "EUR-Lex"
+    },
+    {
+      "domain": "nolo.com",
+      "name": "Nolo"
+    },
+    {
+      "domain": "avvo.com",
+      "name": "Avvo"
+    },
+    {
+      "domain": "oyez.org",
+      "name": "Oyez"
+    },
+    {
+      "domain": "scotusblog.com",
+      "name": "SCOTUSblog"
+    },
+    {
+      "domain": "bailii.org",
+      "name": "BAILII"
+    },
+    {
+      "domain": "canlii.org",
+      "name": "CanLII"
+    },
+    {
+      "domain": "austlii.edu.au",
+      "name": "AustLII"
+    }
+  ]
+}

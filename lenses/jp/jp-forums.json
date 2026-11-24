@@ -3,7 +3,7 @@
   "name": {
     "en": "Japanese forums",
     "ko": "일본 커뮤니티",
-    "ja": "掲示板、Q&A"
+    "ja": "掲示板"
   },
   "mode": "include",
   "order": 10,
@@ -13,40 +13,72 @@
       "name": "5ちゃんねる"
     },
     {
-      "domain": "chiebukuro.yahoo.co.jp",
-      "name": "Yahoo!知恵袋"
+      "domain": "open2ch.net",
+      "name": "おーぷん2ちゃんねる"
     },
     {
-      "domain": "komachi.yomiuri.co.jp",
-      "name": "発言小町"
+      "domain": "2chan.net",
+      "name": "ふたば☆ちゃんねる"
+    },
+    {
+      "domain": "jbbs.shitaraba.net",
+      "name": "したらば掲示板"
     },
     {
       "domain": "girlschannel.net",
       "name": "ガールズちゃんねる"
     },
     {
-      "domain": "togetter.com",
-      "name": "Togetter"
+      "domain": "komachi.yomiuri.co.jp",
+      "name": "発言小町"
     },
     {
-      "domain": "b.hatena.ne.jp",
-      "name": "はてなブックマーク"
-    },
-    {
-      "domain": "okwave.jp",
-      "name": "OKWAVE"
+      "domain": "bakusai.com",
+      "name": "爆サイ"
     },
     {
       "domain": "bbs.kakaku.com",
       "name": "価格.com 掲示板"
     },
     {
-      "domain": "open2ch.net",
-      "name": "おーぷん2ちゃんねる"
+      "domain": "b.hatena.ne.jp",
+      "name": "はてなブックマーク"
     },
     {
-      "domain": "bakusai.com",
-      "name": "爆サイ"
+      "domain": "anond.hatelabo.jp",
+      "name": "はてな匿名ダイアリー"
+    },
+    {
+      "domain": "togetter.com",
+      "name": "Togetter"
+    },
+    {
+      "domain": "posfie.com",
+      "name": "Posfie"
+    },
+    {
+      "domain": "minkara.carview.co.jp",
+      "name": "みんカラ"
+    },
+    {
+      "domain": "zawazawa.jp",
+      "name": "zawazawa"
+    },
+    {
+      "domain": "mamari.jp",
+      "name": "ママリ"
+    },
+    {
+      "domain": "finance.yahoo.co.jp/cm",
+      "name": "Yahoo!ファイナンス掲示板"
+    },
+    {
+      "domain": "minkabu.jp",
+      "name": "みんかぶ"
+    },
+    {
+      "domain": "reddit.com/r/japan",
+      "name": "r/japan"
     }
   ]
 }

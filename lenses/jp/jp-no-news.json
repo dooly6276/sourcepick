@@ -1,0 +1,72 @@
+{
+  "id": "jp-no-news",
+  "name": {
+    "en": "No Japanese news",
+    "ko": "일본 언론사 제외",
+    "ja": "ニュースを除外"
+  },
+  "mode": "exclude",
+  "order": 915,
+  "sites": [
+    {
+      "domain": "news.yahoo.co.jp",
+      "name": "Yahoo!ニュース"
+    },
+    {
+      "domain": "nhk.or.jp",
+      "name": "NHK"
+    },
+    {
+      "domain": "asahi.com",
+      "name": "朝日新聞"
+    },
+    {
+      "domain": "mainichi.jp",
+      "name": "毎日新聞"
+    },
+    {
+      "domain": "yomiuri.co.jp",
+      "name": "読売新聞"
+    },
+    {
+      "domain": "nikkei.com",
+      "name": "日本経済新聞"
+    },
+    {
+      "domain": "sankei.com",
+      "name": "産経新聞"
+    },
+    {
+      "domain": "jiji.com",
+      "name": "時事通信"
+    },
+    {
+      "domain": "news.livedoor.com",
+      "name": "ライブドアニュース"
+    },
+    {
+      "domain": "j-cast.com",
+      "name": "J-CAST"
+    },
+    {
+      "domain": "president.jp",
+      "name": "PRESIDENT Online"
+    },
+    {
+      "domain": "toyokeizai.net",
+      "name": "東洋経済オンライン"
+    },
+    {
+      "domain": "bunshun.jp",
+      "name": "文春オンライン"
+    },
+    {
+      "domain": "gendai.media",
+      "name": "現代ビジネス"
+    },
+    {
+      "domain": "excite.co.jp/news",
+      "name": "エキサイトニュース"
+    }
+  ]
+}

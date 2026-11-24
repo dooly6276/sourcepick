@@ -1,0 +1,56 @@
+{
+  "id": "jp-used",
+  "name": {
+    "en": "Japanese secondhand",
+    "ko": "일본 중고거래",
+    "ja": "フリマ、中古"
+  },
+  "mode": "include",
+  "order": 85,
+  "sites": [
+    {
+      "domain": "jp.mercari.com",
+      "name": "メルカリ"
+    },
+    {
+      "domain": "fril.jp",
+      "name": "楽天ラクマ"
+    },
+    {
+      "domain": "auctions.yahoo.co.jp",
+      "name": "ヤフオク!"
+    },
+    {
+      "domain": "paypayfleamarket.yahoo.co.jp",
+      "name": "Yahoo!フリマ"
+    },
+    {
+      "domain": "jmty.jp",
+      "name": "ジモティー"
+    },
+    {
+      "domain": "2ndstreet.jp",
+      "name": "セカンドストリート"
+    },
+    {
+      "domain": "bookoffonline.co.jp",
+      "name": "ブックオフ"
+    },
+    {
+      "domain": "mandarake.co.jp",
+      "name": "まんだらけ"
+    },
+    {
+      "domain": "suruga-ya.jp",
+      "name": "駿河屋"
+    },
+    {
+      "domain": "iosys.co.jp",
+      "name": "イオシス"
+    },
+    {
+      "domain": "janpara.co.jp",
+      "name": "じゃんぱら"
+    }
+  ]
+}

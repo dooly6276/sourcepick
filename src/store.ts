@@ -14,12 +14,15 @@
       active: ["kr-community"],
     },
     ja: {
-      shown: ["jp-forums", "jp-blogs", "jp-dev", "forums", "reddit", "video", "social", "papers", "wiki", "no-pinterest"],
+      shown: ["jp-forums", "jp-qna", "jp-blogs", "jp-video", "jp-wiki", "jp-news", "jp-shop", "jp-reviews", "forums",
+        "social", "jp-papers", "jp-gov", "jp-law", "jp-jobs", "jp-used", "jp-books", "jp-recipes", "jp-dev",
+        "jp-no-matome", "jp-no-chiebukuro", "jp-no-news", "no-pinterest"],
       active: ["jp-forums"],
     },
     en: {
-      shown: ["forums", "reddit", "dev", "docs", "papers", "video", "social", "reviews", "wiki", "blogs", "gov",
-        "no-pinterest", "no-news"],
+      shown: ["forums", "reddit", "qna", "blogs", "video", "wiki", "news", "shop", "reviews", "social", "papers", "gov",
+        "stats", "law", "edu", "courses", "jobs", "used", "books", "dev", "docs",
+        "no-pinterest", "no-quora", "no-shopping", "no-news"],
       active: ["forums"],
     },
   };
@@ -29,10 +32,11 @@
   let OLD: Record<Lang, string[]> = {
     ko: ["kr-community", "kr-blog", "kr-qna", "video", "kr-wiki", "forums", "kr-papers", "kr-gov", "kr-law",
       "kr-no-blog", "kr-no-news", "kr-no-namu"],
-    ja: DEFAULTS.ja.shown,
-    en: DEFAULTS.en.shown,
+    ja: ["jp-forums", "jp-blogs", "jp-dev", "forums", "reddit", "video", "social", "papers", "wiki", "no-pinterest"],
+    en: ["forums", "reddit", "dev", "docs", "papers", "video", "social", "reviews", "wiki", "blogs", "gov",
+      "no-pinterest", "no-news"],
   };
-  let REPLACED: Record<string, string> = { "kr-video": "video" };
+  let REPLACED: Record<string, string> = { "kr-video": "video", "jp-video": "video" };
 
   function addNew(shown: string[], known: string[], d: { shown: string[] }): string[] {
     let out = shown.slice();

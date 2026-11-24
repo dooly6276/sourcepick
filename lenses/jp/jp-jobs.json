@@ -1,0 +1,72 @@
+{
+  "id": "jp-jobs",
+  "name": {
+    "en": "Japanese job sites",
+    "ko": "일본 채용",
+    "ja": "求人、転職"
+  },
+  "mode": "include",
+  "order": 140,
+  "sites": [
+    {
+      "domain": "jp.indeed.com",
+      "name": "Indeed"
+    },
+    {
+      "domain": "rikunabi.com",
+      "name": "リクナビ"
+    },
+    {
+      "domain": "mynavi.jp",
+      "name": "マイナビ"
+    },
+    {
+      "domain": "doda.jp",
+      "name": "doda"
+    },
+    {
+      "domain": "bizreach.jp",
+      "name": "ビズリーチ"
+    },
+    {
+      "domain": "employment.en-japan.com",
+      "name": "エン転職"
+    },
+    {
+      "domain": "openwork.jp",
+      "name": "OpenWork"
+    },
+    {
+      "domain": "jobtalk.jp",
+      "name": "転職会議"
+    },
+    {
+      "domain": "townwork.net",
+      "name": "タウンワーク"
+    },
+    {
+      "domain": "baitoru.com",
+      "name": "バイトル"
+    },
+    {
+      "domain": "green-japan.com",
+      "name": "Green"
+    },
+    {
+      "domain": "wantedly.com",
+      "name": "Wantedly"
+    },
+    {
+      "domain": "hellowork.mhlw.go.jp",
+      "name": "ハローワーク"
+    },
+    {
+      "domain": "type.jp",
+      "name": "type"
+    },
+    {
+      "domain": "onecareer.jp",
+      "name": "ONE CAREER"
+    }
+  ]
+}

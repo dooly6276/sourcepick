@@ -1,0 +1,92 @@
+{
+  "id": "jp-shop",
+  "name": {
+    "en": "Japanese shopping",
+    "ko": "일본 쇼핑몰",
+    "ja": "通販"
+  },
+  "mode": "include",
+  "order": 75,
+  "sites": [
+    {
+      "domain": "amazon.co.jp",
+      "name": "Amazon"
+    },
+    {
+      "domain": "rakuten.co.jp",
+      "name": "楽天市場"
+    },
+    {
+      "domain": "shopping.yahoo.co.jp",
+      "name": "Yahoo!ショッピング"
+    },
+    {
+      "domain": "kakaku.com",
+      "name": "価格.com"
+    },
+    {
+      "domain": "yodobashi.com",
+      "name": "ヨドバシ.com"
+    },
+    {
+      "domain": "biccamera.com",
+      "name": "ビックカメラ.com"
+    },
+    {
+      "domain": "zozo.jp",
+      "name": "ZOZOTOWN"
+    },
+    {
+      "domain": "uniqlo.com",
+      "name": "ユニクロ"
+    },
+    {
+      "domain": "muji.com",
+      "name": "無印良品"
+    },
+    {
+      "domain": "nitori-net.jp",
+      "name": "ニトリネット"
+    },
+    {
+      "domain": "lohaco.yahoo.co.jp",
+      "name": "LOHACO"
+    },
+    {
+      "domain": "askul.co.jp",
+      "name": "アスクル"
+    },
+    {
+      "domain": "joshinweb.jp",
+      "name": "Joshin web"
+    },
+    {
+      "domain": "kojima.net",
+      "name": "コジマネット"
+    },
+    {
+      "domain": "qoo10.jp",
+      "name": "Qoo10"
+    },
+    {
+      "domain": "edion.com",
+      "name": "エディオン"
+    },
+    {
+      "domain": "ksdenki.com",
+      "name": "ケーズデンキ"
+    },
+    {
+      "domain": "dshopping.docomo.ne.jp",
+      "name": "dショッピング"
+    },
+    {
+      "domain": "au-pay-market.com",
+      "name": "au PAY マーケット"
+    },
+    {
+      "domain": "aeonnetshop.com",
+      "name": "イオンネットスーパー"
+    }
+  ]
+}

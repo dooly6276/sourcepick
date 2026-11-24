@@ -31,6 +31,46 @@
     {
       "domain": "medium.com",
       "name": "Medium"
+    },
+    {
+      "domain": "hashnode.dev",
+      "name": "Hashnode"
+    },
+    {
+      "domain": "freecodecamp.org/news",
+      "name": "freeCodeCamp News"
+    },
+    {
+      "domain": "css-tricks.com",
+      "name": "CSS-Tricks"
+    },
+    {
+      "domain": "smashingmagazine.com",
+      "name": "Smashing Magazine"
+    },
+    {
+      "domain": "infoq.com",
+      "name": "InfoQ"
+    },
+    {
+      "domain": "martinfowler.com",
+      "name": "Martin Fowler"
+    },
+    {
+      "domain": "stackexchange.com",
+      "name": "Stack Exchange"
+    },
+    {
+      "domain": "discord.com/developers",
+      "name": "Discord Developers"
+    },
+    {
+      "domain": "github.blog",
+      "name": "GitHub Blog"
+    },
+    {
+      "domain": "web.dev",
+      "name": "web.dev"
     }
   ]
 }

@@ -31,6 +31,46 @@
     {
       "domain": "ricksteves.com",
       "name": "Rick Steves"
+    },
+    {
+      "domain": "thepointsguy.com",
+      "name": "The Points Guy"
+    },
+    {
+      "domain": "seat61.com",
+      "name": "The Man in Seat 61"
+    },
+    {
+      "domain": "fodors.com",
+      "name": "Fodor's"
+    },
+    {
+      "domain": "cntraveler.com",
+      "name": "Condé Nast Traveler"
+    },
+    {
+      "domain": "travel.stackexchange.com",
+      "name": "Travel Stack Exchange"
+    },
+    {
+      "domain": "atlasobscura.com",
+      "name": "Atlas Obscura"
+    },
+    {
+      "domain": "timeout.com",
+      "name": "Time Out"
+    },
+    {
+      "domain": "nomadicmatt.com",
+      "name": "Nomadic Matt"
+    },
+    {
+      "domain": "rome2rio.com",
+      "name": "Rome2Rio"
+    },
+    {
+      "domain": "booking.com",
+      "name": "Booking.com"
     }
   ]
 }

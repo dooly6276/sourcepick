@@ -2,8 +2,8 @@
   "id": "video",
   "name": {
     "en": "Video",
-    "ko": "동영상",
-    "ja": "動画"
+    "ko": "해외 동영상",
+    "ja": "海外動画"
   },
   "mode": "include",
   "order": 60,
@@ -21,20 +21,12 @@
       "name": "TikTok"
     },
     {
-      "domain": "dailymotion.com",
-      "name": "Dailymotion"
-    },
-    {
       "domain": "twitch.tv",
       "name": "Twitch"
     },
     {
-      "domain": "bilibili.com",
-      "name": "Bilibili"
-    },
-    {
-      "domain": "nicovideo.jp",
-      "name": "Niconico"
+      "domain": "dailymotion.com",
+      "name": "Dailymotion"
     },
     {
       "domain": "ted.com",
@@ -43,6 +35,22 @@
     {
       "domain": "rumble.com",
       "name": "Rumble"
+    },
+    {
+      "domain": "odysee.com",
+      "name": "Odysee"
+    },
+    {
+      "domain": "nebula.tv",
+      "name": "Nebula"
+    },
+    {
+      "domain": "kick.com",
+      "name": "Kick"
+    },
+    {
+      "domain": "bilibili.com",
+      "name": "Bilibili"
     }
   ]
 }

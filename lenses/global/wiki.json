@@ -1,9 +1,9 @@
 {
   "id": "wiki",
   "name": {
-    "en": "Wikis",
-    "ko": "해외 위키",
-    "ja": "海外ウィキ"
+    "en": "Wikis & encyclopedias",
+    "ko": "해외 위키와 백과사전",
+    "ja": "海外ウィキ、百科事典"
   },
   "mode": "include",
   "order": 90,
@@ -43,6 +43,42 @@
     {
       "domain": "wikidata.org",
       "name": "Wikidata"
+    },
+    {
+      "domain": "plato.stanford.edu",
+      "name": "Stanford Encyclopedia of Philosophy"
+    },
+    {
+      "domain": "encyclopedia.com",
+      "name": "Encyclopedia.com"
+    },
+    {
+      "domain": "investopedia.com",
+      "name": "Investopedia"
+    },
+    {
+      "domain": "scholarpedia.org",
+      "name": "Scholarpedia"
+    },
+    {
+      "domain": "iep.utm.edu",
+      "name": "Internet Encyclopedia of Philosophy"
+    },
+    {
+      "domain": "merriam-webster.com",
+      "name": "Merriam-Webster"
+    },
+    {
+      "domain": "dictionary.cambridge.org",
+      "name": "Cambridge Dictionary"
+    },
+    {
+      "domain": "etymonline.com",
+      "name": "Etymonline"
+    },
+    {
+      "domain": "wikiwand.com",
+      "name": "Wikiwand"
     }
   ]
 }

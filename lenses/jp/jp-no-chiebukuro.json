@@ -1,0 +1,16 @@
+{
+  "id": "jp-no-chiebukuro",
+  "name": {
+    "en": "No Yahoo! Chiebukuro",
+    "ko": "야후 지혜주머니 제외",
+    "ja": "知恵袋を除外"
+  },
+  "mode": "exclude",
+  "order": 910,
+  "sites": [
+    {
+      "domain": "chiebukuro.yahoo.co.jp",
+      "name": "Yahoo!知恵袋"
+    }
+  ]
+}

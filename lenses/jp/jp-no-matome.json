@@ -1,0 +1,56 @@
+{
+  "id": "jp-no-matome",
+  "name": {
+    "en": "No matome sites",
+    "ko": "일본 정리 블로그 제외",
+    "ja": "まとめサイトを除外"
+  },
+  "mode": "exclude",
+  "order": 920,
+  "sites": [
+    {
+      "domain": "jin115.com",
+      "name": "はちま起稿 / オレ的ゲーム速報"
+    },
+    {
+      "domain": "blog.esuteru.com",
+      "name": "はちま起稿"
+    },
+    {
+      "domain": "hamusoku.com",
+      "name": "ハムスター速報"
+    },
+    {
+      "domain": "alfalfalfa.com",
+      "name": "アルファルファモザイク"
+    },
+    {
+      "domain": "itaishinja.com",
+      "name": "痛いニュース"
+    },
+    {
+      "domain": "news4vip.livedoor.biz",
+      "name": "VIPPERな俺"
+    },
+    {
+      "domain": "himasoku.com",
+      "name": "暇人速報"
+    },
+    {
+      "domain": "vipsister23.com",
+      "name": "なんJ(なんでも実況J)まとめ"
+    },
+    {
+      "domain": "yaraon-blog.com",
+      "name": "やらおん!"
+    },
+    {
+      "domain": "matomame.jp",
+      "name": "まとめまとめ"
+    },
+    {
+      "domain": "kanasoku.info",
+      "name": "哲学ニュースnwk"
+    }
+  ]
+}

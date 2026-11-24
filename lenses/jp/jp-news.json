@@ -1,0 +1,112 @@
+{
+  "id": "jp-news",
+  "name": {
+    "en": "Japanese news",
+    "ko": "일본 언론사",
+    "ja": "ニュース"
+  },
+  "mode": "include",
+  "order": 65,
+  "sites": [
+    {
+      "domain": "news.yahoo.co.jp",
+      "name": "Yahoo!ニュース"
+    },
+    {
+      "domain": "nhk.or.jp",
+      "name": "NHK"
+    },
+    {
+      "domain": "asahi.com",
+      "name": "朝日新聞"
+    },
+    {
+      "domain": "mainichi.jp",
+      "name": "毎日新聞"
+    },
+    {
+      "domain": "yomiuri.co.jp",
+      "name": "読売新聞"
+    },
+    {
+      "domain": "nikkei.com",
+      "name": "日本経済新聞"
+    },
+    {
+      "domain": "sankei.com",
+      "name": "産経新聞"
+    },
+    {
+      "domain": "jiji.com",
+      "name": "時事通信"
+    },
+    {
+      "domain": "kyodonews.jp",
+      "name": "共同通信"
+    },
+    {
+      "domain": "tokyo-np.co.jp",
+      "name": "東京新聞"
+    },
+    {
+      "domain": "itmedia.co.jp",
+      "name": "ITmedia"
+    },
+    {
+      "domain": "watch.impress.co.jp",
+      "name": "Impress Watch"
+    },
+    {
+      "domain": "toyokeizai.net",
+      "name": "東洋経済オンライン"
+    },
+    {
+      "domain": "diamond.jp",
+      "name": "ダイヤモンド・オンライン"
+    },
+    {
+      "domain": "president.jp",
+      "name": "PRESIDENT Online"
+    },
+    {
+      "domain": "bunshun.jp",
+      "name": "文春オンライン"
+    },
+    {
+      "domain": "gendai.media",
+      "name": "現代ビジネス"
+    },
+    {
+      "domain": "j-cast.com",
+      "name": "J-CAST"
+    },
+    {
+      "domain": "news.livedoor.com",
+      "name": "ライブドアニュース"
+    },
+    {
+      "domain": "newsweekjapan.jp",
+      "name": "ニューズウィーク日本版"
+    },
+    {
+      "domain": "huffingtonpost.jp",
+      "name": "ハフポスト日本版"
+    },
+    {
+      "domain": "gigazine.net",
+      "name": "GIGAZINE"
+    },
+    {
+      "domain": "nikkansports.com",
+      "name": "日刊スポーツ"
+    },
+    {
+      "domain": "news.tv-asahi.co.jp",
+      "name": "テレ朝NEWS"
+    },
+    {
+      "domain": "news.ntv.co.jp",
+      "name": "日テレNEWS"
+    }
+  ]
+}

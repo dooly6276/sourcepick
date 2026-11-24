@@ -1,0 +1,44 @@
+{
+  "id": "jp-qna",
+  "name": {
+    "en": "Japanese Q&A",
+    "ko": "일본 질문과 답변",
+    "ja": "Q&A"
+  },
+  "mode": "include",
+  "order": 15,
+  "sites": [
+    {
+      "domain": "chiebukuro.yahoo.co.jp",
+      "name": "Yahoo!知恵袋"
+    },
+    {
+      "domain": "okwave.jp",
+      "name": "OKWAVE"
+    },
+    {
+      "domain": "teratail.com",
+      "name": "teratail"
+    },
+    {
+      "domain": "ja.stackoverflow.com",
+      "name": "スタック・オーバーフロー"
+    },
+    {
+      "domain": "bengo4.com",
+      "name": "弁護士ドットコム"
+    },
+    {
+      "domain": "askdoctors.jp",
+      "name": "アスクドクターズ"
+    },
+    {
+      "domain": "hinative.com",
+      "name": "HiNative"
+    },
+    {
+      "domain": "qa.mamari.jp",
+      "name": "ママリ Q&A"
+    }
+  ]
+}

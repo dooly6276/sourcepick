@@ -1,0 +1,36 @@
+{
+  "id": "jp-papers",
+  "name": {
+    "en": "Japanese papers",
+    "ko": "일본 논문",
+    "ja": "論文"
+  },
+  "mode": "include",
+  "order": 50,
+  "sites": [
+    {
+      "domain": "cir.nii.ac.jp",
+      "name": "CiNii Research"
+    },
+    {
+      "domain": "jstage.jst.go.jp",
+      "name": "J-STAGE"
+    },
+    {
+      "domain": "irdb.nii.ac.jp",
+      "name": "IRDB"
+    },
+    {
+      "domain": "researchmap.jp",
+      "name": "researchmap"
+    },
+    {
+      "domain": "ndlsearch.ndl.go.jp",
+      "name": "国立国会図書館サーチ"
+    },
+    {
+      "domain": "kaken.nii.ac.jp",
+      "name": "KAKEN"
+    }
+  ]
+}

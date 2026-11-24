@@ -43,6 +43,50 @@
     {
       "domain": "kingarthurbaking.com",
       "name": "King Arthur Baking"
+    },
+    {
+      "domain": "epicurious.com",
+      "name": "Epicurious"
+    },
+    {
+      "domain": "tasty.co",
+      "name": "Tasty"
+    },
+    {
+      "domain": "thekitchn.com",
+      "name": "The Kitchn"
+    },
+    {
+      "domain": "smittenkitchen.com",
+      "name": "Smitten Kitchen"
+    },
+    {
+      "domain": "foodnetwork.com",
+      "name": "Food Network"
+    },
+    {
+      "domain": "delish.com",
+      "name": "Delish"
+    },
+    {
+      "domain": "bbc.co.uk/food",
+      "name": "BBC Food"
+    },
+    {
+      "domain": "sallysbakingaddiction.com",
+      "name": "Sally's Baking Addiction"
+    },
+    {
+      "domain": "minimalistbaker.com",
+      "name": "Minimalist Baker"
+    },
+    {
+      "domain": "justonecookbook.com",
+      "name": "Just One Cookbook"
+    },
+    {
+      "domain": "maangchi.com",
+      "name": "Maangchi"
     }
   ]
 }

@@ -1,0 +1,56 @@
+{
+  "id": "jp-recipes",
+  "name": {
+    "en": "Japanese recipes",
+    "ko": "일본 레시피",
+    "ja": "レシピ"
+  },
+  "mode": "include",
+  "order": 130,
+  "sites": [
+    {
+      "domain": "cookpad.com/jp",
+      "name": "クックパッド"
+    },
+    {
+      "domain": "kurashiru.com",
+      "name": "クラシル"
+    },
+    {
+      "domain": "delishkitchen.tv",
+      "name": "デリッシュキッチン"
+    },
+    {
+      "domain": "sirogohan.com",
+      "name": "白ごはん.com"
+    },
+    {
+      "domain": "recipe.rakuten.co.jp",
+      "name": "楽天レシピ"
+    },
+    {
+      "domain": "kyounoryouri.jp",
+      "name": "みんなのきょうの料理"
+    },
+    {
+      "domain": "erecipe.woman.excite.co.jp",
+      "name": "E・レシピ"
+    },
+    {
+      "domain": "orangepage.net",
+      "name": "オレンジページnet"
+    },
+    {
+      "domain": "lettuceclub.net",
+      "name": "レタスクラブ"
+    },
+    {
+      "domain": "park.ajinomoto.co.jp",
+      "name": "味の素パーク"
+    },
+    {
+      "domain": "oceans-nadia.com",
+      "name": "Nadia"
+    }
+  ]
+}

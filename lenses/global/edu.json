@@ -10,27 +10,27 @@
   "sites": [
     {
       "domain": "edu",
-      "name": ".edu"
+      "name": "US universities (.edu)"
     },
     {
       "domain": "ac.uk",
-      "name": ".ac.uk"
-    },
-    {
-      "domain": "ac.jp",
-      "name": ".ac.jp"
+      "name": "UK universities (.ac.uk)"
     },
     {
       "domain": "edu.au",
-      "name": ".edu.au"
+      "name": "Australian universities (.edu.au)"
     },
     {
-      "domain": "coursera.org",
-      "name": "Coursera"
+      "domain": "ac.nz",
+      "name": "New Zealand universities (.ac.nz)"
     },
     {
-      "domain": "khanacademy.org",
-      "name": "Khan Academy"
+      "domain": "ac.jp",
+      "name": "Japanese universities (.ac.jp)"
+    },
+    {
+      "domain": "ac.kr",
+      "name": "Korean universities (.ac.kr)"
     }
   ]
 }

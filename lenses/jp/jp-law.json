@@ -1,0 +1,48 @@
+{
+  "id": "jp-law",
+  "name": {
+    "en": "Japanese law",
+    "ko": "일본 법률",
+    "ja": "法律"
+  },
+  "mode": "include",
+  "order": 110,
+  "sites": [
+    {
+      "domain": "laws.e-gov.go.jp",
+      "name": "e-Gov法令検索"
+    },
+    {
+      "domain": "courts.go.jp",
+      "name": "裁判所"
+    },
+    {
+      "domain": "bengo4.com",
+      "name": "弁護士ドットコム"
+    },
+    {
+      "domain": "houterasu.or.jp",
+      "name": "法テラス"
+    },
+    {
+      "domain": "moj.go.jp",
+      "name": "法務省"
+    },
+    {
+      "domain": "shugiin.go.jp",
+      "name": "衆議院"
+    },
+    {
+      "domain": "sangiin.go.jp",
+      "name": "参議院"
+    },
+    {
+      "domain": "nichibenren.or.jp",
+      "name": "日本弁護士連合会"
+    },
+    {
+      "domain": "kokusen.go.jp",
+      "name": "国民生活センター"
+    }
+  ]
+}

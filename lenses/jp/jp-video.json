@@ -1,0 +1,48 @@
+{
+  "id": "jp-video",
+  "name": {
+    "en": "Video (Japan)",
+    "ko": "일본 동영상",
+    "ja": "動画"
+  },
+  "mode": "include",
+  "order": 60,
+  "sites": [
+    {
+      "domain": "youtube.com",
+      "name": "YouTube"
+    },
+    {
+      "domain": "nicovideo.jp",
+      "name": "ニコニコ動画"
+    },
+    {
+      "domain": "tiktok.com",
+      "name": "TikTok"
+    },
+    {
+      "domain": "abema.tv",
+      "name": "ABEMA"
+    },
+    {
+      "domain": "tver.jp",
+      "name": "TVer"
+    },
+    {
+      "domain": "twitch.tv",
+      "name": "Twitch"
+    },
+    {
+      "domain": "openrec.tv",
+      "name": "OPENREC.tv"
+    },
+    {
+      "domain": "nhk.or.jp/plus",
+      "name": "NHK ONE"
+    },
+    {
+      "domain": "vimeo.com",
+      "name": "Vimeo"
+    }
+  ]
+}

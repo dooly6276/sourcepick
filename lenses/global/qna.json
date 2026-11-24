@@ -1,0 +1,76 @@
+{
+  "id": "qna",
+  "name": {
+    "en": "Q&A",
+    "ko": "해외 질문과 답변",
+    "ja": "海外Q&A"
+  },
+  "mode": "include",
+  "order": 25,
+  "sites": [
+    {
+      "domain": "quora.com",
+      "name": "Quora"
+    },
+    {
+      "domain": "stackexchange.com",
+      "name": "Stack Exchange"
+    },
+    {
+      "domain": "stackoverflow.com",
+      "name": "Stack Overflow"
+    },
+    {
+      "domain": "superuser.com",
+      "name": "Super User"
+    },
+    {
+      "domain": "askubuntu.com",
+      "name": "Ask Ubuntu"
+    },
+    {
+      "domain": "serverfault.com",
+      "name": "Server Fault"
+    },
+    {
+      "domain": "mathoverflow.net",
+      "name": "MathOverflow"
+    },
+    {
+      "domain": "answers.microsoft.com",
+      "name": "Microsoft Community"
+    },
+    {
+      "domain": "discussions.apple.com",
+      "name": "Apple Community"
+    },
+    {
+      "domain": "support.google.com",
+      "name": "Google Help Community"
+    },
+    {
+      "domain": "community.spotify.com",
+      "name": "Spotify Community"
+    },
+    {
+      "domain": "justanswer.com",
+      "name": "JustAnswer"
+    },
+    {
+      "domain": "avvo.com/legal-answers",
+      "name": "Avvo Legal Answers"
+    },
+    {
+      "domain": "healthtap.com",
+      "name": "HealthTap"
+    },
+    {
+      "domain": "reddit.com/r/explainlikeimfive",
+      "name": "r/explainlikeimfive"
+    },
+    {
+      "domain": "reddit.com/r/NoStupidQuestions",
+      "name": "r/NoStupidQuestions"
+    }
+  ]
+}

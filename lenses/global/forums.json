@@ -17,14 +17,6 @@
       "name": "Hacker News"
     },
     {
-      "domain": "stackexchange.com",
-      "name": "Stack Exchange"
-    },
-    {
-      "domain": "quora.com",
-      "name": "Quora"
-    },
-    {
       "domain": "lobste.rs",
       "name": "Lobsters"
     },
@@ -34,15 +26,11 @@
     },
     {
       "domain": "lemmy.world",
-      "name": "Lemmy"
+      "name": "Lemmy.world"
     },
     {
-      "domain": "stackoverflow.com",
-      "name": "Stack Overflow"
-    },
-    {
-      "domain": "superuser.com",
-      "name": "Super User"
+      "domain": "lemmy.ml",
+      "name": "Lemmy.ml"
     },
     {
       "domain": "resetera.com",
@@ -85,8 +73,40 @@
       "name": "AVS Forum"
     },
     {
-      "domain": "lemmy.ml",
-      "name": "Lemmy.ml"
+      "domain": "forums.tomshardware.com",
+      "name": "Tom's Hardware Forum"
+    },
+    {
+      "domain": "xdaforums.com",
+      "name": "XDA Forums"
+    },
+    {
+      "domain": "bogleheads.org",
+      "name": "Bogleheads"
+    },
+    {
+      "domain": "city-data.com/forum",
+      "name": "City-Data Forum"
+    },
+    {
+      "domain": "physicsforums.com",
+      "name": "Physics Forums"
+    },
+    {
+      "domain": "forums.redflagdeals.com",
+      "name": "RedFlagDeals"
+    },
+    {
+      "domain": "community.whattoexpect.com",
+      "name": "What to Expect"
+    },
+    {
+      "domain": "forum.level1techs.com",
+      "name": "Level1Techs"
+    },
+    {
+      "domain": "discuss.python.org",
+      "name": "Python Discourse"
     }
   ]
 }

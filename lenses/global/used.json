@@ -1,0 +1,84 @@
+{
+  "id": "used",
+  "name": {
+    "en": "Secondhand",
+    "ko": "해외 중고거래",
+    "ja": "海外フリマ、中古"
+  },
+  "mode": "include",
+  "order": 170,
+  "sites": [
+    {
+      "domain": "ebay.com",
+      "name": "eBay"
+    },
+    {
+      "domain": "craigslist.org",
+      "name": "Craigslist"
+    },
+    {
+      "domain": "facebook.com/marketplace",
+      "name": "Facebook Marketplace"
+    },
+    {
+      "domain": "offerup.com",
+      "name": "OfferUp"
+    },
+    {
+      "domain": "mercari.com",
+      "name": "Mercari"
+    },
+    {
+      "domain": "poshmark.com",
+      "name": "Poshmark"
+    },
+    {
+      "domain": "depop.com",
+      "name": "Depop"
+    },
+    {
+      "domain": "vinted.com",
+      "name": "Vinted"
+    },
+    {
+      "domain": "gumtree.com",
+      "name": "Gumtree"
+    },
+    {
+      "domain": "swappa.com",
+      "name": "Swappa"
+    },
+    {
+      "domain": "backmarket.com",
+      "name": "Back Market"
+    },
+    {
+      "domain": "thredup.com",
+      "name": "thredUP"
+    },
+    {
+      "domain": "reverb.com",
+      "name": "Reverb"
+    },
+    {
+      "domain": "kijiji.ca",
+      "name": "Kijiji"
+    },
+    {
+      "domain": "grailed.com",
+      "name": "Grailed"
+    },
+    {
+      "domain": "therealreal.com",
+      "name": "The RealReal"
+    },
+    {
+      "domain": "stockx.com",
+      "name": "StockX"
+    },
+    {
+      "domain": "vestiairecollective.com",
+      "name": "Vestiaire Collective"
+    }
+  ]
+}

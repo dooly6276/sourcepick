@@ -1,0 +1,80 @@
+{
+  "id": "courses",
+  "name": {
+    "en": "Online courses",
+    "ko": "해외 강의",
+    "ja": "海外オンライン講座"
+  },
+  "mode": "include",
+  "order": 162,
+  "sites": [
+    {
+      "domain": "coursera.org",
+      "name": "Coursera"
+    },
+    {
+      "domain": "edx.org",
+      "name": "edX"
+    },
+    {
+      "domain": "khanacademy.org",
+      "name": "Khan Academy"
+    },
+    {
+      "domain": "udemy.com",
+      "name": "Udemy"
+    },
+    {
+      "domain": "ocw.mit.edu",
+      "name": "MIT OpenCourseWare"
+    },
+    {
+      "domain": "futurelearn.com",
+      "name": "FutureLearn"
+    },
+    {
+      "domain": "skillshare.com",
+      "name": "Skillshare"
+    },
+    {
+      "domain": "codecademy.com",
+      "name": "Codecademy"
+    },
+    {
+      "domain": "freecodecamp.org",
+      "name": "freeCodeCamp"
+    },
+    {
+      "domain": "brilliant.org",
+      "name": "Brilliant"
+    },
+    {
+      "domain": "linkedin.com/learning",
+      "name": "LinkedIn Learning"
+    },
+    {
+      "domain": "masterclass.com",
+      "name": "MasterClass"
+    },
+    {
+      "domain": "open.edu",
+      "name": "OpenLearn"
+    },
+    {
+      "domain": "classcentral.com",
+      "name": "Class Central"
+    },
+    {
+      "domain": "theodinproject.com",
+      "name": "The Odin Project"
+    },
+    {
+      "domain": "online.stanford.edu",
+      "name": "Stanford Online"
+    },
+    {
+      "domain": "pll.harvard.edu",
+      "name": "Harvard Online"
+    }
+  ]
+}

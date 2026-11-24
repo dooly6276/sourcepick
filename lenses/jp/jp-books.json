@@ -1,0 +1,64 @@
+{
+  "id": "jp-books",
+  "name": {
+    "en": "Japanese books",
+    "ko": "일본 서점",
+    "ja": "本"
+  },
+  "mode": "include",
+  "order": 150,
+  "sites": [
+    {
+      "domain": "honto.jp",
+      "name": "honto"
+    },
+    {
+      "domain": "kinokuniya.co.jp",
+      "name": "紀伊國屋書店"
+    },
+    {
+      "domain": "bookmeter.com",
+      "name": "読書メーター"
+    },
+    {
+      "domain": "booklog.jp",
+      "name": "ブクログ"
+    },
+    {
+      "domain": "aozora.gr.jp",
+      "name": "青空文庫"
+    },
+    {
+      "domain": "calil.jp",
+      "name": "カーリル"
+    },
+    {
+      "domain": "hanmoto.com",
+      "name": "版元ドットコム"
+    },
+    {
+      "domain": "books.rakuten.co.jp",
+      "name": "楽天ブックス"
+    },
+    {
+      "domain": "bookwalker.jp",
+      "name": "BOOK☆WALKER"
+    },
+    {
+      "domain": "hmv.co.jp",
+      "name": "HMV&BOOKS"
+    },
+    {
+      "domain": "tsutaya.tsite.jp",
+      "name": "TSUTAYA"
+    },
+    {
+      "domain": "shosetsu.com",
+      "name": "小説家になろう"
+    },
+    {
+      "domain": "kakuyomu.jp",
+      "name": "カクヨム"
+    }
+  ]
+}

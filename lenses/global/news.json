@@ -1,0 +1,112 @@
+{
+  "id": "news",
+  "name": {
+    "en": "News",
+    "ko": "해외 언론사",
+    "ja": "海外ニュース"
+  },
+  "mode": "include",
+  "order": 65,
+  "sites": [
+    {
+      "domain": "reuters.com",
+      "name": "Reuters"
+    },
+    {
+      "domain": "apnews.com",
+      "name": "AP News"
+    },
+    {
+      "domain": "bbc.com",
+      "name": "BBC"
+    },
+    {
+      "domain": "nytimes.com",
+      "name": "The New York Times"
+    },
+    {
+      "domain": "washingtonpost.com",
+      "name": "The Washington Post"
+    },
+    {
+      "domain": "theguardian.com",
+      "name": "The Guardian"
+    },
+    {
+      "domain": "wsj.com",
+      "name": "The Wall Street Journal"
+    },
+    {
+      "domain": "ft.com",
+      "name": "Financial Times"
+    },
+    {
+      "domain": "bloomberg.com",
+      "name": "Bloomberg"
+    },
+    {
+      "domain": "economist.com",
+      "name": "The Economist"
+    },
+    {
+      "domain": "npr.org",
+      "name": "NPR"
+    },
+    {
+      "domain": "cnn.com",
+      "name": "CNN"
+    },
+    {
+      "domain": "nbcnews.com",
+      "name": "NBC News"
+    },
+    {
+      "domain": "cbsnews.com",
+      "name": "CBS News"
+    },
+    {
+      "domain": "abcnews.go.com",
+      "name": "ABC News"
+    },
+    {
+      "domain": "aljazeera.com",
+      "name": "Al Jazeera"
+    },
+    {
+      "domain": "politico.com",
+      "name": "Politico"
+    },
+    {
+      "domain": "axios.com",
+      "name": "Axios"
+    },
+    {
+      "domain": "theatlantic.com",
+      "name": "The Atlantic"
+    },
+    {
+      "domain": "newyorker.com",
+      "name": "The New Yorker"
+    },
+    {
+      "domain": "latimes.com",
+      "name": "Los Angeles Times"
+    },
+    {
+      "domain": "cnbc.com",
+      "name": "CNBC"
+    },
+    {
+      "domain": "theverge.com",
+      "name": "The Verge"
+    },
+    {
+      "domain": "arstechnica.com",
+      "name": "Ars Technica"
+    },
+    {
+      "domain": "propublica.org",
+      "name": "ProPublica"
+    }
+  ]
+}

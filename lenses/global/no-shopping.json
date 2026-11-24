@@ -1,0 +1,68 @@
+{
+  "id": "no-shopping",
+  "name": {
+    "en": "No shopping",
+    "ko": "해외 쇼핑몰 제외",
+    "ja": "海外通販を除外"
+  },
+  "mode": "exclude",
+  "order": 915,
+  "sites": [
+    {
+      "domain": "amazon.com",
+      "name": "Amazon"
+    },
+    {
+      "domain": "ebay.com",
+      "name": "eBay"
+    },
+    {
+      "domain": "walmart.com",
+      "name": "Walmart"
+    },
+    {
+      "domain": "target.com",
+      "name": "Target"
+    },
+    {
+      "domain": "bestbuy.com",
+      "name": "Best Buy"
+    },
+    {
+      "domain": "etsy.com",
+      "name": "Etsy"
+    },
+    {
+      "domain": "aliexpress.com",
+      "name": "AliExpress"
+    },
+    {
+      "domain": "temu.com",
+      "name": "Temu"
+    },
+    {
+      "domain": "homedepot.com",
+      "name": "The Home Depot"
+    },
+    {
+      "domain": "wayfair.com",
+      "name": "Wayfair"
+    },
+    {
+      "domain": "costco.com",
+      "name": "Costco"
+    },
+    {
+      "domain": "lowes.com",
+      "name": "Lowe's"
+    },
+    {
+      "domain": "newegg.com",
+      "name": "Newegg"
+    },
+    {
+      "domain": "amazon.co.uk",
+      "name": "Amazon UK"
+    }
+  ]
+}

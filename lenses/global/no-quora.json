@@ -1,0 +1,16 @@
+{
+  "id": "no-quora",
+  "name": {
+    "en": "No Quora",
+    "ko": "Quora 제외",
+    "ja": "Quora を除外"
+  },
+  "mode": "exclude",
+  "order": 920,
+  "sites": [
+    {
+      "domain": "quora.com",
+      "name": "Quora"
+    }
+  ]
+}

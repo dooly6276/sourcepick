@@ -31,6 +31,22 @@
     {
       "domain": "gihyo.jp",
       "name": "gihyo.jp"
+    },
+    {
+      "domain": "dev.classmethod.jp",
+      "name": "DevelopersIO"
+    },
+    {
+      "domain": "speakerdeck.com",
+      "name": "Speaker Deck"
+    },
+    {
+      "domain": "ja.stackoverflow.com",
+      "name": "スタック・オーバーフロー"
+    },
+    {
+      "domain": "publickey1.jp",
+      "name": "Publickey"
     }
   ]
 }

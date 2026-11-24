@@ -1,0 +1,76 @@
+{
+  "id": "books",
+  "name": {
+    "en": "Books",
+    "ko": "해외 서점",
+    "ja": "海外の本"
+  },
+  "mode": "include",
+  "order": 175,
+  "sites": [
+    {
+      "domain": "goodreads.com",
+      "name": "Goodreads"
+    },
+    {
+      "domain": "bookshop.org",
+      "name": "Bookshop.org"
+    },
+    {
+      "domain": "barnesandnoble.com",
+      "name": "Barnes & Noble"
+    },
+    {
+      "domain": "gutenberg.org",
+      "name": "Project Gutenberg"
+    },
+    {
+      "domain": "openlibrary.org",
+      "name": "Open Library"
+    },
+    {
+      "domain": "archive.org",
+      "name": "Internet Archive"
+    },
+    {
+      "domain": "app.thestorygraph.com",
+      "name": "The StoryGraph"
+    },
+    {
+      "domain": "librarything.com",
+      "name": "LibraryThing"
+    },
+    {
+      "domain": "kirkusreviews.com",
+      "name": "Kirkus Reviews"
+    },
+    {
+      "domain": "audible.com",
+      "name": "Audible"
+    },
+    {
+      "domain": "abebooks.com",
+      "name": "AbeBooks"
+    },
+    {
+      "domain": "thriftbooks.com",
+      "name": "ThriftBooks"
+    },
+    {
+      "domain": "lithub.com",
+      "name": "Literary Hub"
+    },
+    {
+      "domain": "penguinrandomhouse.com",
+      "name": "Penguin Random House"
+    },
+    {
+      "domain": "waterstones.com",
+      "name": "Waterstones"
+    },
+    {
+      "domain": "standardebooks.org",
+      "name": "Standard Ebooks"
+    }
+  ]
+}

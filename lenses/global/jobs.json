@@ -1,0 +1,92 @@
+{
+  "id": "jobs",
+  "name": {
+    "en": "Jobs & careers",
+    "ko": "해외 채용",
+    "ja": "海外求人"
+  },
+  "mode": "include",
+  "order": 165,
+  "sites": [
+    {
+      "domain": "linkedin.com/jobs",
+      "name": "LinkedIn Jobs"
+    },
+    {
+      "domain": "indeed.com",
+      "name": "Indeed"
+    },
+    {
+      "domain": "glassdoor.com",
+      "name": "Glassdoor"
+    },
+    {
+      "domain": "ziprecruiter.com",
+      "name": "ZipRecruiter"
+    },
+    {
+      "domain": "monster.com",
+      "name": "Monster"
+    },
+    {
+      "domain": "simplyhired.com",
+      "name": "SimplyHired"
+    },
+    {
+      "domain": "wellfound.com",
+      "name": "Wellfound"
+    },
+    {
+      "domain": "dice.com",
+      "name": "Dice"
+    },
+    {
+      "domain": "usajobs.gov",
+      "name": "USAJOBS"
+    },
+    {
+      "domain": "levels.fyi",
+      "name": "Levels.fyi"
+    },
+    {
+      "domain": "builtin.com",
+      "name": "Built In"
+    },
+    {
+      "domain": "weworkremotely.com",
+      "name": "We Work Remotely"
+    },
+    {
+      "domain": "remoteok.com",
+      "name": "Remote OK"
+    },
+    {
+      "domain": "careerbuilder.com",
+      "name": "CareerBuilder"
+    },
+    {
+      "domain": "reed.co.uk",
+      "name": "Reed"
+    },
+    {
+      "domain": "totaljobs.com",
+      "name": "Totaljobs"
+    },
+    {
+      "domain": "seek.com.au",
+      "name": "SEEK"
+    },
+    {
+      "domain": "teamblind.com",
+      "name": "Blind"
+    },
+    {
+      "domain": "themuse.com",
+      "name": "The Muse"
+    },
+    {
+      "domain": "workatastartup.com",
+      "name": "Work at a Startup"
+    }
+  ]
+}

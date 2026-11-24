@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Worldwide and Japanese sources are rebuilt by kind of site, like the Korean ones. Worldwide gains Q&A, News, Shopping, Statistics & data, Law, Online courses, Jobs & careers, Secondhand and Books, plus No Quora and No shopping; Forums, Reviews, Wikis, Papers, Blogs, Travel and Recipes list many more sites. Japan gains Q&A, Video, Wikis and dictionaries, News, Shopping, Reviews, Secondhand, Papers, Government, Law, Jobs, Books and Recipes, plus No matome sites, No Yahoo! Chiebukuro and No Japanese news. English and Japanese defaults show the new sources (added once to settings saved earlier).
 - Opening the popup over a results page searched without sources keeps your saved sources and the sites you turned off, and the first press of a selected source applies it to that search.
 - Manage sources has a Source order list with up and down buttons, so the source buttons can be put in any order.
 - The web app keeps the last search in the box when you come back from the results, so it is easy to change and search again.

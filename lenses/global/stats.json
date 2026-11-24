@@ -1,0 +1,92 @@
+{
+  "id": "stats",
+  "name": {
+    "en": "Statistics & data",
+    "ko": "해외 통계",
+    "ja": "海外統計"
+  },
+  "mode": "include",
+  "order": 155,
+  "sites": [
+    {
+      "domain": "ourworldindata.org",
+      "name": "Our World in Data"
+    },
+    {
+      "domain": "statista.com",
+      "name": "Statista"
+    },
+    {
+      "domain": "data.worldbank.org",
+      "name": "World Bank Data"
+    },
+    {
+      "domain": "data.oecd.org",
+      "name": "OECD Data"
+    },
+    {
+      "domain": "data-explorer.oecd.org",
+      "name": "OECD Data Explorer"
+    },
+    {
+      "domain": "census.gov",
+      "name": "U.S. Census Bureau"
+    },
+    {
+      "domain": "bls.gov",
+      "name": "U.S. Bureau of Labor Statistics"
+    },
+    {
+      "domain": "data.gov",
+      "name": "Data.gov"
+    },
+    {
+      "domain": "fred.stlouisfed.org",
+      "name": "FRED"
+    },
+    {
+      "domain": "ons.gov.uk",
+      "name": "Office for National Statistics"
+    },
+    {
+      "domain": "ec.europa.eu/eurostat",
+      "name": "Eurostat"
+    },
+    {
+      "domain": "data.un.org",
+      "name": "UNdata"
+    },
+    {
+      "domain": "who.int/data",
+      "name": "WHO Data"
+    },
+    {
+      "domain": "pewresearch.org",
+      "name": "Pew Research Center"
+    },
+    {
+      "domain": "news.gallup.com",
+      "name": "Gallup"
+    },
+    {
+      "domain": "kaggle.com/datasets",
+      "name": "Kaggle Datasets"
+    },
+    {
+      "domain": "statcan.gc.ca",
+      "name": "Statistics Canada"
+    },
+    {
+      "domain": "abs.gov.au",
+      "name": "Australian Bureau of Statistics"
+    },
+    {
+      "domain": "data.imf.org",
+      "name": "IMF Data"
+    },
+    {
+      "domain": "cdc.gov/nchs",
+      "name": "NCHS"
+    }
+  ]
+}

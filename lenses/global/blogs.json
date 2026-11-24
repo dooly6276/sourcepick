@@ -27,6 +27,42 @@
     {
       "domain": "ghost.io",
       "name": "Ghost"
+    },
+    {
+      "domain": "hashnode.dev",
+      "name": "Hashnode"
+    },
+    {
+      "domain": "beehiiv.com",
+      "name": "beehiiv"
+    },
+    {
+      "domain": "bearblog.dev",
+      "name": "Bear Blog"
+    },
+    {
+      "domain": "micro.blog",
+      "name": "Micro.blog"
+    },
+    {
+      "domain": "write.as",
+      "name": "Write.as"
+    },
+    {
+      "domain": "mataroa.blog",
+      "name": "Mataroa"
+    },
+    {
+      "domain": "typepad.com",
+      "name": "Typepad"
+    },
+    {
+      "domain": "livejournal.com",
+      "name": "LiveJournal"
+    },
+    {
+      "domain": "tumblr.com",
+      "name": "Tumblr"
     }
   ]
 }

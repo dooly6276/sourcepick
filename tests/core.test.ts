@@ -311,7 +311,11 @@ test("saved state: defaults, junk values and old states", () => {
     shown: [1, null, "forums", "forums"], active: "x", off: [3], extra: [null, "a.com"], known: "no", engine: "yahoo", period: "z",
     custom: [null, { id: "c", name: "n", sites: [null, { domain: 5 }, { domain: "a.com" }] }, { id: 1, name: "n", sites: [] }],
   });
-  assert.deepEqual(junk.shown, ["forums"]);
+  // Junk entries go; sources added to the English defaults after the old defaults are added once.
+  assert.equal(junk.shown[0], "forums");
+  assert.ok(junk.shown.every((x: unknown) => typeof x === "string"));
+  assert.equal(new Set(junk.shown).size, junk.shown.length);
+  assert.ok(junk.shown.includes("qna") && junk.shown.includes("news"));
   assert.deepEqual(junk.active, ["forums"]);
   assert.deepEqual(junk.off, []);
   assert.deepEqual(junk.extra, ["a.com"]);

@@ -1,0 +1,112 @@
+{
+  "id": "shop",
+  "name": {
+    "en": "Shopping",
+    "ko": "해외 쇼핑몰",
+    "ja": "海外通販"
+  },
+  "mode": "include",
+  "order": 75,
+  "sites": [
+    {
+      "domain": "amazon.com",
+      "name": "Amazon"
+    },
+    {
+      "domain": "ebay.com",
+      "name": "eBay"
+    },
+    {
+      "domain": "walmart.com",
+      "name": "Walmart"
+    },
+    {
+      "domain": "target.com",
+      "name": "Target"
+    },
+    {
+      "domain": "bestbuy.com",
+      "name": "Best Buy"
+    },
+    {
+      "domain": "etsy.com",
+      "name": "Etsy"
+    },
+    {
+      "domain": "costco.com",
+      "name": "Costco"
+    },
+    {
+      "domain": "homedepot.com",
+      "name": "The Home Depot"
+    },
+    {
+      "domain": "lowes.com",
+      "name": "Lowe's"
+    },
+    {
+      "domain": "aliexpress.com",
+      "name": "AliExpress"
+    },
+    {
+      "domain": "temu.com",
+      "name": "Temu"
+    },
+    {
+      "domain": "newegg.com",
+      "name": "Newegg"
+    },
+    {
+      "domain": "bhphotovideo.com",
+      "name": "B&H"
+    },
+    {
+      "domain": "wayfair.com",
+      "name": "Wayfair"
+    },
+    {
+      "domain": "ikea.com",
+      "name": "IKEA"
+    },
+    {
+      "domain": "macys.com",
+      "name": "Macy's"
+    },
+    {
+      "domain": "nordstrom.com",
+      "name": "Nordstrom"
+    },
+    {
+      "domain": "sephora.com",
+      "name": "Sephora"
+    },
+    {
+      "domain": "ulta.com",
+      "name": "Ulta Beauty"
+    },
+    {
+      "domain": "rei.com",
+      "name": "REI"
+    },
+    {
+      "domain": "zappos.com",
+      "name": "Zappos"
+    },
+    {
+      "domain": "chewy.com",
+      "name": "Chewy"
+    },
+    {
+      "domain": "amazon.co.uk",
+      "name": "Amazon UK"
+    },
+    {
+      "domain": "argos.co.uk",
+      "name": "Argos"
+    },
+    {
+      "domain": "kohls.com",
+      "name": "Kohl's"
+    }
+  ]
+}

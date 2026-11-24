@@ -1,0 +1,52 @@
+{
+  "id": "jp-wiki",
+  "name": {
+    "en": "Japanese wikis and dictionaries",
+    "ko": "일본 위키와 사전",
+    "ja": "ウィキ、辞書"
+  },
+  "mode": "include",
+  "order": 90,
+  "sites": [
+    {
+      "domain": "ja.wikipedia.org",
+      "name": "ウィキペディア"
+    },
+    {
+      "domain": "dic.pixiv.net",
+      "name": "ピクシブ百科事典"
+    },
+    {
+      "domain": "dic.nicovideo.jp",
+      "name": "ニコニコ大百科"
+    },
+    {
+      "domain": "kotobank.jp",
+      "name": "コトバンク"
+    },
+    {
+      "domain": "weblio.jp",
+      "name": "Weblio"
+    },
+    {
+      "domain": "wikiwiki.jp",
+      "name": "WIKIWIKI"
+    },
+    {
+      "domain": "seesaawiki.jp",
+      "name": "Seesaa Wiki"
+    },
+    {
+      "domain": "atwiki.jp",
+      "name": "@wiki"
+    },
+    {
+      "domain": "ja.wiktionary.org",
+      "name": "ウィクショナリー"
+    },
+    {
+      "domain": "japanknowledge.com",
+      "name": "ジャパンナレッジ"
+    }
+  ]
+}

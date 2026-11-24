@@ -51,6 +51,62 @@
     {
       "domain": "plos.org",
       "name": "PLOS"
+    },
+    {
+      "domain": "openreview.net",
+      "name": "OpenReview"
+    },
+    {
+      "domain": "aclanthology.org",
+      "name": "ACL Anthology"
+    },
+    {
+      "domain": "ieeexplore.ieee.org",
+      "name": "IEEE Xplore"
+    },
+    {
+      "domain": "dl.acm.org",
+      "name": "ACM Digital Library"
+    },
+    {
+      "domain": "medrxiv.org",
+      "name": "medRxiv"
+    },
+    {
+      "domain": "osf.io",
+      "name": "OSF"
+    },
+    {
+      "domain": "academic.oup.com",
+      "name": "Oxford Academic"
+    },
+    {
+      "domain": "onlinelibrary.wiley.com",
+      "name": "Wiley"
+    },
+    {
+      "domain": "tandfonline.com",
+      "name": "Taylor & Francis"
+    },
+    {
+      "domain": "science.org",
+      "name": "Science"
+    },
+    {
+      "domain": "pnas.org",
+      "name": "PNAS"
+    },
+    {
+      "domain": "cell.com",
+      "name": "Cell"
+    },
+    {
+      "domain": "scholar.archive.org",
+      "name": "Internet Archive Scholar"
+    },
+    {
+      "domain": "core.ac.uk",
+      "name": "CORE"
     }
   ]
 }

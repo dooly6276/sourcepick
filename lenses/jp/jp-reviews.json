@@ -1,0 +1,80 @@
+{
+  "id": "jp-reviews",
+  "name": {
+    "en": "Japanese reviews",
+    "ko": "일본 리뷰",
+    "ja": "口コミ、レビュー"
+  },
+  "mode": "include",
+  "order": 80,
+  "sites": [
+    {
+      "domain": "kakaku.com",
+      "name": "価格.com"
+    },
+    {
+      "domain": "tabelog.com",
+      "name": "食べログ"
+    },
+    {
+      "domain": "cosme.net",
+      "name": "@cosme"
+    },
+    {
+      "domain": "minhyo.jp",
+      "name": "みん評"
+    },
+    {
+      "domain": "filmarks.com",
+      "name": "Filmarks"
+    },
+    {
+      "domain": "eiga.com",
+      "name": "映画.com"
+    },
+    {
+      "domain": "hotpepper.jp",
+      "name": "ホットペッパー"
+    },
+    {
+      "domain": "retty.me",
+      "name": "Retty"
+    },
+    {
+      "domain": "jalan.net",
+      "name": "じゃらん"
+    },
+    {
+      "domain": "tripadvisor.jp",
+      "name": "トリップアドバイザー"
+    },
+    {
+      "domain": "bookmeter.com",
+      "name": "読書メーター"
+    },
+    {
+      "domain": "openwork.jp",
+      "name": "OpenWork"
+    },
+    {
+      "domain": "jobtalk.jp",
+      "name": "転職会議"
+    },
+    {
+      "domain": "minkou.jp",
+      "name": "みんなの学校情報"
+    },
+    {
+      "domain": "caloo.jp",
+      "name": "Caloo"
+    },
+    {
+      "domain": "my-best.com",
+      "name": "mybest"
+    },
+    {
+      "domain": "minkara.carview.co.jp",
+      "name": "みんカラ"
+    }
+  ]
+}

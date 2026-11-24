@@ -43,6 +43,30 @@
     {
       "domain": "jugem.jp",
       "name": "JUGEM"
+    },
+    {
+      "domain": "hateblo.jp",
+      "name": "はてなブログ(hateblo.jp)"
+    },
+    {
+      "domain": "hatenablog.jp",
+      "name": "はてなブログ(hatenablog.jp)"
+    },
+    {
+      "domain": "blog.jp",
+      "name": "ライブドアブログ(blog.jp)"
+    },
+    {
+      "domain": "blog.livedoor.jp",
+      "name": "ライブドアブログ"
+    },
+    {
+      "domain": "cocolog-nifty.com",
+      "name": "ココログ"
+    },
+    {
+      "domain": "muragon.com",
+      "name": "ムラゴン"
     }
   ]
 }
