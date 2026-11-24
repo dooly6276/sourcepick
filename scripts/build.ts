@@ -97,6 +97,11 @@ function manifest(target: "chrome" | "firefox") {
     omnibox: { keyword: "sp" },
     permissions: ["storage"],
     content_scripts: [{
+      // Hides the long query in the search box until content.js shows the words alone.
+      matches: CONTENT_MATCHES,
+      js: ["early.js"],
+      run_at: "document_start",
+    }, {
       matches: CONTENT_MATCHES,
       js: ["lenses.js", ...SHARED, "content.js"],
       css: ["content.css"],
@@ -107,10 +112,11 @@ function manifest(target: "chrome" | "firefox") {
     m.background = { service_worker: "background.js" };
   } else {
     m.background = { scripts: ["lenses.js", ...SHARED, "background.js"] };
-    // Firefox asks every add-on to declare what it collects; Sourcepick collects nothing.
+    // Firefox asks every add-on to declare what it collects; Sourcepick collects nothing. That key
+    // arrived in Firefox 140 (142 on Android), the oldest versions Mozilla still supports.
     m.browser_specific_settings = {
-      gecko: { id: "sourcepick@dooly6276.github.io", strict_min_version: "121.0", data_collection_permissions: { required: ["none"] } },
-      gecko_android: { strict_min_version: "121.0" },
+      gecko: { id: "sourcepick@dooly6276.github.io", strict_min_version: "140.0", data_collection_permissions: { required: ["none"] } },
+      gecko_android: { strict_min_version: "142.0" },
     };
   }
   return m;
@@ -120,7 +126,7 @@ function buildExtension(target: "chrome" | "firefox") {
   const out = path.join(DIST, target);
   reset(out);
   common(out);
-  for (const f of ["content.js", "background.js"]) copy(path.join(BUILD, "extension", f), path.join(out, f));
+  for (const f of ["early.js", "content.js", "background.js"]) copy(path.join(BUILD, "extension", f), path.join(out, f));
   copy(path.join(SRC, "extension/content.css"), path.join(out, "content.css"));
   copyDir(path.join(SRC, "extension/_locales"), path.join(out, "_locales"));
   for (const n of [16, 32, 48, 128]) copy(path.join(ASSETS, `icon-${n}.png`), path.join(out, `icons/icon-${n}.png`));

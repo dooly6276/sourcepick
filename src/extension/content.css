@@ -1,9 +1,11 @@
 #sourcepick-bar {
   box-sizing: border-box;
   display: flex;
-  flex-wrap: nowrap;
+  /* The links on the right move to a line of their own when they would leave the sources too
+     little room (a long "sites applied" note, a narrow window or a phone). */
+  flex-wrap: wrap;
   align-items: flex-start;
-  gap: 6px;
+  gap: 2px 6px;
   margin: 8px 0 6px;
   padding-right: 16px;
   font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", "Hiragino Sans", sans-serif;
@@ -13,13 +15,16 @@
 }
 #sourcepick-bar .sp-label { flex: none; height: 32px; display: inline-flex; align-items: center; margin: 2px 4px 0 0; color: #4d5156; font-weight: 700; }
 #sourcepick-bar .sp-scroll {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; flex: 0 1 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; flex: 1 1 320px;
   padding: 2px 0;
 }
 #sourcepick-bar .sp-scroll.sp-fold { max-height: 36px; overflow: hidden; }
 #sourcepick-bar .sp-note { align-self: center; padding: 0 6px; color: #70757a; font-size: 13px; white-space: nowrap; }
 #sourcepick-bar button {
   box-sizing: border-box;
+  flex: none;
+  min-width: 0;
+  width: auto;
   height: 32px;
   margin: 0;
   padding: 0 12px;
@@ -48,8 +53,8 @@
 
 /* Touch screens (Firefox for Android): larger buttons, row scrolls sideways under the finger. */
 @media (pointer: coarse) {
-  #sourcepick-bar { padding-left: 12px; margin: 6px 0; align-items: center; }
-  #sourcepick-bar .sp-scroll { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  #sourcepick-bar { padding-left: 12px; margin: 6px 0; align-items: center; row-gap: 0; }
+  #sourcepick-bar .sp-scroll { flex-basis: 180px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   #sourcepick-bar .sp-tail { height: auto; margin-top: 0; }
   #sourcepick-bar button { height: 44px; padding: 0 14px; font-size: 15px; }
   #sourcepick-bar .sp-label { display: none; }
