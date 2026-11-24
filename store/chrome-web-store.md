@@ -2,7 +2,7 @@
 
 Drafts for the Chrome Web Store dashboard (also usable for Edge Add-ons). Text fields are in English, Korean and Japanese. The short description of each language is the `description` in `src/extension/_locales/<lang>/messages.json` (limit 132 characters), so it is not repeated here.
 
-Category: Productivity (alternative: Search Tools). Privacy policy URL: https://github.com/dooly6276/sourcepick/blob/main/store/privacy.md
+Category: Productivity > Tools (도구). Item ID kifmhnidecbnbidbhdooofggbekanjhc, publisher dooly6276 on the doolyk6276 Google account (2026-11-24, in review). Small promo tile: `store/promo-440x280.png`. Privacy policy URL: https://github.com/dooly6276/sourcepick/blob/main/store/privacy.md
 
 ## Detailed description
 
