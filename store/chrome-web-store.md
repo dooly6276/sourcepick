@@ -13,7 +13,8 @@ Search only the sites you choose.
 Search engines bury forum threads, first-hand reviews and primary sources under SEO pages. Typing `site:reddit.com OR site:news.ycombinator.com ...` works, but nobody wants to do it every time. Sourcepick keeps those site lists as sources and applies them with one click.
 
 - A row of source buttons appears on Google, Bing, DuckDuckGo and Brave Search result pages. Click one to search only those sites. Hold Ctrl or Shift, or turn on "Choose several sources", to combine them.
-- 42 built-in sources for worldwide, Korean and Japanese sites: forums, Reddit, official docs, papers, communities, blogs, government sites, law, shopping, reviews and more.
+- 69 built-in sources covering 793 worldwide, Korean and Japanese sites, grouped by kind of content: forums, Reddit, Q&A, blogs, reviews, papers, government, statistics, law, jobs, secondhand, official docs and more.
+- The search box and tab title keep showing only your words, not a long list of `site:` operators, and searching again from that box keeps the same sources.
 - Exclusion sources such as "No Pinterest" and "No major news" for whole-web searches.
 - Search one site at a time when several sites together let one big site fill the page.
 - Make your own sources from any list of domains or URL paths, and share them as a link.
@@ -30,7 +31,8 @@ No account, no server and no tracking. Settings stay in your browser, and your s
 구글에서 검색하면 기사와 광고성 글이 상단을 차지해 실제 사용자의 글을 찾기 어렵습니다. `site:dcinside.com OR site:theqoo.net ...`를 매번 입력하면 원하는 결과를 볼 수 있지만 번거롭습니다. Sourcepick은 사이트 목록을 출처로 저장해 두고, 선택 한 번으로 검색에 적용합니다.
 
 - 구글, Bing, DuckDuckGo, Brave 검색 결과 화면에 출처 버튼이 표시됩니다. 버튼을 선택하면 해당 사이트에서만 검색합니다. Ctrl이나 Shift를 누른 채 선택하거나 '여러 출처 함께 선택'을 켜면 여러 출처를 함께 검색합니다.
-- 커뮤니티, 블로그, 카페, 논문, 공공기관, 법률, 쇼핑, 리뷰, 해외 포럼, 공식 문서 등 한국, 일본, 해외 사이트를 묶은 기본 출처 42개를 제공합니다.
+- 커뮤니티, 블로그, 카페, 논문, 공공기관, 법률, 쇼핑, 리뷰, 해외 포럼, 공식 문서 등 한국, 일본, 해외 사이트 793곳을 글 종류별로 묶은 기본 출처 69개를 제공합니다.
+- 검색창과 탭 제목에는 긴 `site:` 조건 대신 입력한 검색어만 표시되고, 그 검색창에서 다시 검색해도 같은 출처가 유지됩니다.
 - 웹 전체를 검색할 때 언론사나 Pinterest 같은 사이트를 제외할 수 있습니다.
 - 여러 사이트를 함께 검색해 한 사이트의 결과가 많이 표시되면 사이트별로 따로 검색할 수 있습니다.
 - 원하는 사이트나 게시판 주소로 내 출처를 만들고 링크로 공유할 수 있습니다.
@@ -47,7 +49,8 @@ No account, no server and no tracking. Settings stay in your browser, and your s
 検索結果の上位は SEO 記事に占められ、掲示板の書き込みや実際の使用感、一次情報が埋もれがちです。`site:5ch.net OR site:chiebukuro.yahoo.co.jp ...` と毎回入力すれば絞り込めますが、手間がかかります。Sourcepick はサイトの一覧を「検索先」として保存し、ワンクリックで検索に適用します。
 
 - Google、Bing、DuckDuckGo、Brave の検索結果ページに検索先ボタンが表示されます。ボタンを選ぶとそのサイトだけを検索します。Ctrl または Shift を押しながら選ぶか、「複数の検索先を選ぶ」をオンにすると、複数を組み合わせられます。
-- 掲示板、ブログ、論文、公式ドキュメント、公的機関、レビューなど、日本、韓国、海外のサイトをまとめた検索先を 42 件用意しています。
+- 掲示板、ブログ、論文、公式ドキュメント、公的機関、レビューなど、日本、韓国、海外のサイト793 件をまとめた検索先を 69 件用意しています。
+- 検索ボックスとタブのタイトルには長い `site:` 条件ではなく入力した語句だけが表示され、そのボックスから再検索しても同じ検索先が使われます。
 - ウェブ全体の検索では、Pinterest やニュースサイトなどを除外できます。
 - 複数のサイトをまとめて検索して大きなサイトの結果が多くなるときは、サイトごとに検索できます。
 - 好きなドメインや URL のパスから自分の検索先を作り、リンクで共有できます。

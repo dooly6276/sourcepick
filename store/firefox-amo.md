@@ -1,16 +1,16 @@
 # Firefox Add-ons (AMO) listing
 
-Drafts for addons.mozilla.org. The add-on id is `sourcepick@dooly6276.github.io`. Firefox 121 or later, desktop and Android. The manifest declares `data_collection_permissions: required: ["none"]`. Source code is the repository itself; the build is `npm ci && npm run package`, which writes `dist/sourcepick-firefox-<version>.zip` (Node 24 or later). Reviewers can read the build notes in the README.
+Drafts for addons.mozilla.org. The add-on id is `sourcepick@dooly6276.github.io`. Firefox 140 or later on desktop, 142 or later on Android. The manifest declares `data_collection_permissions: required: ["none"]`. Source code is the repository itself; the build is `npm ci && npm run package`, which writes `dist/sourcepick-firefox-<version>.zip` (Node 24 or later). Reviewers can read the build notes in the README.
 
 Categories: Search Tools, Productivity. License: MIT. Support site: https://github.com/dooly6276/sourcepick/issues. Homepage: https://sourcepick.toolnjoy.com/. Privacy policy: https://github.com/dooly6276/sourcepick/blob/main/store/privacy.md
 
 ## Summary (250 characters at most)
 
-English: Search only the sites you choose. Adds source buttons like Forums, Reddit and Papers to Google, Bing, DuckDuckGo and Brave Search results, with 42 built-in sources and your own.
+English: Search only the sites you choose. Adds source buttons like Forums, Reddit and Papers to Google, Bing, DuckDuckGo and Brave Search results, with 69 built-in sources and your own.
 
-한국어: 원하는 출처의 검색 결과만 볼 수 있습니다. 구글, Bing, DuckDuckGo, Brave 검색 결과 화면에 커뮤니티, 블로그, 논문 같은 출처 버튼을 추가합니다. 기본 출처 42개와 내 출처를 사용할 수 있습니다.
+한국어: 원하는 출처의 검색 결과만 볼 수 있습니다. 구글, Bing, DuckDuckGo, Brave 검색 결과 화면에 커뮤니티, 블로그, 논문 같은 출처 버튼을 추가합니다. 기본 출처 69개와 내 출처를 사용할 수 있습니다.
 
-日本語: 選んだサイトの検索結果だけを表示します。Google、Bing、DuckDuckGo、Brave の検索結果ページに、掲示板、ブログ、論文などの検索先ボタンを追加します。標準の検索先 42 件と自分の検索先を使えます。
+日本語: 選んだサイトの検索結果だけを表示します。Google、Bing、DuckDuckGo、Brave の検索結果ページに、掲示板、ブログ、論文などの検索先ボタンを追加します。標準の検索先 69 件と自分の検索先を使えます。
 
 ## Description
 
