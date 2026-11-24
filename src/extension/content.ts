@@ -105,6 +105,7 @@
 
     let b = document.createElement("div");
     b.id = "sourcepick-bar";
+    b.setAttribute("data-owner", OWNER);
     b.setAttribute("role", "toolbar");
     b.setAttribute("aria-label", i18n.t("barLabel"));
     if (isDark()) b.classList.add("sp-dark");
@@ -160,9 +161,16 @@
     if (box.width > 300) bar.style.maxWidth = (left + Math.round(box.width) + 16) + "px";
   }
 
+  let OWNER = "";
+  try { OWNER = chrome.runtime.id || ""; } catch (e) { /* not running as an extension */ }
+
   function render(): void {
     if (!state) return;
     lastUrl = location.href;
+    // Another copy of Sourcepick (the same folder loaded twice, or the store version next to a
+    // developer copy) already shows its bar: leave the page to it instead of adding a second one.
+    let other = document.getElementById("sourcepick-bar");
+    if (other && other !== bar && other.getAttribute("data-owner") !== OWNER) { if (bar) bar.remove(); bar = null; return; }
     if (!query()) { if (bar) bar.remove(); bar = null; return; }
     let place = PLACE[ENGINE]();
     if (!place) return;
