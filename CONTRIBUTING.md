@@ -41,11 +41,11 @@ npm run build                  # then reload the extension or the web app to try
 
 ## A new region
 
-Create `lenses/<code>/`, add the code to `REGIONS` in `scripts/lenses.mjs`, and add a default set for that language in `src/store.js` if it should be shown to new users. Interface translations live in `src/i18n.js`.
+Create `lenses/<code>/`, add the code to `REGIONS` in `scripts/lenses.ts`, and add a default set for that language in `src/store.ts` if it should be shown to new users. Interface translations live in `src/i18n.ts`.
 
 ## Code changes
 
-There are no dependencies and no bundler. `src/` is plain browser JavaScript; `scripts/build.mjs` copies it into `dist/`.
+There are no runtime dependencies and no bundler. `src/` is strict TypeScript that `tsc` compiles to plain scripts in `.build/`; `scripts/build.ts` copies them into `dist/`. Run `npm install` once, then `npm run typecheck` and `npm test`.
 
 ```bash
 npm run serve   # web app on http://127.0.0.1:8791

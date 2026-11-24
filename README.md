@@ -36,10 +36,11 @@ To build it yourself:
 ```bash
 git clone https://github.com/dooly6276/sourcepick.git
 cd sourcepick
+npm install
 npm run build        # writes dist/web, dist/chrome, dist/firefox
 ```
 
-No dependencies. Node 18 or later is enough.
+No runtime dependencies. Building needs Node 24 or later and TypeScript, installed by `npm install`.
 
 ## How it works
 
@@ -65,10 +66,10 @@ Each one is a file in [`lenses/`](lenses). Missing a great site, or a whole coun
 
 ## Contributing
 
-Sourcepick is small on purpose: plain JavaScript, no dependencies, one `npm test`. Good places to start:
+Sourcepick is small on purpose: strict TypeScript, no runtime dependencies, one `npm test`. Good places to start:
 
 - **Sources for your country or interests.** Most of the value is in good site lists. Issues labeled [`source`](https://github.com/dooly6276/sourcepick/labels/source) and [`good first issue`](https://github.com/dooly6276/sourcepick/labels/good%20first%20issue) are a fine first pull request.
-- **Translations.** The interface has English, Korean and Japanese; adding a language is one block in `src/i18n.js`.
+- **Translations.** The interface has English, Korean and Japanese; adding a language is one block in `src/i18n.ts`.
 - **More engines and browsers.** Startpage, Ecosia and a Safari extension for iPhone and Mac are open for anyone who wants them ([help wanted](https://github.com/dooly6276/sourcepick/labels/help%20wanted)).
 
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) explains how the pieces fit and how to add an engine or a language. Questions and ideas are welcome in [Discussions](https://github.com/dooly6276/sourcepick/discussions).
@@ -77,9 +78,9 @@ Sourcepick is small on purpose: plain JavaScript, no dependencies, one `npm test
 
 ```
 lenses/            built-in sources, one JSON file each (global/, kr/, jp/)
-src/core.js        query building for each engine, share links
-src/store.js       settings (chrome.storage in the extension, localStorage on the web)
-src/i18n.js        interface text (English, Korean, Japanese)
+src/core.ts        query building for each engine, share links
+src/store.ts       settings (chrome.storage in the extension, localStorage on the web)
+src/i18n.ts        interface text (English, Korean, Japanese)
 src/app/           the main screen, shared by the web app, the extension popup and its settings page
 src/extension/     results-page bar, background script, store listing text
 src/web/           address-bar and share-sheet redirect, service worker, web app manifest

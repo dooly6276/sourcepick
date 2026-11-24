@@ -34,10 +34,11 @@
 ```bash
 git clone https://github.com/dooly6276/sourcepick.git
 cd sourcepick
+npm install
 npm run build        # dist/web, dist/chrome, dist/firefox 생성
 ```
 
-설치할 패키지는 없습니다. Node 18 이상이면 됩니다.
+실행에 필요한 패키지는 없습니다. 빌드에는 Node 24 이상과 TypeScript가 필요하며 `npm install`로 설치합니다.
 
 ### 휴대폰 홈 화면에 추가
 

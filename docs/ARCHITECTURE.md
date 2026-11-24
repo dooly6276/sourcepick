@@ -1,16 +1,17 @@
 # How Sourcepick works
 
-Sourcepick is plain browser JavaScript with no dependencies and no bundler. One set of files in `src/` runs in three places, and `scripts/build.mjs` copies it into `dist/web`, `dist/chrome` and `dist/firefox`.
+Sourcepick is strict TypeScript with no runtime dependencies and no bundler. One set of files in `src/` runs in three places. `tsc` compiles each file to a plain script in `.build/` (no modules, so content scripts can load them), and `scripts/build.ts` copies the result into `dist/web`, `dist/chrome` and `dist/firefox`.
 
 ```
-lenses/*.json ──► scripts/lenses.mjs (validate) ──► dist/*/lenses.js  (globalThis.SOURCE_LENSES)
+lenses/*.json ──► scripts/lenses.ts (validate) ──► dist/*/lenses.js  (globalThis.SOURCE_LENSES)
 
-src/core.js    query building, engine limits, share links      used everywhere
-src/store.js   settings: chrome.storage.local or localStorage  used everywhere
-src/i18n.js    interface text (en, ko, ja)                     used everywhere
+src/core.ts    query building, engine limits, share links      used everywhere
+src/store.ts   settings: chrome.storage.local or localStorage  used everywhere
+src/i18n.ts    interface text (en, ko, ja)                     used everywhere
 src/app/       main screen and "Manage sources"                web app, extension popup and settings page
-src/web/       redirect.js (?q= and share sheet), sw.js, manifest.webmanifest
-src/extension/ content.js (results-page buttons), background.js (omnibox "sp"), _locales
+src/web/       redirect.ts (?q= and share sheet), sw.ts, manifest.webmanifest
+src/extension/ content.ts (results-page buttons), background.ts (omnibox "sp"), _locales
+src/types.d.ts shared types, and the globals SourceCore, SourceStore, SourceI18n
 ```
 
 ## The one idea
@@ -49,7 +50,7 @@ If you measure a different limit, change `maxTerms` or `maxLength` and say how y
 
 ## Address-bar search
 
-The web app answers `?q=` (`src/web/redirect.js`) with the sources saved in that browser, so any browser that lets you add a custom search engine can use `https://sourcepick.toolnjoy.com/?q=%s`. The page also links `opensearch.xml`. As of November 2026 (Android checked on a Galaxy Note20):
+The web app answers `?q=` (`src/web/redirect.ts`) with the sources saved in that browser, so any browser that lets you add a custom search engine can use `https://sourcepick.toolnjoy.com/?q=%s`. The page also links `opensearch.xml`. As of November 2026 (Android checked on a Galaxy Note20):
 
 - Desktop Chrome, Edge and Firefox: you can add the address by hand. Firefox also offers it from the OpenSearch link.
 - Chrome for Android has no way to add an engine by hand. It lists a site under Settings > Search engine > Recently visited after a real form submission on that site, and only when the form's page has the path `/` (`GenerateKeywordFromNavigationEntry` in `search_engine_tab_helper.cc`). That is why the web app has its own host, and why on phones its search form submits normally (`./?q=`, then `redirect.js`) instead of opening a new tab. The web app shows these steps in Chrome for Android.
@@ -57,19 +58,19 @@ The web app answers `?q=` (`src/web/redirect.js`) with the sources saved in that
 
 ## Adding a search engine
 
-1. Add an entry to `ENGINES` in `src/core.js`: `name`, `maxTerms`, `url`, the time-filter parameter, and `keep` (URL parameters to carry over when the bar re-runs a search).
-2. Add its results-page URL patterns to `CONTENT_MATCHES` in `scripts/build.mjs`.
-3. Add a placement function to `PLACE` in `src/extension/content.js` that returns where the bar goes (`parent`, `before`, optional `alignTo`). Test it on desktop and on a phone-sized window; engines often serve a different layout to phones.
-4. Add the engine to the `engine` check in `src/store.js` (`sanitize`).
-5. Add tests for its URL in `tests/core.test.mjs`.
+1. Add an entry to `ENGINES` in `src/core.ts`: `name`, `maxTerms`, `url`, the time-filter parameter, and `keep` (URL parameters to carry over when the bar re-runs a search).
+2. Add its results-page URL patterns to `CONTENT_MATCHES` in `scripts/build.ts`.
+3. Add a placement function to `PLACE` in `src/extension/content.ts` that returns where the bar goes (`parent`, `before`, optional `alignTo`). Test it on desktop and on a phone-sized window; engines often serve a different layout to phones.
+4. Add the engine to the `engine` check in `src/store.ts` (`sanitize`).
+5. Add tests for its URL in `tests/core.test.ts`.
 
 ## Adding an interface language
 
-Copy the `en` block in `src/i18n.js`, translate every value, keep `{0}`-style placeholders, and add the language to the `ui` choice at the bottom. Add `name` entries for that language in the lens files you can, and a default set of sources for new users in `DEFAULTS` in `src/store.js`. The extension store text lives in `src/extension/_locales/<lang>/messages.json`.
+Copy the `en` block in `src/i18n.ts`, translate every value, keep `{0}`-style placeholders, and add the language to the `ui` choice at the bottom. Add `name` entries for that language in the lens files you can, and a default set of sources for new users in `DEFAULTS` in `src/store.ts`. The extension store text lives in `src/extension/_locales/<lang>/messages.json`.
 
 ## Adding a region
 
-Create `lenses/<code>/`, add the code to `REGIONS` in `scripts/lenses.mjs`, and add `region_<code>` to every language in `src/i18n.js`.
+Create `lenses/<code>/`, add the code to `REGIONS` in `scripts/lenses.ts`, and add `region_<code>` to every language in `src/i18n.ts`.
 
 ## Testing
 

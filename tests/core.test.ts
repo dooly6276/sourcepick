@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { loadLenses } from "../scripts/lenses.mjs";
-import "../src/core.js";
+import { loadLenses } from "../scripts/lenses.ts";
+import "../.build/core.js";
 
 const core = globalThis.SourceCore;
 
@@ -68,7 +68,7 @@ test("searchUrl per engine", () => {
 });
 
 test("activeLensIds and collect", () => {
-  const lenses = [
+  const lenses: LensRef[] = [
     { id: "a", mode: "include", sites: [{ domain: "a.com" }, { domain: "b.com" }] },
     { id: "n", mode: "exclude", sites: [{ domain: "news.com" }] },
   ];
@@ -82,6 +82,7 @@ test("share links round-trip, including Korean names", () => {
   const code = core.encodeLens({ name: "내 커뮤니티", mode: "exclude", sites: [{ domain: "a.com" }, { domain: "b.co.kr" }] });
   assert.match(code, /^[A-Za-z0-9_-]+$/);
   const back = core.decodeLens(code);
+  assert.ok(back);
   assert.equal(back.name, "내 커뮤니티");
   assert.equal(back.mode, "exclude");
   assert.deepEqual(back.sites.map((s) => s.domain), ["a.com", "b.co.kr"]);
@@ -102,7 +103,7 @@ test("fit keeps queries inside each engine's word limit", () => {
   assert.equal(e.exclude.length, 30);
   assert.equal(e.cut.exclude.length, 10);
   // searchUrl applies the same limit.
-  const q = new URL(core.searchUrl("x", many, [], { engine: "google" })).searchParams.get("q");
+  const q = new URL(core.searchUrl("x", many, [], { engine: "google" })).searchParams.get("q") as string;
   assert.equal(core.parseFilters(q).include.length, 31);
   assert.equal(core.countWords(q), 1);
 });
@@ -118,15 +119,15 @@ test("fit keeps queries inside each engine's length limit", () => {
   assert.ok(new TextEncoder().encode(dq).length <= 490);
   // Short domains stay under the length limit, so only the word limit applies.
   assert.equal(core.fit("x", Array.from({ length: 30 }, (_, i) => `s${i}.com`), [], "brave").include.length, 19);
-  const q = new URL(core.searchUrl("battery", long, [], { engine: "brave" })).searchParams.get("q");
-  assert.equal(core.lensState(q, { id: "l", mode: "include", sites: long.map((domain) => ({ domain })) }, "brave"), "part");
+  const q = new URL(core.searchUrl("battery", long, [], { engine: "brave" })).searchParams.get("q") as string;
+  assert.equal(core.lensState(q, { mode: "include", sites: long.map((domain) => ({ domain })) }, "brave"), "part");
 });
 
 test("lensState reports sources cut short by the limit", () => {
-  const big = { id: "big", mode: "include", sites: Array.from({ length: 40 }, (_, i) => ({ domain: `s${i}.com` })) };
-  const q = new URL(core.searchUrl("x", core.lensDomains(big), [], { engine: "google" })).searchParams.get("q");
+  const big: LensRef = { id: "big", mode: "include", sites: Array.from({ length: 40 }, (_, i) => ({ domain: `s${i}.com` })) };
+  const q = new URL(core.searchUrl("x", core.lensDomains(big), [], { engine: "google" })).searchParams.get("q") as string;
   assert.equal(core.lensState(q, big, "google"), "part");
   assert.equal(core.lensState("x site:s1.com", big, "google"), "none");
-  const small = { id: "sm", mode: "include", sites: [{ domain: "a.com" }, { domain: "b.com" }] };
+  const small: LensRef = { id: "sm", mode: "include", sites: [{ domain: "a.com" }, { domain: "b.com" }] };
   assert.equal(core.lensState("x site:a.com OR site:b.com", small, "google"), "all");
 });

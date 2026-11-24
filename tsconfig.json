@@ -1,0 +1,22 @@
+{
+  // Compiles src/ to .build/ as plain scripts (no modules), one output file per source file.
+  // sw.ts has its own tsconfig because the service worker types clash with the DOM types.
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["chrome"],
+    "module": "ES2020",
+    "moduleDetection": "legacy",
+    "rootDir": "src",
+    "outDir": ".build",
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "alwaysStrict": false,
+    "removeComments": false,
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "exclude": ["src/web/sw.ts"]
+}

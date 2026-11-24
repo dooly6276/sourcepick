@@ -12,11 +12,21 @@
   },
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "package": "node scripts/build.mjs --zip",
-    "test": "node --test tests/*.test.mjs",
-    "check-domains": "node scripts/check-domains.mjs",
-    "serve": "node scripts/build.mjs && python3 -m http.server 8791 --bind 127.0.0.1 --directory dist/web"
+    "build": "node scripts/build.ts",
+    "package": "node scripts/build.ts --zip",
+    "compile": "tsc -p tsconfig.json && tsc -p tsconfig.sw.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.sw.json --noEmit && tsc -p tsconfig.node.json",
+    "pretest": "npm run compile",
+    "test": "node --test tests/*.test.ts",
+    "check-domains": "node scripts/check-domains.ts",
+    "serve": "node scripts/build.ts && python3 -m http.server 8791 --bind 127.0.0.1 --directory dist/web"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.7",
+    "@types/node": "^24.19.2",
+    "typescript": "^5.9.3"
+  }
 }

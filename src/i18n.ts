@@ -1,10 +1,10 @@
 // Interface text: Korean and Japanese for browsers in those languages, English for everyone else.
-(function (root) {
+(function (root: typeof globalThis) {
   "use strict";
 
-  var APP = "Sourcepick";
+  let APP = "Sourcepick";
 
-  var STR = {
+  let STR: SourceI18nApi["STR"] = {
     en: {
       appName: APP,
       lead: "Search only the sites you choose: forums, blogs, papers, docs and more.",
@@ -424,22 +424,21 @@
     },
   };
 
-  var nav = (typeof navigator !== "undefined" && navigator.language || "en").toLowerCase();
-  var ui = nav.indexOf("ko") === 0 ? "ko" : nav.indexOf("ja") === 0 ? "ja" : "en";
-  var lensLang = nav.indexOf("ko") === 0 ? "ko" : nav.indexOf("ja") === 0 ? "ja" : "en";
+  let nav = (typeof navigator !== "undefined" && navigator.language || "en").toLowerCase();
+  let ui: Lang = nav.indexOf("ko") === 0 ? "ko" : nav.indexOf("ja") === 0 ? "ja" : "en";
+  let lensLang: Lang = nav.indexOf("ko") === 0 ? "ko" : nav.indexOf("ja") === 0 ? "ja" : "en";
 
-  function t(key) {
-    var s = STR[ui][key];
+  function t(key: I18nKey, ...args: (string | number)[]): string {
+    let s = STR[ui][key];
     if (s === undefined) s = STR.en[key];
     if (s === undefined) return key;
-    var args = Array.prototype.slice.call(arguments, 1);
-    return s.replace(/\{(\d)\}/g, function (_, i) { return args[i] !== undefined ? args[i] : ""; });
+    return s.replace(/\{(\d)\}/g, function (_, i: string) { return args[Number(i)] !== undefined ? String(args[Number(i)]) : ""; });
   }
 
-  function apply(doc) {
+  function apply(doc: Document): void {
     doc.documentElement.lang = ui;
-    Array.prototype.forEach.call(doc.querySelectorAll("[data-t]"), function (n) { n.textContent = t(n.getAttribute("data-t")); });
-    Array.prototype.forEach.call(doc.querySelectorAll("[data-t-placeholder]"), function (n) { n.placeholder = t(n.getAttribute("data-t-placeholder")); });
+    doc.querySelectorAll<HTMLElement>("[data-t]").forEach(function (n) { n.textContent = t(n.getAttribute("data-t") as I18nKey); });
+    doc.querySelectorAll<HTMLInputElement>("[data-t-placeholder]").forEach(function (n) { n.placeholder = t(n.getAttribute("data-t-placeholder") as I18nKey); });
     if (doc.title) doc.title = APP;
   }
 

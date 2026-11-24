@@ -1,9 +1,9 @@
 // Query building shared by the web app, the extension pages and the content script.
 // Plain script (no modules) so it can be loaded by content scripts and <script> tags alike.
-(function (root) {
+(function (root: typeof globalThis) {
   "use strict";
 
-  var ENGINES = {
+  let ENGINES: Record<string, Engine> = {
     google: {
       name: "Google",
       // Words after the 32nd are ignored without notice; OR does not count (measured 2026-11).
@@ -21,8 +21,8 @@
       maxLength: { size: 1750, unit: "chars" },
       url: "https://www.bing.com/search",
       // Bing has presets for a day, a week and a month; a year is a custom range in days since 1970.
-      period: { param: "filters", values: { d: 'ex1:"ez1"', w: 'ex1:"ez2"', m: 'ex1:"ez3"', y: function (now) {
-        var today = Math.floor(now / 86400000);
+      period: { param: "filters", values: { d: 'ex1:"ez1"', w: 'ex1:"ez2"', m: 'ex1:"ez3"', y: function (now: number) {
+        let today = Math.floor(now / 86400000);
         return 'ex1:"ez5_' + (today - 365) + "_" + today + '"';
       } } },
       keep: ["filters", "setlang", "cc", "mkt", "safesearch"],
@@ -47,35 +47,35 @@
     },
   };
 
-  var PERIODS = ["", "d", "w", "m", "y"];
+  let PERIODS: Period[] = ["", "d", "w", "m", "y"];
 
   // "https://www.Example.com/a?b" -> "example.com/a". Returns null when it is not a domain.
   // Bare suffixes such as "gov" or "go.kr" are allowed so lenses can target a whole TLD.
-  function normalizeDomain(input) {
+  function normalizeDomain(input: unknown): string | null {
     if (input == null) return null;
-    var s = String(input).trim();
+    let s = String(input).trim();
     s = s.replace(/^-?site:/i, "").replace(/^[a-z][a-z0-9+.-]*:\/\//i, "");
     s = s.split(/[?#\s]/)[0].replace(/\/+$/, "");
-    var slash = s.indexOf("/");
-    var host = (slash >= 0 ? s.slice(0, slash) : s).toLowerCase().replace(/^www\./, "").replace(/\.$/, "");
-    var rest = slash >= 0 ? s.slice(slash) : "";
+    let slash = s.indexOf("/");
+    let host = (slash >= 0 ? s.slice(0, slash) : s).toLowerCase().replace(/^www\./, "").replace(/\.$/, "");
+    let rest = slash >= 0 ? s.slice(slash) : "";
     if (!/^(?:[a-z0-9-]+\.)*[a-z0-9-]+$/.test(host) || host.length > 253) return null;
-    if (!/[a-z]/.test(host.split(".").pop())) return null;
+    if (!/[a-z]/.test(host.split(".").pop() as string)) return null;
     if (rest && !/^(\/[A-Za-z0-9._~%-]+)+$/.test(rest)) rest = "";
     return host + rest;
   }
 
-  function isFilterToken(t) { return /^-?site:\S+$/i.test(t); }
+  function isFilterToken(t: string): boolean { return /^-?site:\S+$/i.test(t); }
 
   // Removes site: and -site: filters (and the ORs that join them) so a lens can be re-applied.
-  function stripFilters(q) {
-    var tokens = String(q || "").trim().split(/\s+/).filter(Boolean);
-    var out = [];
-    for (var i = 0; i < tokens.length; i++) {
-      var t = tokens[i];
+  function stripFilters(q: string | null | undefined): string {
+    let tokens = String(q || "").trim().split(/\s+/).filter(Boolean);
+    let out: string[] = [];
+    for (let i = 0; i < tokens.length; i++) {
+      let t = tokens[i];
       if (isFilterToken(t)) continue;
       if (t === "OR" || t === "|") {
-        var prev = tokens[i - 1], next = tokens[i + 1];
+        let prev = tokens[i - 1], next = tokens[i + 1];
         if ((prev && isFilterToken(prev)) || (next && isFilterToken(next)) || !out.length) continue;
       }
       out.push(t);
@@ -83,30 +83,30 @@
     return out.join(" ");
   }
 
-  function parseFilters(q) {
-    var include = [], exclude = [];
+  function parseFilters(q: string | null | undefined): Filters {
+    let include: string[] = [], exclude: string[] = [];
     String(q || "").split(/\s+/).forEach(function (t) {
-      var m = t.match(/^(-?)site:(\S+)$/i);
+      let m = t.match(/^(-?)site:(\S+)$/i);
       if (!m) return;
-      var d = normalizeDomain(m[2]);
+      let d = normalizeDomain(m[2]);
       if (!d) return;
       (m[1] ? exclude : include).push(d);
     });
     return { include: include, exclude: exclude };
   }
 
-  function uniq(list) {
-    var seen = {}, out = [];
+  function uniq(list: (string | null | undefined)[] | null | undefined): string[] {
+    let seen: Record<string, boolean> = {}, out: string[] = [];
     (list || []).forEach(function (x) { if (x && !seen[x]) { seen[x] = true; out.push(x); } });
     return out;
   }
 
   // Excluding a domain that is also included would hide the included one, so drop such pairs.
-  function buildQuery(text, include, exclude) {
-    var inc = uniq(include);
-    var exc = uniq(exclude).filter(function (d) { return inc.indexOf(d) < 0; });
-    var parts = [];
-    var base = stripFilters(text);
+  function buildQuery(text: string, include: string[], exclude: string[]): string {
+    let inc = uniq(include);
+    let exc = uniq(exclude).filter(function (d) { return inc.indexOf(d) < 0; });
+    let parts: string[] = [];
+    let base = stripFilters(text);
     if (base) parts.push(base);
     if (inc.length) parts.push(inc.map(function (d) { return "site:" + d; }).join(" OR "));
     if (exc.length) parts.push(exc.map(function (d) { return "-site:" + d; }).join(" "));
@@ -114,45 +114,45 @@
   }
 
   // Words the engine counts toward its limit: everything but OR and the site filters.
-  function countWords(text) {
+  function countWords(text: string): number {
     return stripFilters(text).split(/\s+/).filter(function (t) { return t && t !== "OR" && t !== "|"; }).length;
   }
 
   // Is domain d inside site s ("blog.naver.com" is inside "naver.com", "a.com/x/y" inside "a.com/x")?
-  function within(d, s) {
+  function within(d: string, s: string): boolean {
     return d === s || d.slice(-(s.length + 1)) === "." + s || d.indexOf(s + "/") === 0 ||
       (d.indexOf("/") > 0 && within(d.split("/")[0], s) && s.indexOf("/") < 0);
   }
 
-  function sizeOf(q, unit) {
+  function sizeOf(q: string, unit: "chars" | "bytes"): number {
     if (unit !== "bytes") return q.length;
     return typeof TextEncoder !== "undefined" ? new TextEncoder().encode(q).length : unescape(encodeURIComponent(q)).length;
   }
 
-  function tooLong(text, include, exclude, eng) {
-    var m = eng.maxLength;
+  function tooLong(text: string, include: string[], exclude: string[], eng: Engine): boolean {
+    let m = eng.maxLength;
     return !!m && sizeOf(buildQuery(text, include, exclude), m.unit) > m.size;
   }
 
   // True when a query is close enough to the engine's length limit that the next site would not fit.
-  function nearLength(q, engine) {
-    var m = (ENGINES[engine] || ENGINES.google).maxLength;
+  function nearLength(q: string, engine?: string): boolean {
+    let m = (ENGINES[engine || ""] || ENGINES.google).maxLength;
     return !!m && sizeOf(String(q || ""), m.unit) > m.size - 40;
   }
 
   // Fits the filters into the engine's word and length limits so nothing is dropped silently.
   // With sites to search, an excluded site only matters when it sits inside one of them.
   // Returns { include, exclude, cut: { include: [...], exclude: [...] }, limit }.
-  function fit(text, include, exclude, engine) {
-    var eng = ENGINES[engine] || ENGINES.google;
-    var inc = uniq(include);
-    var exc = uniq(exclude).filter(function (d) { return inc.indexOf(d) < 0; });
+  function fit(text: string, include: string[], exclude: string[], engine: string | undefined): FitResult {
+    let eng = ENGINES[engine || ""] || ENGINES.google;
+    let inc = uniq(include);
+    let exc = uniq(exclude).filter(function (d) { return inc.indexOf(d) < 0; });
     if (inc.length) exc = exc.filter(function (d) { return inc.some(function (s) { return within(d, s); }); });
-    var room = Math.max(1, eng.maxTerms - countWords(text));
-    var incFit = inc.slice(0, room);
-    var excFit = exc.slice(0, Math.max(0, room - incFit.length));
+    let room = Math.max(1, eng.maxTerms - countWords(text));
+    let incFit = inc.slice(0, room);
+    let excFit = exc.slice(0, Math.max(0, room - incFit.length));
     while (excFit.length && tooLong(text, incFit, excFit, eng)) excFit = excFit.slice(0, -1);
-    var byLength = incFit.length + excFit.length < Math.min(room, inc.length + exc.length);
+    let byLength = incFit.length + excFit.length < Math.min(room, inc.length + exc.length);
     while (incFit.length > 1 && tooLong(text, incFit, excFit, eng)) { incFit = incFit.slice(0, -1); byLength = true; }
     return {
       byLength: byLength,
@@ -164,28 +164,29 @@
   }
 
   // Which period key a results page uses, from the value of the engine's period parameter.
-  function periodKey(engine, value) {
-    var eng = ENGINES[engine];
+  function periodKey(engine: string, value: string | null | undefined): Period {
+    let eng = ENGINES[engine];
     if (!eng || !value) return "";
-    var now = Date.now();
-    return Object.keys(eng.period.values).filter(function (k) {
-      var v = eng.period.values[k];
+    let now = Date.now();
+    return (Object.keys(eng.period.values) as ("d" | "w" | "m" | "y")[]).filter(function (k) {
+      let v = eng.period.values[k];
       return (typeof v === "function" ? v(now) : v) === value;
     })[0] || "";
   }
 
   // opts: { engine, period, forums, keepFrom (URLSearchParams of the current results page) }
-  function searchUrl(text, include, exclude, opts) {
-    var o = opts || {};
-    var eng = ENGINES[o.engine] || ENGINES.google;
-    var f = fit(text, include, exclude, o.engine);
-    var params = new URLSearchParams();
+  function searchUrl(text: string, include: string[], exclude: string[], opts?: SearchOptions): string {
+    let o = opts || {};
+    let eng = ENGINES[o.engine || ""] || ENGINES.google;
+    let f = fit(text, include, exclude, o.engine);
+    let params = new URLSearchParams();
     params.set("q", buildQuery(text, f.include, f.exclude));
     if (o.keepFrom) {
-      eng.keep.forEach(function (k) { var v = o.keepFrom.get(k); if (v) params.set(k, v); });
+      let from = o.keepFrom;
+      eng.keep.forEach(function (k) { let v = from.get(k); if (v) params.set(k, v); });
     }
     if (o.period !== undefined) {
-      var pv = o.period && eng.period.values[o.period];
+      let pv = o.period && eng.period.values[o.period];
       if (typeof pv === "function") pv = pv(o.now || Date.now());
       if (pv) params.set(eng.period.param, pv);
       else if (o.period === "") params.delete(eng.period.param);
@@ -197,29 +198,29 @@
     return eng.url + "?" + params.toString();
   }
 
-  function lensDomains(lens) { return lens.sites.map(function (s) { return s.domain; }); }
+  function lensDomains(lens: { sites: Site[] }): string[] { return lens.sites.map(function (s) { return s.domain; }); }
 
   // How much of a lens a query applies: "all", "part" (its first sites, when the query is at the
   // engine's limit and the rest were cut) or "none". Used by the results-page bar.
-  function lensState(q, lens, engine) {
-    var f = parseFilters(q);
-    var pool = lens.mode === "exclude" ? f.exclude : f.include;
-    var ds = lensDomains(lens);
-    var n = ds.filter(function (d) { return pool.indexOf(d) >= 0; }).length;
+  function lensState(q: string, lens: LensSites, engine?: string): LensApplied {
+    let f = parseFilters(q);
+    let pool = lens.mode === "exclude" ? f.exclude : f.include;
+    let ds = lensDomains(lens);
+    let n = ds.filter(function (d) { return pool.indexOf(d) >= 0; }).length;
     if (!ds.length || !n) return "none";
     if (n === ds.length) return "all";
-    var eng = ENGINES[engine] || ENGINES.google;
-    var full = countWords(q) + f.include.length + f.exclude.length >= eng.maxTerms || nearLength(q, engine);
+    let eng = ENGINES[engine || ""] || ENGINES.google;
+    let full = countWords(q) + f.include.length + f.exclude.length >= eng.maxTerms || nearLength(q, engine);
     return full && ds.slice(0, n).every(function (d) { return pool.indexOf(d) >= 0; }) ? "part" : "none";
   }
 
-  function activeLensIds(q, lenses, engine) {
+  function activeLensIds(q: string, lenses: LensRef[], engine?: string): string[] {
     return lenses.filter(function (l) { return lensState(q, l, engine) !== "none"; }).map(function (l) { return l.id; });
   }
 
   // Turns a set of active lens ids into include/exclude lists, minus sites the user switched off.
-  function collect(lenses, ids, off, extra) {
-    var include = [], exclude = [];
+  function collect(lenses: LensRef[], ids: string[], off?: string[], extra?: string[]): Filters {
+    let include: string[] = [], exclude: string[] = [];
     lenses.forEach(function (l) {
       if (ids.indexOf(l.id) < 0) return;
       lensDomains(l).forEach(function (d) {
@@ -231,31 +232,31 @@
     return { include: uniq(include), exclude: uniq(exclude) };
   }
 
-  function lensName(lens, lang) {
-    var n = lens.name || {};
+  function lensName(lens: { id?: string; name?: string | LocalizedName }, lang: string): string {
+    let n = lens.name || ({} as Partial<LocalizedName>);
     if (typeof n === "string") return n;
-    return n[lang] || n.en || lens.id;
+    return (n as Record<string, string | undefined>)[lang] || n.en || (lens.id as string);
   }
 
   // Share links carry a lens as base64url JSON: { n: name, m: mode, s: [domains] }.
-  function encodeLens(lens) {
-    var data = { n: typeof lens.name === "string" ? lens.name : lensName(lens, "en"), m: lens.mode === "exclude" ? "x" : "i", s: lensDomains(lens) };
-    var bytes = new TextEncoder().encode(JSON.stringify(data));
-    var bin = "";
+  function encodeLens(lens: LensLike): string {
+    let data = { n: typeof lens.name === "string" ? lens.name : lensName(lens, "en"), m: lens.mode === "exclude" ? "x" : "i", s: lensDomains(lens) };
+    let bytes = new TextEncoder().encode(JSON.stringify(data));
+    let bin = "";
     bytes.forEach(function (b) { bin += String.fromCharCode(b); });
     return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
   }
 
-  function decodeLens(code) {
+  function decodeLens(code: string): SharedLens | null {
     try {
-      var b64 = String(code).replace(/-/g, "+").replace(/_/g, "/");
+      let b64 = String(code).replace(/-/g, "+").replace(/_/g, "/");
       while (b64.length % 4) b64 += "=";
-      var bin = atob(b64);
-      var bytes = new Uint8Array(bin.length);
-      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-      var data = JSON.parse(new TextDecoder().decode(bytes));
-      var name = String(data.n || "").trim().slice(0, 40);
-      var sites = uniq((Array.isArray(data.s) ? data.s : []).map(normalizeDomain)).slice(0, 60);
+      let bin = atob(b64);
+      let bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      let data = JSON.parse(new TextDecoder().decode(bytes));
+      let name = String(data.n || "").trim().slice(0, 40);
+      let sites = uniq((Array.isArray(data.s) ? data.s : []).map(normalizeDomain)).slice(0, 60);
       if (!name || !sites.length) return null;
       return { name: name, mode: data.m === "x" ? "exclude" : "include", sites: sites.map(function (d) { return { domain: d }; }) };
     } catch (e) {

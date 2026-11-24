@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- The source is now TypeScript (strict). The built web app and extensions behave the same as before.
 - Ten new Korean sources: Video (Naver TV, Chzzk, SOOP), News, Shopping, Reviews, Statistics, Universities, Courses, Jobs, Secondhand and Bookstores. Public bodies, wikis and encyclopedias, law, papers, worldwide forums, video, wikis and government, and the Japanese sources list more sites. New default sources are added once to settings saved earlier; sources you removed stay removed.
 - Bing is supported: the web app can search it, and the extension adds the source buttons to Bing results. Bing kept 60 sites in our tests, so large sources fit whole.
 - Google is the default engine and the main screen no longer shows an engine picker. Bing, DuckDuckGo and Brave are under Manage sources, and the search options summary names the engine only when it is not Google.
