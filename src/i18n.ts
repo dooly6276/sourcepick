@@ -55,7 +55,6 @@
       samsungInternet: "Samsung Internet",
       samsungStep1: "Tap the install icon (↓) in the address bar. If you don't see it, open the menu at the bottom right, choose Add page to, then Install as web app.",
       samsungStep2: "Choose Add. If Google Play Protect asks, choose Scan app, then Install.",
-      playProtect: "If Google Play Protect asks to scan the app, choose Scan app and then Install.",
       chromeAndroid: "Chrome on Android",
       chromeAndroidStep1: "Tap the menu at the top right and choose Add to Home screen or Install app.",
       chromeAndroidStep2: "Choose Install.",
@@ -143,6 +142,9 @@
       barMore: "{0} more",
       barLess: "Show less",
       barPartialTitleLength: "{0} limits how long a search can be, so only some of the sites were applied.",
+      order: "Source order",
+      moveUp: "Move {0} up",
+      moveDown: "Move {0} down",
     },
     ko: {
       appName: APP,
@@ -194,7 +196,6 @@
       samsungInternet: "삼성 인터넷",
       samsungStep1: "주소창의 설치 아이콘(↓)을 선택합니다. 아이콘이 없으면 오른쪽 하단 메뉴에서 '현재 페이지 추가'를 선택하고 '웹 앱으로 설치'를 선택합니다.",
       samsungStep2: "'추가'를 선택합니다. Google Play 프로텍트 창이 표시되면 '앱 검사'를 선택한 뒤 '설치'를 선택합니다.",
-      playProtect: "Google Play 프로텍트 창이 표시되면 '앱 검사'를 선택한 뒤 '설치'를 선택합니다.",
       chromeAndroid: "Android 크롬",
       chromeAndroidStep1: "오른쪽 상단 메뉴에서 '설치 및 바로가기 만들기'를 선택합니다.",
       chromeAndroidStep2: "'설치'를 선택합니다.",
@@ -282,6 +283,9 @@
       barMore: "{0}개 더보기",
       barLess: "접기",
       barPartialTitleLength: "{0} 검색은 검색어 길이에 제한이 있어 일부 사이트만 적용되었습니다.",
+      order: "출처 순서",
+      moveUp: "{0} 위로 이동",
+      moveDown: "{0} 아래로 이동",
     },
     ja: {
       appName: APP,
@@ -333,7 +337,6 @@
       samsungInternet: "サムスンインターネット",
       samsungStep1: "アドレスバーのインストールアイコン（↓）をタップします。表示されない場合は、右下のメニューから「現在のページを追加」を選び、「ウェブアプリとしてインストール」を選びます。",
       samsungStep2: "「追加」をタップします。Google Play プロテクトの画面が表示された場合は、「アプリをスキャン」を選んでから「インストール」をタップします。",
-      playProtect: "Google Play プロテクトがアプリのスキャンを求めるときは、「アプリをスキャン」を選び「インストール」をタップします。",
       chromeAndroid: "Android の Chrome",
       chromeAndroidStep1: "右上のメニューをタップし、「ホーム画面に追加」または「アプリをインストール」を選びます。",
       chromeAndroidStep2: "「インストール」をタップします。",
@@ -421,6 +424,9 @@
       barLess: "閉じる",
       barPartialTitleLength: "{0}では検索キーワードの長さに上限があるため、一部のサイトのみ適用されました。",
       excludeDesc: "検索先を選ばずにウェブ全体を検索するときに適用されます。",
+      order: "検索先の並び順",
+      moveUp: "{0}を上へ移動",
+      moveDown: "{0}を下へ移動",
     },
   };
 
