@@ -97,6 +97,11 @@ function manifest(target: "chrome" | "firefox") {
     omnibox: { keyword: "sp" },
     permissions: ["storage"],
     content_scripts: [{
+      // Hides the long query in the search box until content.js shows the words alone.
+      matches: CONTENT_MATCHES,
+      js: ["early.js"],
+      run_at: "document_start",
+    }, {
       matches: CONTENT_MATCHES,
       js: ["lenses.js", ...SHARED, "content.js"],
       css: ["content.css"],
@@ -120,7 +125,7 @@ function buildExtension(target: "chrome" | "firefox") {
   const out = path.join(DIST, target);
   reset(out);
   common(out);
-  for (const f of ["content.js", "background.js"]) copy(path.join(BUILD, "extension", f), path.join(out, f));
+  for (const f of ["early.js", "content.js", "background.js"]) copy(path.join(BUILD, "extension", f), path.join(out, f));
   copy(path.join(SRC, "extension/content.css"), path.join(out, "content.css"));
   copyDir(path.join(SRC, "extension/_locales"), path.join(out, "_locales"));
   for (const n of [16, 32, 48, 128]) copy(path.join(ASSETS, `icon-${n}.png`), path.join(out, `icons/icon-${n}.png`));

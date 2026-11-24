@@ -32,6 +32,9 @@ test("stripFilters removes only our filters", () => {
   assert.equal(core.stripFilters("phone site:a.com OR site:b.com -site:c.com review"), "phone review");
   assert.equal(core.stripFilters("apple OR pear"), "apple OR pear");
   assert.equal(core.stripFilters("site:a.com"), "");
+  // The extension uses it on results-page titles to show the words alone.
+  assert.equal(core.stripFilters("phone site:a.com OR site:b.com - Google Search"), "phone - Google Search");
+  assert.equal(core.stripFilters("phone site:a.com OR site:b.com at DuckDuckGo"), "phone at DuckDuckGo");
 });
 
 test("buildQuery replaces existing filters instead of stacking", () => {
