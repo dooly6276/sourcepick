@@ -254,6 +254,8 @@ body.popup .search { margin-top: 12px; }
 body.popup .block { margin-top: 16px; }
 body.popup .block h2 { font-size: 16px; margin-bottom: 8px; }
 body.popup .lens-btn { min-height: 40px; padding: 4px 12px; font-size: 15px; }
+body.popup .lens-more { color: var(--accent); border-color: transparent; background: none; font-weight: 600; }
+.lens-btn[hidden] { display: none; }
 body.popup .summary { font-size: 14px; }
 body.popup .summary .btn-text, body.popup .top-row .btn-text { min-height: 36px; font-size: 14px; }
 body.popup .opt-fold summary { min-height: 44px; }

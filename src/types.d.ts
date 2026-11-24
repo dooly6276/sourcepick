@@ -161,6 +161,7 @@ type I18nKey =
   "manage" |
   "noShown" |
   "siteCount" |
+  "siteCountOne" |
   "siteCountNone" |
   "editSites" |
   "editDone" |

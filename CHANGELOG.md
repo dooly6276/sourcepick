@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- The popup fits Chrome's 600 px limit again: it shows three rows of sources and a button for the rest. "1 site selected" instead of "1 sites selected".
 - With sources chosen, the results page search box and tab title show only your words, not the long `site:` list. Searching again from that box (Enter, the search button or a suggestion) keeps the chosen sources; Clear or the source buttons change them. Works on Google, Bing, DuckDuckGo and Brave.
 - Results-page bar fixes: it sits above the results on Google Images, no longer covers Bing's result count, stays at the top of DuckDuckGo results, keeps full-size buttons on Brave phones, and moves Clear and Manage to their own line when a note leaves the sources too little room. The Firefox add-on needs Firefox 140 (142 on Android), the first versions with the data collection setting.
 - Worldwide and Japanese sources are rebuilt by kind of site, like the Korean ones. Worldwide gains Q&A, News, Shopping, Statistics & data, Law, Online courses, Jobs & careers, Secondhand and Books, plus No Quora and No shopping; Forums, Reviews, Wikis, Papers, Blogs, Travel and Recipes list many more sites. Japan gains Q&A, Video, Wikis and dictionaries, News, Shopping, Reviews, Secondhand, Papers, Government, Law, Jobs, Books and Recipes, plus No matome sites, No Yahoo! Chiebukuro and No Japanese news. English and Japanese defaults show the new sources (added once to settings saved earlier).

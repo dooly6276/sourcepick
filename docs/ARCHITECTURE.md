@@ -28,6 +28,10 @@ Everything reads state back from the query itself: the results-page bar parses `
 
 When the toolbar popup opens over a Google, Bing, DuckDuckGo or Brave results tab, it asks the content script for that page (`sourcepick:page` message: engine, query, URL parameters). The search box then holds the page's words, the source buttons show the sources applied there, and any change searches that tab again with `chrome.tabs.update`. No extra permission is needed: the content script only runs on results pages, so the message fails quietly everywhere else and the popup opens new tabs as before.
 
+On a results page whose query is made only of sources the bar shows, the content script shows just the typed words in the engine's search box and the tab title (`stripFilters`). Enter, the engine's submit button and its suggestions then search again with the same sources through `core.searchUrl`; a short `sessionStorage` note covers suggestions that navigate without a form submit, and is used once. `early.ts` runs at `document_start` on the same pages and hides the box text until it is cleaned, so the long query does not flash. A site the user typed, or a domain no source explains, leaves the query as it is.
+
+The popup can be at most 600 px tall, so it shows three rows of sources and a "N more" button for the rest, like the results-page bar.
+
 ## Engine limits
 
 Search engines silently ignore words past a limit, and some refuse long queries outright. `core.ENGINES[...]` holds what we measured in November 2026:

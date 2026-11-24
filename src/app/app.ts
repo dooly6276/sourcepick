@@ -119,6 +119,38 @@
     });
     if (!box.children.length) box.appendChild(el("p", { class: "desc", text: t("noShown") }));
     box.appendChild(el("a", { href: "#new", class: "lens-btn lens-add", onclick: openNew }, [el("span", { class: "lens-name", text: t("newLensTile") })]));
+    if (isPopup) foldGrid(box);
+  }
+
+  // The toolbar popup can be at most 600 px tall, so it shows three rows of sources and a button for
+  // the rest, like the results-page bar. A chosen source on a later row keeps the grid open.
+  let gridOpen = false;
+  function foldGrid(box: HTMLElement): void {
+    let items = Array.from(box.querySelectorAll<HTMLElement>(".lens-btn"));
+    let rows: number[] = [];
+    items.forEach(function (b) { if (rows.indexOf(b.offsetTop) < 0) rows.push(b.offsetTop); });
+    if (rows.length <= 3) return;
+    rows.sort(function (a, b) { return a - b; });
+    let later = items.filter(function (b) { return b.offsetTop > rows[2]; });
+    let forced = later.some(function (b) { return b.classList.contains("is-on"); });
+    if (forced) return;
+    let more = el("button", { type: "button", class: "lens-btn lens-more", "aria-expanded": gridOpen ? "true" : "false",
+      onclick: function () { gridOpen = !gridOpen; renderGrid(); } }, [el("span", { class: "lens-name" })]);
+    box.appendChild(more);
+    let label = more.firstChild as HTMLElement;
+    if (gridOpen) { label.textContent = t("barLess"); return; }
+    let hidden = later.slice();
+    hidden.forEach(function (b) { b.hidden = true; });
+    label.textContent = t("barMore", hidden.length);
+    // Keep the button itself on the third row.
+    let shown = items.filter(function (b) { return hidden.indexOf(b) < 0; });
+    while (more.offsetTop > rows[2] && shown.length) {
+      let last = shown.pop() as HTMLElement;
+      if (last.classList.contains("is-on")) { shown.push(last); break; }
+      last.hidden = true;
+      hidden.unshift(last);
+    }
+    label.textContent = t("barMore", hidden.filter(function (b) { return !b.classList.contains("lens-add"); }).length);
   }
 
   // A tap chooses that source alone, like a tab; tapping it again searches the whole web.
@@ -227,7 +259,7 @@
   function renderSummary() {
     let c = current();
     let n = c.include.length;
-    $("site-count").textContent = n ? t("siteCount", n) : t("siteCountNone");
+    $("site-count").textContent = n === 1 ? t("siteCountOne") : n ? t("siteCount", n) : t("siteCountNone");
     $("clear").hidden = !state.active.length && !state.extra.length;
     $("multi").checked = state.multi;
     renderLimit();

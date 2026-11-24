@@ -86,5 +86,5 @@ English: Sourcepick has one purpose: to limit a web search to the sites the user
 - Remote code: No. All code is in the package; there is no `eval` and no remotely hosted script.
 - Data usage: no category collected (personally identifiable information, health, financial, authentication, personal communications, location, web history, user activity, website content: all unchecked). Certify the three limited-use statements.
 - Single-purpose and privacy policy: see this file and `store/privacy.md`.
-- Screenshots (1280x800): results page with the bar on Google; the popup; Manage sources; the web app on a phone is optional. The demo files are `docs/demo-en.gif` and `docs/demo-ko.gif`.
+- Screenshots (1280x800), ready in `store/screenshots/`: `*-1-results.png` (results page with the bar on Google), `*-2-popup.png` (popup over a results page), `*-3-web-app.png` (web app), `*-4-manage.png` (Manage sources). `en-*` for the English listing, `ko-*` for the Korean one. The demo files are `docs/demo-en.gif` and `docs/demo-ko.gif`.
 - Support URL: https://github.com/dooly6276/sourcepick/issues. Homepage: https://sourcepick.toolnjoy.com/
