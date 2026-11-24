@@ -192,7 +192,6 @@ type I18nKey =
   "samsungInternet" |
   "samsungStep1" |
   "samsungStep2" |
-  "playProtect" |
   "chromeAndroid" |
   "chromeAndroidStep1" |
   "chromeAndroidStep2" |
@@ -279,7 +278,10 @@ type I18nKey =
   "excludeShort" |
   "barMore" |
   "barLess" |
-  "barPartialTitleLength";
+  "barPartialTitleLength" |
+  "order" |
+  "moveUp" |
+  "moveDown";
 
 interface SourceI18nApi {
   t(key: I18nKey, ...args: (string | number)[]): string;

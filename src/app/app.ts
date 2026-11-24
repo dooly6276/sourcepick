@@ -27,6 +27,8 @@
 
   let state: State;
   let pendingImport: SharedLens | null = null;
+  let badImport = false;
+  let routed = false;
 
   // ---------- helpers ----------
   // Attributes: "text", "class", "on<event>" handlers, and anything else as an attribute.
@@ -130,6 +132,12 @@
     } else {
       state.active = state.active.filter(function (x) { return includes.indexOf(x) < 0; });
       if (!(on && includes.length === 1)) state.active.push(id);
+      // Sites that were in the results page's query but in no source go too, so the tab searches
+      // only the chosen source (they would otherwise stay added and be saved as extra sites).
+      if (pageExtra.length) {
+        state.extra = state.extra.filter(function (d) { return pageExtra.indexOf(d) < 0; });
+        pageExtra = [];
+      }
     }
     persist();
     renderMain();
@@ -143,6 +151,7 @@
   // search box holds its words, the buttons show its sources, and changes search that tab again.
   interface Tab { id: number; engine: EngineId; keep: URLSearchParams }
   let tab: Tab | null = null;
+  let pageExtra: string[] = [];
 
   function connectTab(done: () => void): void {
     if (!isPopup || !chrome.tabs || !chrome.tabs.query) { done(); return; }
@@ -173,6 +182,7 @@
     }).map(function (l) { return l.id; });
     state.off = [];
     state.extra = f.include.filter(function (d) { return covered.indexOf(d) < 0; });
+    pageExtra = state.extra.slice();
     $("q").value = core.stripFilters(q);
     let note = $("tab-note");
     note.textContent = t("tabNote", eng.name);
@@ -381,8 +391,50 @@
     });
   }
 
+  // Exclude sources say so in Manage unless their name already does ("No news" or "언론사 제외").
+  function manageTitle(l: Lens): string {
+    let title = name(l);
+    if (l.mode === "exclude" && title.toLowerCase().indexOf(t("modeExcludeShort").toLowerCase()) < 0) title += " (" + t("modeExcludeShort") + ")";
+    return title;
+  }
+
+  // The order of the buttons on the main screen and on results pages; the exclude sources keep their
+  // own order under Search options, so they are listed after the others.
+  function renderOrder(focusId?: string, dir?: number) {
+    let box = $("order-list");
+    box.textContent = "";
+    let list = shownLenses("include").concat(shownLenses("exclude"));
+    list.forEach(function (l, i) {
+      let title = manageTitle(l);
+      let up = el("button", { type: "button", class: "btn-icon", "aria-label": t("moveUp", title), title: t("moveUp", title), "data-id": l.id, "data-dir": "-1", text: "\u2191", onclick: function () { move(l.id, -1); } });
+      let down = el("button", { type: "button", class: "btn-icon", "aria-label": t("moveDown", title), title: t("moveDown", title), "data-id": l.id, "data-dir": "1", text: "\u2193", onclick: function () { move(l.id, 1); } });
+      if (i === 0 || (l.mode === "exclude" && list[i - 1].mode !== "exclude")) up.disabled = true;
+      if (i === list.length - 1 || (l.mode !== "exclude" && list[i + 1].mode === "exclude")) down.disabled = true;
+      box.appendChild(el("li", { class: "order-row" }, [el("span", { class: "site-name", text: title }), el("span", { class: "order-actions" }, [up, down])]));
+    });
+    if (focusId) {
+      let b = box.querySelector<HTMLButtonElement>('button[data-id="' + focusId + '"][data-dir="' + dir + '"]');
+      if (b && b.disabled) b = box.querySelector<HTMLButtonElement>('button[data-id="' + focusId + '"]:not([disabled])');
+      if (b) b.focus({ preventScroll: true });
+    }
+  }
+
+  // Swaps a source with its neighbour of the same kind in state.shown.
+  function move(id: string, dir: number): void {
+    let list = shownLenses().filter(Boolean);
+    let me = byId(id);
+    let same = list.filter(function (l) { return l.mode === me.mode; });
+    let at = same.indexOf(me), other = same[at + dir];
+    if (!other) return;
+    let i = state.shown.indexOf(id), j = state.shown.indexOf(other.id);
+    state.shown[i] = other.id; state.shown[j] = id;
+    persist();
+    renderOrder(id, dir);
+  }
+
   function renderManage() {
     renderEngine();
+    renderOrder();
     let box = $("manage-list");
     box.textContent = "";
     let all = lenses();
@@ -395,8 +447,7 @@
         let input = el("input", { type: "checkbox", "aria-label": t("showLens", name(l)) });
         input.checked = shown;
         input.addEventListener("change", function () { setShown(l.id, input.checked); });
-        let title = name(l);
-        if (l.mode === "exclude" && title.toLowerCase().indexOf(t("modeExcludeShort").toLowerCase()) < 0) title += " (" + t("modeExcludeShort") + ")";
+        let title = manageTitle(l);
         let info = el("div", { class: "manage-info" }, [
           el("span", { class: "site-name", text: title }),
           el("span", { class: "manage-sites", text: sitesSummary(l) }),
@@ -468,10 +519,24 @@
     copyText(shareUrl(l), function () { flash("manage-done", t("linkCopied")); });
   }
 
+  // core.normalizeDomain keeps the first word and accepts a bare word as a top-level domain
+  // ("gov" for site:gov). Typed by hand, "hello world" or "naver" is a mistake, so only real-looking
+  // endings are accepted without a dot.
+  let BARE = ["com", "net", "org", "edu", "gov", "mil", "int", "info", "biz", "io", "ai", "dev", "app"];
+  function siteInput(raw: string): string | null {
+    raw = raw.trim();
+    if (!raw || /\s/.test(raw)) return null;
+    let d = core.normalizeDomain(raw);
+    if (!d) return null;
+    let host = d.split("/")[0];
+    if (host.indexOf(".") < 0 && !/^[a-z]{2}$/.test(host) && BARE.indexOf(host) < 0) return null;
+    return d;
+  }
+
   function parseSites(text: string): { good: string[]; bad: string[] } {
     let good: string[] = [], bad: string[] = [];
     String(text || "").split(/[\s,]+/).filter(Boolean).forEach(function (raw) {
-      let d = core.normalizeDomain(raw);
+      let d = siteInput(raw);
       if (d) { if (good.indexOf(d) < 0) good.push(d); } else bad.push(raw);
     });
     return { good: good, bad: bad };
@@ -527,14 +592,20 @@
   }
 
   // ---------- routing ----------
+  let manageFromMain = false;
+
   function route() {
     let hash = location.hash;
+    let wasMain = !$("view-main").hidden && routed;
+    routed = true;
     if (hash.indexOf("#add=") === 0) {
       pendingImport = core.decodeLens(hash.slice(5));
+      badImport = !pendingImport;
       history.replaceState(null, "", location.pathname + location.search);
       hash = "";
     }
     let manage = hash === "#manage" || hash === "#new";
+    if (manage) manageFromMain = manageFromMain || wasMain; else manageFromMain = false;
     $("view-main").hidden = manage;
     $("view-manage").hidden = !manage;
     if (manage) {
@@ -546,6 +617,13 @@
 
   function renderImportCard() {
     let card = $("import-card");
+    $("import-add").hidden = !pendingImport;
+    if (badImport) {
+      $("import-text").textContent = t("badLink");
+      $("import-sites").textContent = "";
+      card.hidden = false;
+      return;
+    }
     if (!pendingImport) { card.hidden = true; return; }
     $("import-text").textContent = t("importAsk", pendingImport.name, pendingImport.sites.length);
     $("import-sites").textContent = sitesSummary(pendingImport);
@@ -557,6 +635,7 @@
     $("search-form").addEventListener("submit", function (e) {
       let q = $("q").value.trim();
       if (!q) { e.preventDefault(); $("q").focus(); return; }
+      rememberQuery(q);
       // On phones the web app searches in the same tab through ?q= (redirect.js reads the saved
       // selection). Being a real form submission also lets Chrome offer Sourcepick as a search
       // engine. Falls back to the old way when the selection could not be saved.
@@ -594,8 +673,8 @@
 
     $("add-site-form").addEventListener("submit", function (e) {
       e.preventDefault();
-      let d = core.normalizeDomain($("add-site").value);
-      if (!d) { showMsg("add-site-error", t("badDomain")); return; }
+      let d = siteInput($("add-site").value);
+      if (!d) { showMsg("add-site-error", t("badDomain")); $("add-site").focus(); return; }
       showMsg("add-site-error", "");
       let i = state.off.indexOf(d);
       if (i >= 0) state.off.splice(i, 1);
@@ -643,8 +722,10 @@
       persist();
       renderMain();
       renderImportCard();
+      let btn = document.querySelector<HTMLElement>("#lens-grid .is-on");
+      if (btn) btn.focus();
     });
-    $("import-close").addEventListener("click", function () { pendingImport = null; renderImportCard(); });
+    $("import-close").addEventListener("click", function () { pendingImport = null; badImport = false; renderImportCard(); });
 
     $("new-lens-form").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -692,6 +773,15 @@
       flash("manage-done", t("resetDone"));
     });
 
+    // Back returns to the entry the person came from, so the browser's back button does not
+    // bounce them into Manage again; opened straight on #manage it simply shows the main view.
+    document.querySelector<HTMLAnchorElement>("#view-manage .back")!.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (manageFromMain) { history.back(); return; }
+      history.replaceState(null, "", location.pathname + location.search);
+      route();
+    });
+
     window.addEventListener("hashchange", route);
     store.onChange(function (s) {
       state = s;
@@ -730,6 +820,18 @@
     if (!box.children.length) $("way-ext").hidden = true;
   }
 
+  // The last search stays in the box when the person comes back from the results (same tab on
+  // phones, where the page may be reloaded instead of restored), so it is easy to change and search again.
+  let QKEY = "sourcepick:q";
+  function rememberQuery(q: string): void {
+    if (isExt) return;
+    try { sessionStorage.setItem(QKEY, q); } catch (e) { /* storage blocked */ }
+  }
+  function restoreQuery(): void {
+    if (isExt || $("q").value) return;
+    try { $("q").value = sessionStorage.getItem(QKEY) || ""; } catch (e) { /* storage blocked */ }
+  }
+
   store.load().then(function (s) {
     state = s;
     // Drop ids of lenses that no longer exist (renamed or removed in an update).
@@ -737,6 +839,7 @@
     state.shown = state.shown.filter(function (id) { return ids.indexOf(id) >= 0; });
     state.active = state.active.filter(function (id) { return ids.indexOf(id) >= 0; });
     bind();
+    restoreQuery();
     connectTab(route);
     if (!isPopup && !pendingImport && $("view-manage").hidden && matchMedia("(min-width: 700px)").matches) $("q").focus();
     if (isPopup) $("q").focus();

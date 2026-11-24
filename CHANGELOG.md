@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Manage sources has a Source order list with up and down buttons, so the source buttons can be put in any order.
+- The web app keeps the last search in the box when you come back from the results, so it is easy to change and search again.
+- Back in Manage sources returns to the main screen without adding a history step, so the browser's back button no longer reopens Manage.
+- Adding a site rejects text with spaces and single words that are not a domain ending ("hello world" used to add "hello"); go.kr, gov and full addresses still work.
+- A shared link that cannot be read now says so instead of showing nothing.
+- In the popup over a results page, choosing one source drops the sites that came only from that page's query, so the tab searches just that source and those sites are not saved.
+- The Samsung Internet steps no longer repeat the Google Play Protect step.
+
 - When two copies of the extension are installed (for example the store version and a developer copy), the results page shows one source bar instead of two.
 - The source is now TypeScript (strict). The built web app and extensions behave the same as before.
 - Ten new Korean sources: Video (Naver TV, Chzzk, SOOP), News, Shopping, Reviews, Statistics, Universities, Courses, Jobs, Secondhand and Bookstores. Public bodies, wikis and encyclopedias, law, papers, worldwide forums, video, wikis and government, and the Japanese sources list more sites. New default sources are added once to settings saved earlier; sources you removed stay removed.
