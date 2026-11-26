@@ -24,7 +24,7 @@
 
 <p align="center">
   <a href="https://sourcepick.toolnjoy.com/"><strong>Try the web app</strong></a> &nbsp;|&nbsp;
-  <a href="https://github.com/dooly6276/sourcepick/releases/latest">Download the extension</a> &nbsp;|&nbsp;
+  <a href="https://chromewebstore.google.com/detail/sourcepick/kifmhnidecbnbidbhdooofggbekanjhc">Add to Chrome</a> &nbsp;|&nbsp;
   <a href="#built-in-sources">See all sources</a>
 </p>
 
@@ -83,7 +83,7 @@ The fix people already use is `site:`. It works on every engine, but nobody want
 | Where | How |
 |---|---|
 | Any phone or browser | Open the [web app](https://sourcepick.toolnjoy.com/) and add it to your home screen. |
-| Chrome, Edge, Whale, Brave, Opera | Chrome Web Store (coming soon). For now: download `sourcepick-chrome-*.zip` from the [latest release](https://github.com/dooly6276/sourcepick/releases/latest), unzip it, open `chrome://extensions`, turn on Developer mode and choose Load unpacked. |
+| Chrome, Edge, Whale, Brave, Opera | Install from the [Chrome Web Store](https://chromewebstore.google.com/detail/sourcepick/kifmhnidecbnbidbhdooofggbekanjhc). |
 | Firefox (desktop and Android) | Firefox Add-ons (coming soon). For now on desktop: download `sourcepick-firefox-*.zip`, open `about:debugging`, This Firefox, Load Temporary Add-on. |
 
 On a phone, the web app is the way in: Samsung Internet, Chrome and Firefox on Android and Safari on iPhone can all add it to the home screen. On Android it also appears in the share sheet, so you can select text in any app and search it with your sources.
@@ -252,7 +252,7 @@ The bar has fallbacks for each engine's layout, and the search itself is a norma
 ## Limitations
 
 - Search engines cap how much of a query they read, so a source with many sites is searched in part on DuckDuckGo and Brave. Sourcepick says when this happens.
-- The Chrome Web Store and Firefox Add-ons listings are not published yet. Until then the extension installs from the release zip.
+- The Firefox Add-ons listing is in review. Until it is published, Firefox installs from the release zip.
 - There is no Safari extension yet. On iPhone and Mac, use the web app.
 - The results page bar depends on each engine's page layout and may need an update when an engine redesigns.
 

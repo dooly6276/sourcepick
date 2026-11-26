@@ -24,7 +24,7 @@
 
 <p align="center">
   <a href="https://sourcepick.toolnjoy.com/"><strong>웹 앱 열기</strong></a> &nbsp;|&nbsp;
-  <a href="https://github.com/dooly6276/sourcepick/releases/latest">확장 프로그램 다운로드</a> &nbsp;|&nbsp;
+  <a href="https://chromewebstore.google.com/detail/sourcepick/kifmhnidecbnbidbhdooofggbekanjhc">Chrome에 추가</a> &nbsp;|&nbsp;
   <a href="#기본-출처">전체 출처 보기</a>
 </p>
 
@@ -84,7 +84,7 @@
 |---|---|
 | 휴대폰과 그 밖의 브라우저 | [웹 앱](https://sourcepick.toolnjoy.com/)을 열고 홈 화면에 추가합니다. |
 | 툴앤조이 | 설치 없이 [툴앤조이 사이트 지정 검색](https://toolnjoy.com/site-search)에서도 같은 한국 출처로 구글 검색을 할 수 있습니다. |
-| 크롬, 엣지, 웨일, Brave, 오페라 | Chrome 웹 스토어(준비 중). 지금은 [최신 릴리스](https://github.com/dooly6276/sourcepick/releases/latest)에서 `sourcepick-chrome-*.zip`을 받아 압축을 풀고, `chrome://extensions`에서 개발자 모드를 켠 뒤 '압축해제된 확장 프로그램을 로드합니다'를 선택합니다. |
+| 크롬, 엣지, 웨일, Brave, 오페라 | [Chrome 웹 스토어](https://chromewebstore.google.com/detail/sourcepick/kifmhnidecbnbidbhdooofggbekanjhc)에서 설치합니다. |
 | 파이어폭스(PC, Android) | Firefox 부가 기능(준비 중). 지금은 PC에서 `sourcepick-firefox-*.zip`을 받아 `about:debugging`의 '이 Firefox'에서 '임시 부가 기능 로드'를 선택합니다. |
 
 ### 휴대폰 홈 화면에 추가
@@ -255,7 +255,7 @@ npm run build        # dist/web, dist/chrome, dist/firefox 생성
 ## 한계
 
 - 검색엔진이 읽는 검색어 길이에 한도가 있어, 사이트가 많은 출처는 DuckDuckGo와 Brave에서 일부만 검색됩니다. 이때는 화면에 안내가 표시됩니다.
-- Chrome 웹 스토어와 Firefox 부가 기능 등록은 준비 중입니다. 그 전까지는 릴리스 zip 파일로 설치합니다.
+- Firefox 부가 기능 등록은 검토 중입니다. 그 전까지 파이어폭스는 릴리스 zip 파일로 설치합니다.
 - 사파리 확장 프로그램은 아직 없습니다. 아이폰과 맥에서는 웹 앱을 이용해 주세요.
 - 검색 결과 화면의 버튼 줄은 검색엔진 화면 구조에 맞춰 넣으므로, 검색엔진이 화면을 크게 바꾸면 업데이트가 필요할 수 있습니다.
 
